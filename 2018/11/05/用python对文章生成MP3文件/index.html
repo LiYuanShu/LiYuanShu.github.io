@@ -3,28 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo部署到github | 小树窝</title>
+  <title>用python对文章生成MP3文件 | 小树窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="经过在网上搜寻了很多教程，才把自己的hexo部署到了github上。好记性不如烂笔头，把自己的学习成果和经验记录下来才不会遗忘。如何下载安装hexo请参考hexo安装 前期准备——github创库github的强大功能在此就不说了，申请过程也非常容易。不过需要记住的重要一点：所创建的创库名称需要和自己的github名称一致，才能成功部署，否则出现404错误提示。 开始部署登录github点击最右上">
+  <meta name="description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址是：[注册网址]（http://ai.baidu.com/）从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo部署到github">
-<meta property="og:url" content="https://LiYuanSh.github.io/2018/11/04/hexo部署到github/index.html">
+<meta property="og:title" content="用python对文章生成MP3文件">
+<meta property="og:url" content="https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="经过在网上搜寻了很多教程，才把自己的hexo部署到了github上。好记性不如烂笔头，把自己的学习成果和经验记录下来才不会遗忘。如何下载安装hexo请参考hexo安装 前期准备——github创库github的强大功能在此就不说了，申请过程也非常容易。不过需要记住的重要一点：所创建的创库名称需要和自己的github名称一致，才能成功部署，否则出现404错误提示。 开始部署登录github点击最右上">
+<meta property="og:description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址是：[注册网址]（http://ai.baidu.com/）从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://liyuansh.github.io/images/hexo部署到github1.png">
-<meta property="og:image" content="https://liyuansh.github.io/images/hexo部署到github2.png">
-<meta property="og:image" content="https://liyuansh.github.io/images/hexo部署到github3.png">
-<meta property="og:image" content="https://liyuansh.github.io/images/hexo部署到github4.png">
-<meta property="og:image" content="https://liyuansh.github.io/images/hexo部署到github5.png">
-<meta property="og:updated_time" content="2018-11-04T05:45:16.481Z">
+<meta property="og:image" content="https://liyuansh.github.io/images/python生成MP31.png">
+<meta property="og:updated_time" content="2018-11-05T15:25:54.738Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo部署到github">
-<meta name="twitter:description" content="经过在网上搜寻了很多教程，才把自己的hexo部署到了github上。好记性不如烂笔头，把自己的学习成果和经验记录下来才不会遗忘。如何下载安装hexo请参考hexo安装 前期准备——github创库github的强大功能在此就不说了，申请过程也非常容易。不过需要记住的重要一点：所创建的创库名称需要和自己的github名称一致，才能成功部署，否则出现404错误提示。 开始部署登录github点击最右上">
-<meta name="twitter:image" content="https://liyuansh.github.io/images/hexo部署到github1.png">
+<meta name="twitter:title" content="用python对文章生成MP3文件">
+<meta name="twitter:description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址是：[注册网址]（http://ai.baidu.com/）从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/python生成MP31.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -115,20 +111,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-hexo部署到github" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-用python对文章生成MP3文件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      hexo部署到github
+      用python对文章生成MP3文件
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-11-04
+          <i class="fa fa-calendar"></i>  2018-11-05
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -144,19 +140,16 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>经过在网上搜寻了很多教程，才把自己的hexo部署到了github上。好记性不如烂笔头，把自己的学习成果和经验记录下来才不会遗忘。<br>如何下载安装hexo请参考<a href="https://note.youdao.com/share/?id=18832c8a38c12b229d04952c6aa36777&amp;type=note#/&quot;内容记录在有道云笔记&quot;" target="_blank" rel="noopener">hexo安装</a></p>
-<h3 id="前期准备——github创库"><a href="#前期准备——github创库" class="headerlink" title="前期准备——github创库"></a>前期准备——github创库</h3><p>github的强大功能在此就不说了，申请过程也非常容易。不过需要记住的重要一点：<strong>所创建的创库名称需要和自己的github名称一致</strong>，才能成功部署，否则出现404错误提示。<br><img src="/images/hexo部署到github1.png" alt="“github创库名称”"></p>
-<h3 id="开始部署"><a href="#开始部署" class="headerlink" title="开始部署"></a>开始部署</h3><p>登录github点击最右上角的那个图标，进入Your repositories，在点击如下图标<br><img src="/images/hexo部署到github2.png" alt="“LiYuanShu.github.io”"></p>
-<p>复制箭头的链接<br><img src="/images/hexo部署到github3.png" alt="“Use SSH”"></p>
-<p>把复制的内容粘贴到_config.yml文件中（repo、branch标签需要手动输入,标签和后面的内容中间留一个空格）<br><img src="/images/hexo部署到github4.png" alt="“_config.yml配置”"></p>
-<p>对url进行修改，修改结果有所偏差，结果如下：<br><img src="/images/hexo部署到github5.png" alt="“_config.yml配置”"></p>
-<p>在博客目录下运行Git Bash here输入相关命令部署：<br>①安装一个插件：npm install hexo-deployer-git –save<br>②运行命令：hexo g（作用生成相关静态网页）<br>③运行命令：hexo d（作用为部署到github上）<br>注：第一次运行hexo g命令会提示输入github账号密码等信息，安装提示进行操作即可。<br>    我使用sublime软件对hexo进行编辑，查找相关标签ctrl+F即可。</p>
-<p>本次博客文章到此结束，记录技术，分享生活！！！</p>
+            <p>看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。</p>
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>需要到百度的AI开放平台,注册网址是：[注册网址]（<a href="http://ai.baidu.com/）" target="_blank" rel="noopener">http://ai.baidu.com/）</a><br>从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。<br>需要记住注册后的三个参数：AppID，API Key，Secret Key。后面代码需要用到。<br><img src="/images/python生成MP31.png" alt="“github创库名称”"><br>REST API接口的详细使用文档请参考<a href="https://ai.baidu.com/docs#/ASR-Online-Python-SDK/top" target="_blank" rel="noopener">百度语音转换接口</a></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>aaa<br>from aip import AipSpeech<br>from playsound import playsound<br>APP_ID=””  #填写申请到的APP_ID<br>API_KEY=”” #填写申请到的APP_ID<br>SECRET_KEY=”” #填写申请到的SECRET_KEY<br>file=open(“python.txt”,”r”)<br>str=file.read()<br>file.close()<br>client=AipSpeech(APP_ID,API_KEY,SECRET_KEY)<br>re=client.synthesis(str,’zh’,1,{‘per’:1,”vol”:20,’pit’:8,’spd’:5})<br>file_name = ‘11111.mp3’<br>if not isinstance(re,dict):<br>    with open(file_name, ‘wb+’) as f:<br>        f.write(re)<br>playsound(file_name)<br>aaa</p>
+<hr>
+<p>在python中还可以直接读取docx、pdf等格式文件内容，只需自己在网上下载相关的第三方库即可。</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年11月04日 13:45</p>
-        <p>原始链接： <a class="post-url" href="/2018/11/04/hexo部署到github/" title="hexo部署到github">https://LiYuanSh.github.io/2018/11/04/hexo部署到github/</a></p>
+        <p>最后更新： 2018年11月05日 23:25</p>
+        <p>原始链接： <a class="post-url" href="/2018/11/05/用python对文章生成MP3文件/" title="用python对文章生成MP3文件">https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
                 <img src="/images/logo1.jpg" alt="LiYuanShu">
@@ -213,7 +206,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2018/11/04/hexo部署到github/&title=《hexo部署到github》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/&title=《用python对文章生成MP3文件》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -223,22 +216,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2018/11/04/hexo部署到github/&title=《hexo部署到github》 — 小树窝&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/&title=《用python对文章生成MP3文件》 — 小树窝&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2018/11/04/hexo部署到github/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo部署到github》 — 小树窝&url=https://LiYuanSh.github.io/2018/11/04/hexo部署到github/&via=https://LiYuanSh.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《用python对文章生成MP3文件》 — 小树窝&url=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/&via=https://LiYuanSh.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2018/11/04/hexo部署到github/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -248,7 +241,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2018/11/04/hexo部署到github/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -266,26 +259,16 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前期准备——github创库"><span class="post-toc-text">前期准备——github创库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开始部署"><span class="post-toc-text">开始部署</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前期准备"><span class="post-toc-text">前期准备</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码实现"><span class="post-toc-text">代码实现</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2018/11/05/用python对文章生成MP3文件/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          用python对文章生成MP3文件
-        
-      </span>
-    </a>
   
-  
-    <a href="/2018/09/30/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">程序员入门必备技能</span>
+    <a href="/2018/11/04/hexo部署到github/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">hexo部署到github</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
