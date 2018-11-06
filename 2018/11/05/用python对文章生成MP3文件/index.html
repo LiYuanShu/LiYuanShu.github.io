@@ -8,18 +8,18 @@
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址是：[注册网址]（http://ai.baidu.com/）从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现">
+  <meta name="description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。需要记住注册后的三个参数：AppID，API K">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用python对文章生成MP3文件">
 <meta property="og:url" content="https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址是：[注册网址]（http://ai.baidu.com/）从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现">
+<meta property="og:description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。需要记住注册后的三个参数：AppID，API K">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://liyuansh.github.io/images/python生成MP31.png">
-<meta property="og:updated_time" content="2018-11-05T15:25:54.738Z">
+<meta property="og:updated_time" content="2018-11-06T11:05:12.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用python对文章生成MP3文件">
-<meta name="twitter:description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址是：[注册网址]（http://ai.baidu.com/）从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现">
+<meta name="twitter:description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。需要记住注册后的三个参数：AppID，API K">
 <meta name="twitter:image" content="https://liyuansh.github.io/images/python生成MP31.png">
   
   
@@ -141,14 +141,15 @@
       
             
             <p>看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。</p>
-<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>需要到百度的AI开放平台,注册网址是：[注册网址]（<a href="http://ai.baidu.com/）" target="_blank" rel="noopener">http://ai.baidu.com/）</a><br>从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。<br>需要记住注册后的三个参数：AppID，API Key，Secret Key。后面代码需要用到。<br><img src="/images/python生成MP31.png" alt="“github创库名称”"><br>REST API接口的详细使用文档请参考<a href="https://ai.baidu.com/docs#/ASR-Online-Python-SDK/top" target="_blank" rel="noopener">百度语音转换接口</a></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>aaa<br>from aip import AipSpeech<br>from playsound import playsound<br>APP_ID=””  #填写申请到的APP_ID<br>API_KEY=”” #填写申请到的APP_ID<br>SECRET_KEY=”” #填写申请到的SECRET_KEY<br>file=open(“python.txt”,”r”)<br>str=file.read()<br>file.close()<br>client=AipSpeech(APP_ID,API_KEY,SECRET_KEY)<br>re=client.synthesis(str,’zh’,1,{‘per’:1,”vol”:20,’pit’:8,’spd’:5})<br>file_name = ‘11111.mp3’<br>if not isinstance(re,dict):<br>    with open(file_name, ‘wb+’) as f:<br>        f.write(re)<br>playsound(file_name)<br>aaa</p>
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>需要到百度的AI开放平台,<a href="http://ai.baidu.com/" target="_blank" rel="noopener">注册网址</a><br>从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。<br>需要记住注册后的三个参数：AppID，API Key，Secret Key。后面代码需要用到。<br><img src="/images/python生成MP31.png" alt="“github创库名称”"><br>REST API接口的详细使用文档请参考<a href="https://ai.baidu.com/docs#/ASR-Online-Python-SDK/top" target="_blank" rel="noopener">百度语音转换接口</a></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>‘’’<br>from aip import AipSpeech<br>from playsound import playsound<br>APP_ID=””  #填写申请到的APP_ID<br>API_KEY=”” #填写申请到的APP_ID<br>SECRET_KEY=”” #填写申请到的SECRET_KEY<br>file=open(“python.txt”,”r”)<br>str=file.read()<br>file.close()<br>client=AipSpeech(APP_ID,API_KEY,SECRET_KEY)<br>re=client.synthesis(str,’zh’,1,{‘per’:1,”vol”:20,’pit’:8,’spd’:5})<br>file_name = ‘11111.mp3’<br>if not isinstance(re,dict):<br>    with open(file_name, ‘wb+’) as f:<br>        f.write(re)<br>playsound(file_name)</p>
+<p>‘’’</p>
 <hr>
 <p>在python中还可以直接读取docx、pdf等格式文件内容，只需自己在网上下载相关的第三方库即可。</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年11月05日 23:25</p>
+        <p>最后更新： 2018年11月06日 19:05</p>
         <p>原始链接： <a class="post-url" href="/2018/11/05/用python对文章生成MP3文件/" title="用python对文章生成MP3文件">https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
