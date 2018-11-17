@@ -3,24 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>用python对文章生成MP3文件 | 小树窝</title>
+  <title>matlab学习笔记一 | 小树窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。需要记住注册后的三个参数：AppID，API K">
+  <meta name="description" content="matlab是大三学期《大数据挖掘》这门课需要学习的一个软件，此软件功能强大，使用也复杂多样，使用博客记录一些知识点和使用思想，以便更好地进步。 常用小知识：分号：不显示运算结果magic(n):生成n阶的矩阵  #魔幻Array concatenation——cat(n,A,B):把两个矩阵拼接起来，n的取值为拼接方式。“1”为column、“2”为row，“3”为layerreshape(A,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用python对文章生成MP3文件">
-<meta property="og:url" content="https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/index.html">
+<meta property="og:title" content="matlab学习笔记一">
+<meta property="og:url" content="https://LiYuanSh.github.io/2018/11/07/matlab学习笔记一/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。需要记住注册后的三个参数：AppID，API K">
+<meta property="og:description" content="matlab是大三学期《大数据挖掘》这门课需要学习的一个软件，此软件功能强大，使用也复杂多样，使用博客记录一些知识点和使用思想，以便更好地进步。 常用小知识：分号：不显示运算结果magic(n):生成n阶的矩阵  #魔幻Array concatenation——cat(n,A,B):把两个矩阵拼接起来，n的取值为拼接方式。“1”为column、“2”为row，“3”为layerreshape(A,">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://liyuansh.github.io/images/python生成MP31.png">
-<meta property="og:updated_time" content="2018-11-06T11:38:23.460Z">
+<meta property="og:updated_time" content="2018-11-14T07:42:06.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用python对文章生成MP3文件">
-<meta name="twitter:description" content="看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。 前期准备需要到百度的AI开放平台,注册网址从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。需要记住注册后的三个参数：AppID，API K">
-<meta name="twitter:image" content="https://liyuansh.github.io/images/python生成MP31.png">
+<meta name="twitter:title" content="matlab学习笔记一">
+<meta name="twitter:description" content="matlab是大三学期《大数据挖掘》这门课需要学习的一个软件，此软件功能强大，使用也复杂多样，使用博客记录一些知识点和使用思想，以便更好地进步。 常用小知识：分号：不显示运算结果magic(n):生成n阶的矩阵  #魔幻Array concatenation——cat(n,A,B):把两个矩阵拼接起来，n的取值为拼接方式。“1”为column、“2”为row，“3”为layerreshape(A,">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -111,20 +109,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-用python对文章生成MP3文件" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-matlab学习笔记一" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      用python对文章生成MP3文件
+      matlab学习笔记一
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-11-05
+          <i class="fa fa-calendar"></i>  2018-11-07
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -140,16 +138,21 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>看技术文档太累？期末考试需要背诵的答案太多？而且无法静心看文档，整天看电子文档也太影响视力。如今这些问题可以轻松解决了。只需要几行python代码，把文章转化成语音文件，每天空闲时听一下，日久天长，自然就会记住。</p>
-<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>需要到百度的AI开放平台,<a href="http://ai.baidu.com/" target="_blank" rel="noopener">注册网址</a><br>从控制台登录，然后点击百度语音，创建一个应用即可，就可以使用REST API接口实现语音合成了。<br>需要记住注册后的三个参数：AppID，API Key，Secret Key。后面代码需要用到。<br><img src="/images/python生成MP31.png" alt="“github创库名称”"><br>REST API接口的详细使用文档请参考<a href="https://ai.baidu.com/docs#/ASR-Online-Python-SDK/top" target="_blank" rel="noopener">百度语音转换接口</a></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from aip import AipSpeech</span><br><span class="line">from playsound import playsound</span><br><span class="line">APP_ID=&quot;&quot;  #填写申请到的APP_ID</span><br><span class="line">API_KEY=&quot;&quot; #填写申请到的APP_ID</span><br><span class="line">SECRET_KEY=&quot;&quot; #填写申请到的SECRET_KEY</span><br><span class="line">file=open(&quot;python.txt&quot;,&quot;r&quot;)</span><br><span class="line">str=file.read()</span><br><span class="line">file.close()</span><br><span class="line">client=AipSpeech(APP_ID,API_KEY,SECRET_KEY)</span><br><span class="line">re=client.synthesis(str,&apos;zh&apos;,1,&#123;&apos;per&apos;:1,&quot;vol&quot;:20,&apos;pit&apos;:8,&apos;spd&apos;:5&#125;)</span><br><span class="line">file_name = &apos;11111.mp3&apos;</span><br><span class="line">if not isinstance(re,dict):</span><br><span class="line">    with open(file_name, &apos;wb+&apos;) as f:</span><br><span class="line">        f.write(re)</span><br><span class="line">playsound(file_name)</span><br></pre></td></tr></table></figure>
-<hr>
-<p>在python中还可以直接读取docx、pdf等格式文件内容，只需自己在网上下载相关的第三方库即可。</p>
+            <p>matlab是大三学期《大数据挖掘》这门课需要学习的一个软件，此软件功能强大，使用也复杂多样，使用博客记录一些知识点和使用思想，以便更好地进步。</p>
+<p>常用小知识：<br>分号：不显示运算结果<br>magic(n):生成n阶的矩阵  #魔幻<br>Array concatenation——cat(n,A,B):把两个矩阵拼接起来，n的取值为拼接方式。“1”为column、“2”为row，“3”为layer<br>reshape(A,n1,n2):改变矩阵的阶值，如可以把2<em>2阶矩阵改变为1</em>4阶矩阵。</p>
+<h3 id="File-Access"><a href="#File-Access" class="headerlink" title="File Access"></a>File Access</h3><p>①save workspace data to a file:<br>    save name.mat X     X为需要保存的变量名称<br>    save name.mat -ascii X  改变编码格式，在文件中可显示<br>②load data stored in a file：<br>     load（’name.mat’）</p>
+<pre><code>load(&apos;name.mat&apos;,&apos;ascii&apos;)
+</code></pre><hr>
+<h4 id="Excle-File-Reading"><a href="#Excle-File-Reading" class="headerlink" title="Excle File Reading"></a>Excle File Reading</h4><p> ①Score=xlsread(‘Filename’,’B2:D3’)  第二个参数代表读取的范围，无第二个参数代表取钱全部数字内容<br>  [Score Header]= xlsread(‘Filename’,’B2:D3’)    Score返回数字，Header返回String<br> ②xlswrite(‘Filename’，content，fileNumber，‘B2:D3’)   第二个参数为写入内容，第三个参数为写入到第几个表  </p>
+<h3 id="Low-leval-File-I-O-Function"><a href="#Low-leval-File-I-O-Function" class="headerlink" title="Low-leval File I/O Function"></a>Low-leval File I/O Function</h3><p>fid=fopen(‘FileName’,’[permission]’)   permission:’r’，’r+’,’W’,’W+’,’a’,’a+’<br>feof(fid)   判断文件是否读取完毕<br>fscanf(fid,’format’,size)     读取:size为尺寸可取1、2 ……<br>fprintf(fid,’format’,content)    写入：format:%d,%f    </p>
+<h3 id="Drawing"><a href="#Drawing" class="headerlink" title="Drawing"></a>Drawing</h3><p>使用同一种模型函数时结果不会被覆盖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; hold on</span><br><span class="line">&gt;&gt;  plot(sin(0:pi/10:2*pi))</span><br><span class="line">&gt;&gt; plot(cos(0:pi/10:2*pi))</span><br><span class="line">&gt;&gt; hold off</span><br></pre></td></tr></table></figure></p>
+<p>在图像中显示表达式：text(x,y,str,’Interpreter’,’later’)   后面两个参数固定</p>
+<p>更多详细参考资料请到<a href="https://pan.baidu.com/s/1hUo35IdqKf_iWD_nNWUGKg" target="_blank" rel="noopener">百度云地址</a>下载PPT，密码：rqwx</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年11月06日 19:38</p>
-        <p>原始链接： <a class="post-url" href="/2018/11/05/用python对文章生成MP3文件/" title="用python对文章生成MP3文件">https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/</a></p>
+        <p>最后更新： 2018年11月14日 15:42</p>
+        <p>原始链接： <a class="post-url" href="/2018/11/07/matlab学习笔记一/" title="matlab学习笔记一">https://LiYuanSh.github.io/2018/11/07/matlab学习笔记一/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
                 <img src="/images/logo1.jpg" alt="LiYuanShu">
@@ -206,7 +209,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/&title=《用python对文章生成MP3文件》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2018/11/07/matlab学习笔记一/&title=《matlab学习笔记一》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -216,22 +219,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/&title=《用python对文章生成MP3文件》 — 小树窝&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2018/11/07/matlab学习笔记一/&title=《matlab学习笔记一》 — 小树窝&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2018/11/07/matlab学习笔记一/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《用python对文章生成MP3文件》 — 小树窝&url=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/&via=https://LiYuanSh.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《matlab学习笔记一》 — 小树窝&url=https://LiYuanSh.github.io/2018/11/07/matlab学习笔记一/&via=https://LiYuanSh.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2018/11/07/matlab学习笔记一/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -241,7 +244,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2018/11/05/用python对文章生成MP3文件/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2018/11/07/matlab学习笔记一/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -259,26 +262,26 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前期准备"><span class="post-toc-text">前期准备</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码实现"><span class="post-toc-text">代码实现</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#File-Access"><span class="post-toc-text">File Access</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Excle-File-Reading"><span class="post-toc-text">Excle File Reading</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Low-leval-File-I-O-Function"><span class="post-toc-text">Low-leval File I/O Function</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Drawing"><span class="post-toc-text">Drawing</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2018/11/07/matlab学习笔记一/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/10/python实现一个小软件制作/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          matlab学习笔记一
+          python实现一个小软件制作
         
       </span>
     </a>
   
   
-    <a href="/2018/11/04/hexo部署到github/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">hexo部署到github</span>
+    <a href="/2018/11/05/用python对文章生成MP3文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">用python对文章生成MP3文件</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
