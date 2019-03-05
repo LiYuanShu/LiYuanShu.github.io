@@ -3,26 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python实现一个小软件制作 | 小树窝</title>
+  <title>git————本地创库 | 小树窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="学习不能干看不练，今天一边根据网上的教程，一边融入自己的思考，实现一款表白小软件的制作，在学习中寻找乐趣。 主要知识点pygame库①导入pygame一些常用函数 1from pygame.local import *  ②pygame库的初始化和退出12pygame.init()  pygame.quit() ③初始化窗口1pygame.display.set_mode((360,500)) ④">
+  <meta name="description" content="git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。创建本地创库   1.首先在自己的电脑合适的磁盘位置创建一个空的文件夹本(test)，用来存放项目的内容   2.以test文件夹作为家目录，打开git bash here，然后初始化本地创库，命令为：git ini">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python实现一个小软件制作">
-<meta property="og:url" content="https://LiYuanSh.github.io/2018/11/10/python实现一个小软件制作/index.html">
+<meta property="og:title" content="git————本地创库">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/02/26/git创建本地创库/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="学习不能干看不练，今天一边根据网上的教程，一边融入自己的思考，实现一款表白小软件的制作，在学习中寻找乐趣。 主要知识点pygame库①导入pygame一些常用函数 1from pygame.local import *  ②pygame库的初始化和退出12pygame.init()  pygame.quit() ③初始化窗口1pygame.display.set_mode((360,500)) ④">
+<meta property="og:description" content="git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。创建本地创库   1.首先在自己的电脑合适的磁盘位置创建一个空的文件夹本(test)，用来存放项目的内容   2.以test文件夹作为家目录，打开git bash here，然后初始化本地创库，命令为：git ini">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://liyuansh.github.io/images/python表白1.png">
-<meta property="og:image" content="https://liyuansh.github.io/images/python表白2.png">
-<meta property="og:image" content="https://liyuansh.github.io/images/python表白3.png">
-<meta property="og:updated_time" content="2018-11-17T01:09:06.165Z">
+<meta property="og:updated_time" content="2019-03-04T14:33:54.409Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python实现一个小软件制作">
-<meta name="twitter:description" content="学习不能干看不练，今天一边根据网上的教程，一边融入自己的思考，实现一款表白小软件的制作，在学习中寻找乐趣。 主要知识点pygame库①导入pygame一些常用函数 1from pygame.local import *  ②pygame库的初始化和退出12pygame.init()  pygame.quit() ③初始化窗口1pygame.display.set_mode((360,500)) ④">
-<meta name="twitter:image" content="https://liyuansh.github.io/images/python表白1.png">
+<meta name="twitter:title" content="git————本地创库">
+<meta name="twitter:description" content="git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。创建本地创库   1.首先在自己的电脑合适的磁盘位置创建一个空的文件夹本(test)，用来存放项目的内容   2.以test文件夹作为家目录，打开git bash here，然后初始化本地创库，命令为：git ini">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -113,20 +109,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-python实现一个小软件制作" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-git创建本地创库" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      python实现一个小软件制作
+      git————本地创库
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-11-10
+          <i class="fa fa-calendar"></i>  2019-02-26
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -142,27 +138,22 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>学习不能干看不练，今天一边根据网上的教程，一边融入自己的思考，实现一款表白小软件的制作，在学习中寻找乐趣。</p>
-<h2 id="主要知识点"><a href="#主要知识点" class="headerlink" title="主要知识点"></a>主要知识点</h2><h3 id="pygame库"><a href="#pygame库" class="headerlink" title="pygame库"></a>pygame库</h3><p>①导入pygame一些常用函数<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from pygame.local import *</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>②pygame库的初始化和退出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pygame.init()  </span><br><span class="line">pygame.quit()</span><br></pre></td></tr></table></figure></p>
-<p>③初始化窗口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pygame.display.set_mode((360,500))</span><br></pre></td></tr></table></figure></p>
-<p>④通过窗口事件退出pygame模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">        for event in pygame.event.get():</span><br><span class="line">            if event.type == pygame.QUIT:</span><br><span class="line">                pygame.quit()</span><br></pre></td></tr></table></figure></p>
-<h3 id="主要难点"><a href="#主要难点" class="headerlink" title="主要难点"></a>主要难点</h3><p>鼠标事件的判断：当鼠标移动到不喜欢按钮的时，这个按钮会自动跳转到别的位置：<br><img src="/images/python表白1.png" alt="鼠标位置判断"></p>
-<h3 id="生成应用程序"><a href="#生成应用程序" class="headerlink" title="生成应用程序"></a>生成应用程序</h3><p>将代码生成可直接执行的程序，在无安装python的环境的也能直接运行。<br>pyinstaller库是一个将 python 脚本转换成 Windows 上的可独立执行的可执行程序（*.exe）的工具，这样，你就可以不用装 python 而在 Windows 系统上运行这个可执行程序。</p>
-<hr>
-<p>（1）安装py2exe<br>   进入cmd。直接输入命令： pip install pyinstaller</p>
-<p>（2）.spec文件操作<br>   进入需要打包的程序目录下，执行  pyi-makespec FP.py（FP为代码文件名），会生成一个FP.spec  他是pyinstaller打包程序的指导书<br>   <img src="/images/python表白2.png" alt="生成.spec文件"><br>   根据需求修改.spec文件(如程序中有图片文件时)：<br>   <img src="/images/python表白3.png" alt="生成.spec文件"><br>   说明：每次因为需求不同可能需要修改不同的内容，但只要能够明白这个文件的作用，根据需求修改即可</p>
-<p>（3）生成.exe执行文件<br>      首先简单了解各个命令的作用<br>      -F的含义为将原文件打包为exe文件，这里还有其他几个可选参数<br>     -D：创建一个目录，包含exe文件，但会依赖很多文件，这是默认选项<br>     -c：使用控制台，这也是默认选项<br>     -w：使用窗口，无控制台<br>    首先可以先输入命令生成一个可执行程序，然后直接把程序拖到cmd窗口执行，若有错误，根据错误信息逐步修改即可<br>    命令：pyinstaller name.py -w  (name为代码名字， 建议先使用-w，可以更容易在窗口中看到错误提示)</p>
-<p>（4）遇到的错误：no module named “pygame”（python库名称）<br>     错误原因： pygame库是直接在pycharm这个IDE中直接下载的，无法通过cmd加载到程序中。<br>     解决办法： 先把pygame库复制到通过cmd pip命令下载到的文件夹中，或者直接pip命令重新下载，<br>                  能直接在cmd的python中直接import pygame,代表成功<br>                  重新执行命令：pyinstaller -F name.py –hidden-import pygame</p>
-<p>注：跟着别人的博客笔记操作出错是正常的，只有能够理解清楚官网文档，才是解决问题的根源<br><a href="http://www.pyinstaller.org/" target="_blank" rel="noopener">pyinstaller官网</a></p>
-<hr>
-<p>具体代码请参考<a href="https://github.com/LiYuanShu/confession.git" target="_blank" rel="noopener">我的github仓库</a></p>
+            <hr>
+<h2 id="git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。"><a href="#git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。" class="headerlink" title="   git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。"></a>   git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。</h2><h3 id="创建本地创库"><a href="#创建本地创库" class="headerlink" title="创建本地创库"></a>创建本地创库</h3><p>   1.首先在自己的电脑合适的磁盘位置创建一个空的文件夹本(test)，用来存放项目的内容<br>   2.以test文件夹作为家目录，打开git bash here，然后初始化本地创库，命令为：git init<br>     成功验证————&gt;在test文件夹里产生一个  .git   文件夹。</p>
+<h3 id="设置标签"><a href="#设置标签" class="headerlink" title="设置标签"></a>设置标签</h3><pre><code>作用：区分不同的开发者身份。标签内容：用户名、Email地址。标签级别分为项目级别和系统用户级别
+</code></pre><h4 id="项目级别"><a href="#项目级别" class="headerlink" title="项目级别"></a>项目级别</h4><pre><code>设置用户： git config user.name name
+设置email：git config user.email email
+成功验证————&gt;cat test/.git/config——————&gt;查看到信息
+</code></pre><h4 id="系统用户级别"><a href="#系统用户级别" class="headerlink" title="系统用户级别"></a>系统用户级别</h4><pre><code>设置用户：git config --global user.name name
+设置email：git config --global user.email email
+成功验证————&gt;cat ~/.gitconfig——————&gt;查看到信息
+</code></pre><h3 id="添加、提交内容"><a href="#添加、提交内容" class="headerlink" title="添加、提交内容"></a>添加、提交内容</h3><p>查看创库状态:git status</p>
+<p>git add filename:把文件从工作区添加到暂存区，以防文件丢失（执行后文件变为绿色）<br>git rm –cached filename：把文件从暂存区移除，停止追踪，工作区的原文件不会被删除<br>git commit filename：把暂存区的文件提交到本地库     -m：添加注释<br>git log：查看提交日志<br>         –pretty=oneline——————简洁显示，每条日志信息显示为一行<br>git reflog：查看每个版本之间需要移动的步数</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年11月17日 09:09</p>
-        <p>原始链接： <a class="post-url" href="/2018/11/10/python实现一个小软件制作/" title="python实现一个小软件制作">https://LiYuanSh.github.io/2018/11/10/python实现一个小软件制作/</a></p>
+        <p>最后更新： 2019年03月04日 22:33</p>
+        <p>原始链接： <a class="post-url" href="/2019/02/26/git创建本地创库/" title="git————本地创库">https://LiYuanSh.github.io/2019/02/26/git创建本地创库/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
                 <img src="/images/logo1.jpg" alt="LiYuanShu">
@@ -219,7 +210,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2018/11/10/python实现一个小软件制作/&title=《python实现一个小软件制作》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/02/26/git创建本地创库/&title=《git————本地创库》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -229,22 +220,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2018/11/10/python实现一个小软件制作/&title=《python实现一个小软件制作》 — 小树窝&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/02/26/git创建本地创库/&title=《git————本地创库》 — 小树窝&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2018/11/10/python实现一个小软件制作/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/02/26/git创建本地创库/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python实现一个小软件制作》 — 小树窝&url=https://LiYuanSh.github.io/2018/11/10/python实现一个小软件制作/&via=https://LiYuanSh.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git————本地创库》 — 小树窝&url=https://LiYuanSh.github.io/2019/02/26/git创建本地创库/&via=https://LiYuanSh.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2018/11/10/python实现一个小软件制作/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/02/26/git创建本地创库/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -254,7 +245,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2018/11/10/python实现一个小软件制作/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/02/26/git创建本地创库/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -272,26 +263,26 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要知识点"><span class="post-toc-text">主要知识点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pygame库"><span class="post-toc-text">pygame库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主要难点"><span class="post-toc-text">主要难点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生成应用程序"><span class="post-toc-text">生成应用程序</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。"><span class="post-toc-text">   git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建本地创库"><span class="post-toc-text">创建本地创库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置标签"><span class="post-toc-text">设置标签</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#项目级别"><span class="post-toc-text">项目级别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#系统用户级别"><span class="post-toc-text">系统用户级别</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加、提交内容"><span class="post-toc-text">添加、提交内容</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2018/11/12/linux学习笔记一/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/03/dhcp服务的搭建和配置/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          linux学习笔记一
+          dhcp服务的搭建和配置
         
       </span>
     </a>
   
   
-    <a href="/2018/11/07/matlab学习笔记一/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">matlab学习笔记一</span>
+    <a href="/2018/12/09/linux兄弟连视频二/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">linux兄弟连视频二</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   

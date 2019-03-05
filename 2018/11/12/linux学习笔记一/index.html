@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://liyuansh.github.io/images/linux联网2.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/linux联网3.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/linux联网4.png">
-<meta property="og:updated_time" content="2018-11-17T00:54:57.249Z">
+<meta property="og:updated_time" content="2018-12-19T12:59:29.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux学习笔记一">
 <meta name="twitter:description" content="本次学习linux的课本为《系统管理与网络管理》（第2版），前三章为linux系统的介绍和安装，没有使用博客记录学习过程。从本章节起，在学习过程过会记录一些觉得有用的知识0 第四章 命令行界面常用基本命令①切换终端的快捷键: Crtl+Alt+F1(F2)②在一行中使用多个命令时，用；隔开③查看命令的详细作用： man 需要查看的命令    name：对命令的简单说明    synopsis(概要">
@@ -145,8 +145,9 @@
             
             <p>本次学习linux的课本为《系统管理与网络管理》（第2版），前三章为linux系统的介绍和安装，没有使用博客记录学习过程。从本章节起，在学习过程过会记录一些觉得有用的知识<br>0</p>
 <h3 id="第四章-命令行界面"><a href="#第四章-命令行界面" class="headerlink" title="第四章 命令行界面"></a>第四章 命令行界面</h3><h4 id="常用基本命令"><a href="#常用基本命令" class="headerlink" title="常用基本命令"></a>常用基本命令</h4><p>①切换终端的快捷键: Crtl+Alt+F1(F2)<br>②在一行中使用多个命令时，用；隔开<br>③查看命令的详细作用： man 需要查看的命令<br>    name：对命令的简单说明<br>    synopsis(概要)：命令使用格式<br>    description(描述)：命令的详细说明<br>    options：选项说明</p>
-<p>④查看历史命令：history   执行历史的第number条命令：！number<br>⑤查看当前目录：pwd<br>⑥查看文件内容： cat filename.suffix<br>⑦查看系统文件：df（使用KB作为单位）   df -m(使用MB作为单位)<br>⑧命令别名：alias df=’df -m’         alias（别号）<br> 修改会原来样子：unalias df<br>⑨显示环境变量： evn<br>⑩过滤信息:grep 筛选条件 filename  （可以从文件中挑选出需要的信息）<br>统计命令：wc filename  （统计文件的行数、单词数、字节数）<br>显示主机名： hostname</p>
+<p>④查看历史命令：history   执行历史的第number条命令：！number<br>⑤查看当前目录：pwd<br>⑥查看文件内容： cat filename.suffix<br>⑦查看系统文件：df（使用KB作为单位）   df -m(使用MB作为单位)<br>⑧命令别名：alias df=’df -m’         alias（别号）<br> 修改会原来样子：unalias df<br>⑨显示环境变量： evn<br>⑩过滤信息:grep 筛选条件 filename  （可以从文件中挑选出需要的信息）<br>统计命令：wc filename  （统计文件的行数、单词数、字节数）<br>显示主机名： hostname<br>软链接：ln -s fileName newName<br>硬链接：ln fileName newName</p>
 <h4 id="VI编辑器"><a href="#VI编辑器" class="headerlink" title="VI编辑器"></a>VI编辑器</h4><p>三种状态：命令模式：VI运行后的默认模式，任何字符作为命令解析执行<br>         输入模式：在命令模式下摁下A、I、O键进入输入模式，输入模式按下Esc返回命令模式<br>         末行模式：命令模式按下：键进入末行模式。输入wq保存文件</p>
+<h4 id="权限管理命令"><a href="#权限管理命令" class="headerlink" title="权限管理命令"></a>权限管理命令</h4><p>chmod  XXX fileName(directoryName)  (X分别为所属者u、管理组g、其他人的使用权限)<br>-R  递归修改，会把某个目录下所有文件、目录的管理权限修改为一样<br>r—4   w—2    x—1</p>
 <h4 id="linux连接网络"><a href="#linux连接网络" class="headerlink" title="linux连接网络"></a>linux连接网络</h4><p>linux连接网络有三种模式：桥接模式，nat模式，仅主机模式。本次使用的是桥接模式联网，实现过程比较简单<br>主要实现过程分为两步：<br>①在VMware上设置成桥接模式<br>②在linux写一个配置文件</p>
 <h5 id="具体实现过程"><a href="#具体实现过程" class="headerlink" title="具体实现过程"></a>具体实现过程</h5><p>（1）打开虚拟机，编辑&gt;虚拟网络编辑器&gt;更改设置，然后勾选桥接模式<br><img src="/images/linux联网1.png" alt="VMware配置"></p>
 <p>（2）修改虚拟机设置。虚拟机&gt;设置<br><img src="/images/linux联网2.png" alt="虚拟机配置"></p>
@@ -159,7 +160,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年11月17日 08:54</p>
+        <p>最后更新： 2018年12月19日 20:59</p>
         <p>原始链接： <a class="post-url" href="/2018/11/12/linux学习笔记一/" title="linux学习笔记一">https://LiYuanSh.github.io/2018/11/12/linux学习笔记一/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
@@ -270,12 +271,22 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第四章-命令行界面"><span class="post-toc-text">第四章 命令行界面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常用基本命令"><span class="post-toc-text">常用基本命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#VI编辑器"><span class="post-toc-text">VI编辑器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#linux连接网络"><span class="post-toc-text">linux连接网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#具体实现过程"><span class="post-toc-text">具体实现过程</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第四章-命令行界面"><span class="post-toc-text">第四章 命令行界面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常用基本命令"><span class="post-toc-text">常用基本命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#VI编辑器"><span class="post-toc-text">VI编辑器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#权限管理命令"><span class="post-toc-text">权限管理命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#linux连接网络"><span class="post-toc-text">linux连接网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#具体实现过程"><span class="post-toc-text">具体实现过程</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
+  
+    <a href="/2018/11/17/linux学习笔记二/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          linux学习笔记二
+        
+      </span>
+    </a>
   
   
     <a href="/2018/11/10/python实现一个小软件制作/" id="article-nav-older" class="article-nav-link-wrap">
@@ -308,7 +319,7 @@
       <p>
         Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
-      &copy; 2018 LiYuanShu<br>
+      &copy; 2019 LiYuanShu<br>
       </p>
     </div>
   </div>
