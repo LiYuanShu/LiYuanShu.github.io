@@ -3,22 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>程序员入门必备技能 | 小树窝</title>
+  <title>Django的第一个项目实现 | 小树窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活 hello word的各种输出c语言1printf(&amp;quot;hello word&amp;quot;); java1System.out.println(&quot;hello word&quot;); python1print(hello word) ##把文章更新到github进入博客目录，打开git bas">
+  <meta name="description" content="Django是一个开放源代码的Web应用框架。学习目的：搭建一个属于自己的网站 前期准备   虚拟环境的安装使用，可以把各个python项目分隔开来，利于管理，更合理的分配存储空间，其中选择virtualenvwrapper   vitualenvwrapper安装与使用：           ①pip install virtualenvwrapper-win           ②配置环境">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序员入门必备技能">
-<meta property="og:url" content="https://LiYuanSh.github.io/2018/09/30/hello-world/index.html">
+<meta property="og:title" content="Django的第一个项目实现">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/03/24/Django的第一个项目实现/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活 hello word的各种输出c语言1printf(&amp;quot;hello word&amp;quot;); java1System.out.println(&quot;hello word&quot;); python1print(hello word) ##把文章更新到github进入博客目录，打开git bas">
+<meta property="og:description" content="Django是一个开放源代码的Web应用框架。学习目的：搭建一个属于自己的网站 前期准备   虚拟环境的安装使用，可以把各个python项目分隔开来，利于管理，更合理的分配存储空间，其中选择virtualenvwrapper   vitualenvwrapper安装与使用：           ①pip install virtualenvwrapper-win           ②配置环境">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-05T12:28:23.737Z">
+<meta property="og:image" content="https://liyuansh.github.io/images/Django_lacation.PNG">
+<meta property="og:image" content="https://liyuansh.github.io/images/django配置1.PNG">
+<meta property="og:image" content="https://liyuansh.github.io/images/DjangoEdit.PNG">
+<meta property="og:updated_time" content="2019-04-13T12:48:33.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序员入门必备技能">
-<meta name="twitter:description" content="Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活 hello word的各种输出c语言1printf(&amp;quot;hello word&amp;quot;); java1System.out.println(&quot;hello word&quot;); python1print(hello word) ##把文章更新到github进入博客目录，打开git bas">
+<meta name="twitter:title" content="Django的第一个项目实现">
+<meta name="twitter:description" content="Django是一个开放源代码的Web应用框架。学习目的：搭建一个属于自己的网站 前期准备   虚拟环境的安装使用，可以把各个python项目分隔开来，利于管理，更合理的分配存储空间，其中选择virtualenvwrapper   vitualenvwrapper安装与使用：           ①pip install virtualenvwrapper-win           ②配置环境">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/Django_lacation.PNG">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -109,20 +113,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-Django的第一个项目实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      程序员入门必备技能
+      Django的第一个项目实现
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-09-30
+          <i class="fa fa-calendar"></i>  2019-03-24
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -138,16 +142,21 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活</p>
-<h2 id="hello-word的各种输出"><a href="#hello-word的各种输出" class="headerlink" title="hello word的各种输出"></a>hello word的各种输出</h2><h3 id="c语言"><a href="#c语言" class="headerlink" title="c语言"></a>c语言</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;hello word&quot;);</span><br></pre></td></tr></table></figure>
-<h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"hello word"</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(hello word)</span><br></pre></td></tr></table></figure>
-<p>##把文章更新到github<br>进入博客目录，打开git bash here<br>执行：hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</p>
-<h3 id="刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束"><a href="#刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束" class="headerlink" title="刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束"></a>刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束</h3>
+            <p>  Django是一个开放源代码的Web应用框架。学习目的：搭建一个属于自己的网站</p>
+<h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><p>   虚拟环境的安装使用，可以把各个python项目分隔开来，利于管理，更合理的分配存储空间，其中选择virtualenvwrapper<br>   vitualenvwrapper安装与使用：<br>           ①pip install virtualenvwrapper-win<br>           ②配置环境变量：在系统环境变量中新增一个(变量名：路径)————WORKON_HOME：F:\django<br>           mkvirtualenv virtualenv_name：新建虚拟空间<br>           lsvirtualenv：查看虚拟环境的路径和虚拟环境名<br>           workon virtualenv_name:进入虚拟空间<br>           deactivate：退出虚拟空间<br>           rmvirtualenv virtualenv_name：删除虚拟空间</p>
+<h4 id="Django项目实现"><a href="#Django项目实现" class="headerlink" title="Django项目实现"></a>Django项目实现</h4><pre><code>使用某个虚拟环境：workon venv  （这个虚拟环境必须已经安装Django包）
+准备一个空的文件夹并进入到这个文件夹：F:\django_project
+创建一个项目：django-admin startproject projectName ，，到文件夹下查看是否创建成功
+运行项目：进入到项目文件夹，执行python manage.py runserver命令运行，直接在浏览器打开http://127.0.0.1:8000/，查看是否成功
+                             python manage.py runserver host:prot
+</code></pre><p><img src="/images/Django_lacation.PNG" alt="Djang运行"><br>    结束项目运行：ctrl+C</p>
+<h4 id="pycharm操作"><a href="#pycharm操作" class="headerlink" title="pycharm操作"></a>pycharm操作</h4><p>把项目导入到pycharm中，可能并不能直接运行django项目，究其原因，还是项目所处的运行环境不行。可以依据以下两个步骤正确布置运行环境<br>①file——》setting——》project Interpreter——》project Interpreter，在这个地方选择属于Django项目的环境<br><img src="/images/django配置1.PNG" alt="Djang运行"><br>②在pycharm左上方运行图标的左边，选择edit configuration进行项目编辑<br><img src="/images/DjangoEdit.PNG" alt="Djang运行"><br>需要主要三个地方：<br>   host：设置可以访问的IP，0.0.0.0表示允许任何人访问<br>   prot：监听的端口号<br>   project Inperpreter：项目的运行环境</p>
+<h4 id="其余操作"><a href="#其余操作" class="headerlink" title="其余操作"></a>其余操作</h4><p>为了别的主机可以访问到项目的正常页面，需要在setting.py中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALLOWED_HOSTS = [&apos;192.168.1.103&apos;]  ##IP为本机的IP，相当于一个域名</span><br></pre></td></tr></table></figure></p>
+
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年03月05日 20:28</p>
-        <p>原始链接： <a class="post-url" href="/2018/09/30/hello-world/" title="程序员入门必备技能">https://LiYuanSh.github.io/2018/09/30/hello-world/</a></p>
+        <p>最后更新： 2019年04月13日 20:48</p>
+        <p>原始链接： <a class="post-url" href="/2019/03/24/Django的第一个项目实现/" title="Django的第一个项目实现">https://LiYuanSh.github.io/2019/03/24/Django的第一个项目实现/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
                 <img src="/images/logo1.jpg" alt="LiYuanShu">
@@ -204,7 +213,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2018/09/30/hello-world/&title=《程序员入门必备技能》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/03/24/Django的第一个项目实现/&title=《Django的第一个项目实现》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -214,22 +223,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2018/09/30/hello-world/&title=《程序员入门必备技能》 — 小树窝&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/03/24/Django的第一个项目实现/&title=《Django的第一个项目实现》 — 小树窝&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2018/09/30/hello-world/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/03/24/Django的第一个项目实现/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《程序员入门必备技能》 — 小树窝&url=https://LiYuanSh.github.io/2018/09/30/hello-world/&via=https://LiYuanSh.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Django的第一个项目实现》 — 小树窝&url=https://LiYuanSh.github.io/2019/03/24/Django的第一个项目实现/&via=https://LiYuanSh.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2018/09/30/hello-world/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/03/24/Django的第一个项目实现/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -239,7 +248,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2018/09/30/hello-world/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/03/24/Django的第一个项目实现/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -257,23 +266,28 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hello-word的各种输出"><span class="post-toc-text">hello word的各种输出</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c语言"><span class="post-toc-text">c语言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java"><span class="post-toc-text">java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python"><span class="post-toc-text">python</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束"><span class="post-toc-text">刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#前期准备"><span class="post-toc-text">前期准备</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Django项目实现"><span class="post-toc-text">Django项目实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pycharm操作"><span class="post-toc-text">pycharm操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其余操作"><span class="post-toc-text">其余操作</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2018/11/04/hexo部署到github/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/24/git与github的结合使用/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          hexo部署到github
+          git与github的结合使用
         
       </span>
     </a>
   
+  
+    <a href="/2019/03/10/DNS服务的搭建与配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">DNS服务的搭建与配置</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
   
 </nav>
 

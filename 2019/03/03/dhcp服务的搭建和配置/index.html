@@ -8,18 +8,18 @@
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="###简介DHCP：动态主机配置协议（dynamic host configuration protocol）dhcp服务作用：管理动态的ip地址分配以及其他相关的环境配置工作实现过程：①客户端————dhcp discover————&amp;gt;服务端         ②客户端&amp;lt;————dhcp offer————服务端         ③客户端————dhcp request————&amp;gt;">
+  <meta name="description" content="简介DHCP：动态主机配置协议（dynamic host configuration protocol）dhcp服务作用：管理动态的ip地址分配以及其他相关的环境配置工作实现过程：①客户端————dhcp discover————&amp;gt;服务端         ②客户端&amp;lt;————dhcp offer————服务端         ③客户端————dhcp request————&amp;gt;服务端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dhcp服务的搭建和配置">
 <meta property="og:url" content="https://LiYuanSh.github.io/2019/03/03/dhcp服务的搭建和配置/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="###简介DHCP：动态主机配置协议（dynamic host configuration protocol）dhcp服务作用：管理动态的ip地址分配以及其他相关的环境配置工作实现过程：①客户端————dhcp discover————&amp;gt;服务端         ②客户端&amp;lt;————dhcp offer————服务端         ③客户端————dhcp request————&amp;gt;">
+<meta property="og:description" content="简介DHCP：动态主机配置协议（dynamic host configuration protocol）dhcp服务作用：管理动态的ip地址分配以及其他相关的环境配置工作实现过程：①客户端————dhcp discover————&amp;gt;服务端         ②客户端&amp;lt;————dhcp offer————服务端         ③客户端————dhcp request————&amp;gt;服务端">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://liyuansh.github.io/images/dhcp.PNG">
-<meta property="og:updated_time" content="2019-03-05T04:11:56.744Z">
+<meta property="og:updated_time" content="2019-03-05T12:28:20.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dhcp服务的搭建和配置">
-<meta name="twitter:description" content="###简介DHCP：动态主机配置协议（dynamic host configuration protocol）dhcp服务作用：管理动态的ip地址分配以及其他相关的环境配置工作实现过程：①客户端————dhcp discover————&amp;gt;服务端         ②客户端&amp;lt;————dhcp offer————服务端         ③客户端————dhcp request————&amp;gt;">
+<meta name="twitter:description" content="简介DHCP：动态主机配置协议（dynamic host configuration protocol）dhcp服务作用：管理动态的ip地址分配以及其他相关的环境配置工作实现过程：①客户端————dhcp discover————&amp;gt;服务端         ②客户端&amp;lt;————dhcp offer————服务端         ③客户端————dhcp request————&amp;gt;服务端">
 <meta name="twitter:image" content="https://liyuansh.github.io/images/dhcp.PNG">
   
   
@@ -140,27 +140,27 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>###简介<br>DHCP：动态主机配置协议（dynamic host configuration protocol）<br>dhcp服务作用：管理动态的ip地址分配以及其他相关的环境配置工作<br>实现过程：①客户端————dhcp discover————&gt;服务端<br>         ②客户端&lt;————dhcp offer————服务端<br>         ③客户端————dhcp request————&gt;服务端</p>
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>DHCP：动态主机配置协议（dynamic host configuration protocol）<br>dhcp服务作用：管理动态的ip地址分配以及其他相关的环境配置工作<br>实现过程：①客户端————dhcp discover————&gt;服务端<br>         ②客户端&lt;————dhcp offer————服务端<br>         ③客户端————dhcp request————&gt;服务端</p>
 <pre><code>④客户端&lt;————dhcp acknowledge————服务端
 </code></pre><hr>
-<p>###任务<br>   内部网段为192.168.1.0/24,路由器ip为192.168.1.1<br>   dhcp分配的ip地址默认租期为一天，最长为两天<br>   ip地址范围为192.168.0.100~192.168.0.250<br>   为某台特定的mac指定特定ip地址</p>
+<h3 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h3><p>   内部网段为192.168.1.0/24,路由器ip为192.168.1.1<br>   dhcp分配的ip地址默认租期为一天，最长为两天<br>   ip地址范围为192.168.0.100~192.168.0.250<br>   为某台特定的mac指定特定ip地址</p>
 <hr>
-<p>###安装<br>查看linux系统是否安装dhcp服务：[root@test ~]# rpm -qa |grep dhcp<br>如果只有这两个包则表明好没有安装dhcp服务，需要安装<br>    dhcp-libs-4.2.5-58.el7.centos.x86_64——————》库<br>     dhcp-common-4.2.5-58.el7.centos.x86_64——————》命令</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>查看linux系统是否安装dhcp服务：[root@test ~]# rpm -qa |grep dhcp<br>如果只有这两个包则表明好没有安装dhcp服务，需要安装<br>    dhcp-libs-4.2.5-58.el7.centos.x86_64——————》库<br>     dhcp-common-4.2.5-58.el7.centos.x86_64——————》命令</p>
 <hr>
 <p>①把linux安装盘挂载到某个空目录下<br>  [root@test ~]# mount /dev/cdrom /mnt/cdrom/   **确保存在/mnt/cdrom目录</p>
 <p>②查看dhcp服务包的具体名称<br> [root@test Packages]# cd /mnt/cdrom/Packages/<br>[root@test Packages]# ll | grep dhcp<br>-rw-rw-r–. 2 root root   525484 8月  10 2017 dhcp-4.2.5-58.el7.centos.x86_64.rpm<br>-rw-rw-r–. 3 root root   177816 8月  10 2017 dhcp-common-4.2.5-58.el7.centos.x86_64.rpm<br>-rw-rw-r–. 3 root root   133148 8月  10 2017 dhcp-libs-4.2.5-58.el7.centos.x86_64.rpm</p>
 <p>③安装dhcp服务<br> [root@test ~]# cd /mnt/cdrom/Packages/<br> [root@test Packages]# rpm -ivh dhcp-4.2.5-58.el7.centos.x86_64.rpm</p>
 <hr>
-<p>###配置<br>两个重要文件<br>   主配置文件(/etc/dhcpd.conf)：一套声明集和一套参数集<br>   ip地址分配信息(/var/lib/dhcpd/dhcpd.leases)：记录已经分配的ip地址和客户端信息</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>两个重要文件<br>   主配置文件(/etc/dhcpd.conf)：一套声明集和一套参数集<br>   ip地址分配信息(/var/lib/dhcpd/dhcpd.leases)：记录已经分配的ip地址和客户端信息</p>
 <p>配置文件信息如下：vim /etc/dhcp/dhcpd.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">   option domain-name-servers 192.168.1.200;  #DNS服务器</span><br><span class="line">option domain-name &quot;li&quot;;</span><br><span class="line">default-lease-time 6000;</span><br><span class="line">max-lease-time 72000;</span><br><span class="line">ddns-update-style none;</span><br><span class="line">option time-offset -18000; #调整与格林时间的误差</span><br><span class="line"></span><br><span class="line">#网段，子网掩码，ip地址范围，网关</span><br><span class="line">subnet 192.168.1.0 netmask 255.255.255.0 &#123;</span><br><span class="line">  range 192.168.1.100 192.168.1.210;</span><br><span class="line">  option routers 192.168.1.1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#分配某个特定ip地址</span><br><span class="line">host xioali&#123;</span><br><span class="line">        hardware ethernet 00:0c:29:8c:6a:f1;</span><br><span class="line">        fixed-address 192.168.1.168;</span><br><span class="line">        option host-name &quot;xiaoli&quot;;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>###客户端<br>让客户端使用上自己配置的dhcp服务，需要进行一些配置<br>    ①配置mvware软件，不要勾选，其中nat模式和主机模式都可以，桥接模式不行<br>    <img src="/images/dhcp.PNG" alt="“配置”"><br>    ②把服务器和客户端都设置为同一种模式下（主机模式）</p>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>让客户端使用上自己配置的dhcp服务，需要进行一些配置<br>    ①配置mvware软件，不要勾选，其中nat模式和主机模式都可以，桥接模式不行<br>    <img src="/images/dhcp.PNG" alt="“配置”"><br>    ②把服务器和客户端都设置为同一种模式下（主机模式）</p>
 <p>客户端的网卡配置文件：vi /etc/sysconfig/network-scripts/ifcfg-ens33<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NAME=ens33</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=yes</span><br><span class="line">BOOTPROTO=dhcp</span><br></pre></td></tr></table></figure></p>
 <p>重新启动网卡：service network restart<br>查看日志信息：cat cat /var/lib/dhclient/dhclient.leases</p>
 <p>疑点：当在dhcp服务端设置为MAC地址分配特定地址时，在客户端物理重启多少次网卡，也无日志记录！！</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年03月05日 12:11</p>
+        <p>最后更新： 2019年03月05日 20:28</p>
         <p>原始链接： <a class="post-url" href="/2019/03/03/dhcp服务的搭建和配置/" title="dhcp服务的搭建和配置">https://LiYuanSh.github.io/2019/03/03/dhcp服务的搭建和配置/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
@@ -269,8 +269,24 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#任务"><span class="post-toc-text">任务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置"><span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户端"><span class="post-toc-text">客户端</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
+  
+    <a href="/2019/03/05/git版本切换/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          git版本切换
+        
+      </span>
+    </a>
   
   
     <a href="/2019/02/26/git创建本地创库/" id="article-nav-older" class="article-nav-link-wrap">

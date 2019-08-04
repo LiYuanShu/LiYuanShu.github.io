@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>程序员入门必备技能 | 小树窝</title>
+  <title>DNS服务的搭建与配置 | 小树窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活 hello word的各种输出c语言1printf(&amp;quot;hello word&amp;quot;); java1System.out.println(&quot;hello word&quot;); python1print(hello word) ##把文章更新到github进入博客目录，打开git bas">
+  <meta name="description" content="DNS服务器主要提供域名解析功能，例如把www.baidu.com这个域名解析为相对应的IP地址，然后才能对百度进行访问。   两种解析方式：        递归查询：客户机向根服务器进行查询，后面的查询操作由各级DNS服务器相互进行，最后由根服务返回结果给客户机            特点：客户机只需要发出一次请求，便可以得到域名对应的IP地址        迭代查询：客户机向根服务器进行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序员入门必备技能">
-<meta property="og:url" content="https://LiYuanSh.github.io/2018/09/30/hello-world/index.html">
+<meta property="og:title" content="DNS服务的搭建与配置">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/03/10/DNS服务的搭建与配置/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活 hello word的各种输出c语言1printf(&amp;quot;hello word&amp;quot;); java1System.out.println(&quot;hello word&quot;); python1print(hello word) ##把文章更新到github进入博客目录，打开git bas">
+<meta property="og:description" content="DNS服务器主要提供域名解析功能，例如把www.baidu.com这个域名解析为相对应的IP地址，然后才能对百度进行访问。   两种解析方式：        递归查询：客户机向根服务器进行查询，后面的查询操作由各级DNS服务器相互进行，最后由根服务返回结果给客户机            特点：客户机只需要发出一次请求，便可以得到域名对应的IP地址        迭代查询：客户机向根服务器进行">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-05T12:28:23.737Z">
+<meta property="og:updated_time" content="2019-03-22T04:02:00.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序员入门必备技能">
-<meta name="twitter:description" content="Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活 hello word的各种输出c语言1printf(&amp;quot;hello word&amp;quot;); java1System.out.println(&quot;hello word&quot;); python1print(hello word) ##把文章更新到github进入博客目录，打开git bas">
+<meta name="twitter:title" content="DNS服务的搭建与配置">
+<meta name="twitter:description" content="DNS服务器主要提供域名解析功能，例如把www.baidu.com这个域名解析为相对应的IP地址，然后才能对百度进行访问。   两种解析方式：        递归查询：客户机向根服务器进行查询，后面的查询操作由各级DNS服务器相互进行，最后由根服务返回结果给客户机            特点：客户机只需要发出一次请求，便可以得到域名对应的IP地址        迭代查询：客户机向根服务器进行">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -109,20 +109,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-DNS服务的搭建与配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      程序员入门必备技能
+      DNS服务的搭建与配置
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-09-30
+          <i class="fa fa-calendar"></i>  2019-03-10
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -138,16 +138,19 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活</p>
-<h2 id="hello-word的各种输出"><a href="#hello-word的各种输出" class="headerlink" title="hello word的各种输出"></a>hello word的各种输出</h2><h3 id="c语言"><a href="#c语言" class="headerlink" title="c语言"></a>c语言</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;hello word&quot;);</span><br></pre></td></tr></table></figure>
-<h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"hello word"</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(hello word)</span><br></pre></td></tr></table></figure>
-<p>##把文章更新到github<br>进入博客目录，打开git bash here<br>执行：hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</p>
-<h3 id="刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束"><a href="#刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束" class="headerlink" title="刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束"></a>刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束</h3>
+            <p>   DNS服务器主要提供域名解析功能，例如把<a href="http://www.baidu.com这个域名解析为相对应的IP地址，然后才能对百度进行访问。" target="_blank" rel="noopener">www.baidu.com这个域名解析为相对应的IP地址，然后才能对百度进行访问。</a><br>   两种解析方式：<br>        递归查询：客户机向根服务器进行查询，后面的查询操作由各级DNS服务器相互进行，最后由根服务返回结果给客户机<br>            特点：客户机只需要发出一次请求，便可以得到域名对应的IP地址<br>        迭代查询：客户机向根服务器进行查询，若根服务器无法解析，便返回一级域名服务器给客户机，然后客户机再向一级域名服务器查询，以此类推，直到得到IP地址<br>            特点：客户机可能需要发出多次请求，和多个DNS服务器进行通信</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>需要安装包：bind-9.9.4-50.el7.x86_64.rpm
+本次安装首先采用的是rpm包安装方式。出现问题：此rpm包有较多依赖包，无法已持续安装。解决方案：使用yum安装。
+</code></pre><hr>
+<p>#####把yum源设为光盘驱动的rpm包<br>   进入此目录会发现很多配置文件，可以把这些文件copy到别的文件夹，已备不时之需<br>   [root@test ~]# cd /etc/yum.repos.d/<br>   新建一个配置文件，并进行一些信息配置：<br>   [root@test yum.repos.d]# vim dvd.repo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   [dvd]    #仓库名称</span><br><span class="line">name=li</span><br><span class="line">baseurl=file:///mnt/cdrom   #光盘挂载的目录</span><br><span class="line">enable=1            #是否可用</span><br><span class="line">gpgcheck=0          #是否检测（1,0）</span><br></pre></td></tr></table></figure></p>
+<p>   清除缓存：[root@test yum.repos.d]# yum clean all<br>   查看yum源：[root@test yum.repos.d]# yum list |grep bind<br>   安装：[root@test yum.repos.d]# yum install bind.x86_64<br>   启动dns服务：systemctl start named.service<br>   查看服务是否运行：netstat -nul  ————————》监听端口为53</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>   在/etc目录下与dns的两个重要相关配置文件<br>   ①named.conf ：主配置文件（定义DNS服务的运行）<br>   ②named.rfc1912.zones：区域配置文件（保存IP与域名对应关系的文件所在位置）<br>   ③ 由区域配置文件指定位置,一般在/var/named目录下:数据配置文件（详细记录IP与域名的对应关系）</p>
+<h4 id="named-conf配置"><a href="#named-conf配置" class="headerlink" title="named.conf配置"></a>named.conf配置</h4><p>主要修改两个地方： 端口</p>
+
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年03月05日 20:28</p>
-        <p>原始链接： <a class="post-url" href="/2018/09/30/hello-world/" title="程序员入门必备技能">https://LiYuanSh.github.io/2018/09/30/hello-world/</a></p>
+        <p>最后更新： 2019年03月22日 12:02</p>
+        <p>原始链接： <a class="post-url" href="/2019/03/10/DNS服务的搭建与配置/" title="DNS服务的搭建与配置">https://LiYuanSh.github.io/2019/03/10/DNS服务的搭建与配置/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
                 <img src="/images/logo1.jpg" alt="LiYuanShu">
@@ -204,7 +207,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2018/09/30/hello-world/&title=《程序员入门必备技能》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/03/10/DNS服务的搭建与配置/&title=《DNS服务的搭建与配置》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -214,22 +217,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2018/09/30/hello-world/&title=《程序员入门必备技能》 — 小树窝&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/03/10/DNS服务的搭建与配置/&title=《DNS服务的搭建与配置》 — 小树窝&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2018/09/30/hello-world/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/03/10/DNS服务的搭建与配置/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《程序员入门必备技能》 — 小树窝&url=https://LiYuanSh.github.io/2018/09/30/hello-world/&via=https://LiYuanSh.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DNS服务的搭建与配置》 — 小树窝&url=https://LiYuanSh.github.io/2019/03/10/DNS服务的搭建与配置/&via=https://LiYuanSh.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2018/09/30/hello-world/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/03/10/DNS服务的搭建与配置/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -239,7 +242,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2018/09/30/hello-world/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/03/10/DNS服务的搭建与配置/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -257,23 +260,28 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hello-word的各种输出"><span class="post-toc-text">hello word的各种输出</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c语言"><span class="post-toc-text">c语言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java"><span class="post-toc-text">java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python"><span class="post-toc-text">python</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束"><span class="post-toc-text">刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置"><span class="post-toc-text">配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#named-conf配置"><span class="post-toc-text">named.conf配置</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2018/11/04/hexo部署到github/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/24/Django的第一个项目实现/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          hexo部署到github
+          Django的第一个项目实现
         
       </span>
     </a>
   
+  
+    <a href="/2019/03/05/git版本切换/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">git版本切换</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
   
 </nav>
 

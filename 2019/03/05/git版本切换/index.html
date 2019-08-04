@@ -3,22 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>程序员入门必备技能 | 小树窝</title>
+  <title>git版本切换 | 小树窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活 hello word的各种输出c语言1printf(&amp;quot;hello word&amp;quot;); java1System.out.println(&quot;hello word&quot;); python1print(hello word) ##把文章更新到github进入博客目录，打开git bas">
+  <meta name="description" content="git本地库经过修改本地内容后，可以无数次提交到本地仓库，通过秘钥记录的方式，可以自由切换到自己想要的版本。 查看日志   git reflog：查看版本号，可显示所有版本记录   git log –oneline：只显示当前版本的历史记录 基于索引值：  ①git reflog：查看版本号（第一列）   ②git reset –hard 版本号使用^符号：   git reset –hard">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序员入门必备技能">
-<meta property="og:url" content="https://LiYuanSh.github.io/2018/09/30/hello-world/index.html">
+<meta property="og:title" content="git版本切换">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/03/05/git版本切换/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活 hello word的各种输出c语言1printf(&amp;quot;hello word&amp;quot;); java1System.out.println(&quot;hello word&quot;); python1print(hello word) ##把文章更新到github进入博客目录，打开git bas">
+<meta property="og:description" content="git本地库经过修改本地内容后，可以无数次提交到本地仓库，通过秘钥记录的方式，可以自由切换到自己想要的版本。 查看日志   git reflog：查看版本号，可显示所有版本记录   git log –oneline：只显示当前版本的历史记录 基于索引值：  ①git reflog：查看版本号（第一列）   ②git reset –hard 版本号使用^符号：   git reset –hard">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-05T12:28:23.737Z">
+<meta property="og:image" content="https://liyuansh.github.io/images/diff.PNG">
+<meta property="og:image" content="https://liyuansh.github.io/images/merge.PNG">
+<meta property="og:updated_time" content="2019-03-24T14:11:29.077Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序员入门必备技能">
-<meta name="twitter:description" content="Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活 hello word的各种输出c语言1printf(&amp;quot;hello word&amp;quot;); java1System.out.println(&quot;hello word&quot;); python1print(hello word) ##把文章更新到github进入博客目录，打开git bas">
+<meta name="twitter:title" content="git版本切换">
+<meta name="twitter:description" content="git本地库经过修改本地内容后，可以无数次提交到本地仓库，通过秘钥记录的方式，可以自由切换到自己想要的版本。 查看日志   git reflog：查看版本号，可显示所有版本记录   git log –oneline：只显示当前版本的历史记录 基于索引值：  ①git reflog：查看版本号（第一列）   ②git reset –hard 版本号使用^符号：   git reset –hard">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/diff.PNG">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -109,20 +112,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-git版本切换" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      程序员入门必备技能
+      git版本切换
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-09-30
+          <i class="fa fa-calendar"></i>  2019-03-05
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -138,16 +141,31 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>Welcome to 我的世界，这是一个利用hexo和github搭建的博客，我将会在这里记录技术，分享生活</p>
-<h2 id="hello-word的各种输出"><a href="#hello-word的各种输出" class="headerlink" title="hello word的各种输出"></a>hello word的各种输出</h2><h3 id="c语言"><a href="#c语言" class="headerlink" title="c语言"></a>c语言</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;hello word&quot;);</span><br></pre></td></tr></table></figure>
-<h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"hello word"</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(hello word)</span><br></pre></td></tr></table></figure>
-<p>##把文章更新到github<br>进入博客目录，打开git bash here<br>执行：hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</p>
-<h3 id="刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束"><a href="#刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束" class="headerlink" title="刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束"></a>刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束</h3>
+            <p>  git本地库经过修改本地内容后，可以无数次提交到本地仓库，通过秘钥记录的方式，可以自由切换到自己想要的版本。</p>
+<h4 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h4><p>   git reflog：查看版本号，可显示所有版本记录<br>   git log –oneline：只显示当前版本的历史记录</p>
+<h4 id="基于索引值："><a href="#基于索引值：" class="headerlink" title="基于索引值："></a>基于索引值：</h4><p>  ①git reflog：查看版本号（第一列）</p>
+<h2 id="②git-reset-–hard-版本号"><a href="#②git-reset-–hard-版本号" class="headerlink" title="  ②git reset –hard 版本号"></a>  ②git reset –hard 版本号</h2><h4 id="使用-符号："><a href="#使用-符号：" class="headerlink" title="使用^符号："></a>使用^符号：</h4><p>   git reset –hard HEAD^    (HEAD为指针，指向当前使用版本) </p>
+<pre><code>一个^符号只能回退到前一个版本，可以使用多个^,只能回退，不能前进
+</code></pre><hr>
+<h4 id="使用-符号：-1"><a href="#使用-符号：-1" class="headerlink" title="使用~符号："></a>使用~符号：</h4><pre><code>git reset --hard~n
+    可一次性回退n个版本
+</code></pre><h4 id="参数对比"><a href="#参数对比" class="headerlink" title="参数对比"></a>参数对比</h4><p> git reset –hard：在本地库移动指针，重置暂存区，重置工作区<br>            –mixed：在本地库移动指针，重置暂存区<br>            –soft：仅在本地库移动指针</p>
+<h4 id="文件比较"><a href="#文件比较" class="headerlink" title="文件比较"></a>文件比较</h4><p>git diff filename:比较工作区的文件(在第一行添加一个2)<br><img src="/images/diff.PNG" alt="“different”"></p>
+<p>git diff HEAD filename (与历史版本比较 HEAD为某个历史版本)</p>
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><pre><code>分支：在版本控制过程中，使用多条线同时推进多个任务，加快开发速度。
+实验包括两个分支：主支master，分支hot_fix
+git branch -v:查看分支
+git branch branchName:创建分支
+git checkout branchName：切换分支
+</code></pre><h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><pre><code>①切换到接受修改的分支上（git checkout master）
+②进行合并操作（git merge hot_fix）
+</code></pre><p><img src="/images/merge.PNG" alt="merge"><br>注：内容冲突：两个分支修改同一个地方，内容不同，需要人为沟通，进行文件内容修改</p>
+<h4 id="删除内容"><a href="#删除内容" class="headerlink" title="删除内容"></a>删除内容</h4><p>①git rm fileName<br>②git add *<br>③git commit</p>
+
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年03月05日 20:28</p>
-        <p>原始链接： <a class="post-url" href="/2018/09/30/hello-world/" title="程序员入门必备技能">https://LiYuanSh.github.io/2018/09/30/hello-world/</a></p>
+        <p>最后更新： 2019年03月24日 22:11</p>
+        <p>原始链接： <a class="post-url" href="/2019/03/05/git版本切换/" title="git版本切换">https://LiYuanSh.github.io/2019/03/05/git版本切换/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
                 <img src="/images/logo1.jpg" alt="LiYuanShu">
@@ -204,7 +222,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2018/09/30/hello-world/&title=《程序员入门必备技能》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/03/05/git版本切换/&title=《git版本切换》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -214,22 +232,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2018/09/30/hello-world/&title=《程序员入门必备技能》 — 小树窝&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/03/05/git版本切换/&title=《git版本切换》 — 小树窝&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2018/09/30/hello-world/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/03/05/git版本切换/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《程序员入门必备技能》 — 小树窝&url=https://LiYuanSh.github.io/2018/09/30/hello-world/&via=https://LiYuanSh.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git版本切换》 — 小树窝&url=https://LiYuanSh.github.io/2019/03/05/git版本切换/&via=https://LiYuanSh.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2018/09/30/hello-world/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/03/05/git版本切换/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -239,7 +257,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2018/09/30/hello-world/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/03/05/git版本切换/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -257,23 +275,28 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hello-word的各种输出"><span class="post-toc-text">hello word的各种输出</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c语言"><span class="post-toc-text">c语言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java"><span class="post-toc-text">java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python"><span class="post-toc-text">python</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束"><span class="post-toc-text">刚搭建完第一个博客，还不熟悉各种骚操作，本篇幅到此结束</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看日志"><span class="post-toc-text">查看日志</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基于索引值："><span class="post-toc-text">基于索引值：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#②git-reset-–hard-版本号"><span class="post-toc-text">  ②git reset –hard 版本号</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用-符号："><span class="post-toc-text">使用^符号：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用-符号：-1"><span class="post-toc-text">使用~符号：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参数对比"><span class="post-toc-text">参数对比</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#文件比较"><span class="post-toc-text">文件比较</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分支管理"><span class="post-toc-text">分支管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#合并分支"><span class="post-toc-text">合并分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除内容"><span class="post-toc-text">删除内容</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2018/11/04/hexo部署到github/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/10/DNS服务的搭建与配置/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          hexo部署到github
+          DNS服务的搭建与配置
         
       </span>
     </a>
   
+  
+    <a href="/2019/03/03/dhcp服务的搭建和配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">dhcp服务的搭建和配置</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
   
 </nav>
 

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Gevent协程 | 小树窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="安装：pip install gevent 协程定义   又名微线程，纤程。在不开辟线程的基础上完成多任务，即在单线程情况下完成多任务，多个任务按照一定顺序交替执行。可认为看到yield关键字就是协程。本质为是个单线程。   协程是实现多任务的一种方法。          缺点：无法利用多核资源    优点：提高执行效率————–无需线程的切换开销。         高可用+高扩展性+低成本——一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gevent协程">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/04/20/python——Gevent协程/index.html">
+<meta property="og:site_name" content="小树窝">
+<meta property="og:description" content="安装：pip install gevent 协程定义   又名微线程，纤程。在不开辟线程的基础上完成多任务，即在单线程情况下完成多任务，多个任务按照一定顺序交替执行。可认为看到yield关键字就是协程。本质为是个单线程。   协程是实现多任务的一种方法。          缺点：无法利用多核资源    优点：提高执行效率————–无需线程的切换开销。         高可用+高扩展性+低成本——一">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://liyuansh.github.io/images/协程.JPG">
+<meta property="og:updated_time" content="2019-08-04T02:02:20.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gevent协程">
+<meta name="twitter:description" content="安装：pip install gevent 协程定义   又名微线程，纤程。在不开辟线程的基础上完成多任务，即在单线程情况下完成多任务，多个任务按照一定顺序交替执行。可认为看到yield关键字就是协程。本质为是个单线程。   协程是实现多任务的一种方法。          缺点：无法利用多核资源    优点：提高执行效率————–无需线程的切换开销。         高可用+高扩展性+低成本——一">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/协程.JPG">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">小树窝</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo1.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        小树窝
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个软件工程的迷途小书童
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-python——Gevent协程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Gevent协程
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-04-20
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>安装：pip install gevent</p>
+<h3 id="协程定义"><a href="#协程定义" class="headerlink" title="协程定义"></a>协程定义</h3><p>   又名微线程，纤程。在不开辟线程的基础上完成多任务，即在单线程情况下完成多任务，多个任务按照一定顺序交替执行。可认为看到yield关键字就是协程。本质为是个单线程。<br>   协程是实现多任务的一种方法。<br>   <img src="/images/协程.JPG" alt="生成.spec文件"><br>       缺点：无法利用多核资源<br>    优点：提高执行效率————–无需线程的切换开销。<br>         高可用+高扩展性+低成本——一个CPU可支持上万个协程（高并发）；<br>         不需要多线程的锁制作——–如生产者-消费者问题。传统方法需要使用两个线程，但如果使用在一个线程中使用关键字yield开辟协程便可解决。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">   import time</span><br><span class="line">def consumer():</span><br><span class="line">    r = &apos;&apos;</span><br><span class="line">    while True:</span><br><span class="line">        n = yield r</span><br><span class="line">        if not n:</span><br><span class="line">            return</span><br><span class="line">        print(&apos;[CONSUMER] Consuming %s...&apos; % n)</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        r = &apos;200 OK&apos;</span><br><span class="line"></span><br><span class="line">def produce(c):</span><br><span class="line">    c.next()</span><br><span class="line">    n = 0</span><br><span class="line">    while n &lt; 5:</span><br><span class="line">        n = n + 1</span><br><span class="line">        print(&apos;[PRODUCER] Producing %s...&apos; % n)</span><br><span class="line">        r = c.send(n)</span><br><span class="line">        print(&apos;[PRODUCER] Consumer return: %s&apos; % r)</span><br><span class="line">    c.close()</span><br><span class="line"></span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    c = consumer()</span><br><span class="line">    produce(c)</span><br><span class="line"></span><br><span class="line"> 执行结果：</span><br><span class="line"> [PRODUCER] Producing 1...</span><br><span class="line">[CONSUMER] Consuming 1...</span><br><span class="line">[PRODUCER] Consumer return: 200 OK</span><br><span class="line">[PRODUCER] Producing 2...</span><br><span class="line">[CONSUMER] Consuming 2...</span><br><span class="line">[PRODUCER] Consumer return: 200 OK</span><br><span class="line">[PRODUCER] Producing 3...</span><br><span class="line">[CONSUMER] Consuming 3...</span><br><span class="line">[PRODUCER] Consumer return: 200 OK</span><br><span class="line">[PRODUCER] Producing 4...</span><br><span class="line">[CONSUMER] Consuming 4...</span><br><span class="line">[PRODUCER] Consumer return: 200 OK</span><br><span class="line">[PRODUCER] Producing 5...</span><br><span class="line">[CONSUMER] Consuming 5...</span><br><span class="line">[PRODUCER] Consumer return: 200 OK</span><br><span class="line">注：[代码来源参考](https://www.liaoxuefeng.com/wiki/897692888725344/923057403198272)</span><br></pre></td></tr></table></figure></p>
+<h3 id="协程使用"><a href="#协程使用" class="headerlink" title="协程使用"></a>协程使用</h3><p>使用安装：cmd下执行命令：pip install greenlet<br>使用一个简单例子解释greenlet用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import time,greenlet</span><br><span class="line">def work1():</span><br><span class="line">    for i in range(5):</span><br><span class="line">        print(&apos;---work1-----&apos;)</span><br><span class="line">        time.sleep(0.5)</span><br><span class="line">        ##切换协程</span><br><span class="line">        g2.switch()</span><br><span class="line">def work2():</span><br><span class="line">    for i in range(5):</span><br><span class="line">        print(&apos;---work2-----&apos;)</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        g1.switch()</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    g1=greenlet.greenlet(work1)</span><br><span class="line">    g2=greenlet.greenlet(work2)</span><br><span class="line">    g1.switch()</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">---work1-----</span><br><span class="line">---work2-----</span><br><span class="line">---work1-----</span><br><span class="line">---work2-----</span><br></pre></td></tr></table></figure></p>
+<p>greenlet可以实现协程，但需要人工切换，很多场景不适用。因此更多时候我们使用一个更强大的库————Gevent。</p>
+<h3 id="Gevent"><a href="#Gevent" class="headerlink" title="Gevent"></a>Gevent</h3><p>使用安装：在cmd中输入命令：pip install gevent<br>    Gevent内部封装Greenlet，其原理相当于一个Greenlet遇到IO操作【网络、文件操作】时，自动切换到其他Greenlet，等到这个IO操作完成，在适当时候切换回来执行。</p>
+<p>例子使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import gevent</span><br><span class="line">def work(n):</span><br><span class="line">    for i in range(n):</span><br><span class="line">        ##获取当前协程的属性</span><br><span class="line">        print(gevent.getcurrent(),i)</span><br><span class="line">g1=gevent.spawn(work,2)</span><br><span class="line">g2=gevent.spawn(work,3)</span><br><span class="line">g1.join()</span><br><span class="line">g2.join()</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">&lt;Greenlet at 0x2177fb5ae18: work(2)&gt; 0</span><br><span class="line">&lt;Greenlet at 0x2177fb5ae18: work(2)&gt; 1</span><br><span class="line">&lt;Greenlet at 0x21700338048: work(3)&gt; 0</span><br><span class="line">&lt;Greenlet at 0x21700338048: work(3)&gt; 1</span><br><span class="line">&lt;Greenlet at 0x21700338048: work(3)&gt; 2</span><br></pre></td></tr></table></figure></p>
+<pre><code>由例子可得出程序是先完全执行完g1对象，再执行g2--------原因是在此程序中无IO操作，无需进行协程切换
+注：spawn:引发、导致、造成
+</code></pre><p>例子改写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import gevent,time</span><br><span class="line">def work(n):</span><br><span class="line">    for i in range(n):</span><br><span class="line">        ##获取当前协程的属性</span><br><span class="line">        print(gevent.getcurrent(),i)</span><br><span class="line">        gevent.sleep(1)  ##让协程睡眠</span><br><span class="line">g1=gevent.spawn(work,2)</span><br><span class="line">g2=gevent.spawn(work,3)</span><br><span class="line">##阻塞,程序资源不被释放</span><br><span class="line">g1.join()</span><br><span class="line">g2.join()</span><br><span class="line">输出：</span><br><span class="line">&lt;Greenlet at 0x2177fb5ad08: work(2)&gt; 0</span><br><span class="line">&lt;Greenlet at 0x2177fb5abf8: work(3)&gt; 0</span><br><span class="line">&lt;Greenlet at 0x2177fb5ad08: work(2)&gt; 1</span><br><span class="line">&lt;Greenlet at 0x2177fb5abf8: work(3)&gt; 1</span><br><span class="line">&lt;Greenlet at 0x2177fb5abf8: work(3)&gt; 2</span><br></pre></td></tr></table></figure></p>
+<pre><code>可以发现这次实现了协程切换。。。遗憾的是，如果换成time.sleep(1)从本质上看也拥有了IO操作，但并不能触发协程，原因是Gevent无法识别这类IO操作。
+解决方法：打补丁---------from gevent import monkey---------官方建议是程序开始就开始打补丁
+</code></pre><p>例如在以上例子在程序开头加上:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey</span><br><span class="line">monkey.patch_all()</span><br></pre></td></tr></table></figure></p>
+<p>这样的话把上面例子的gevent.sleep(1)改为time.sleep(1)也是同样结果</p>
+<p>想让程序处于阻塞状态，切换协程的两种方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    g1=gevent.spawn(work1)</span><br><span class="line">    g2=gevent.spawn(work2)</span><br><span class="line">    while True:</span><br><span class="line">        print(&quot;hello word&quot;)</span><br><span class="line">        time.sleep(1)</span><br><span class="line">    #g1.join()</span><br><span class="line">    #g2.join()</span><br></pre></td></tr></table></figure></p>
+<p>①使用循环，在循环中进行IO操作    ②join函数阻塞</p>
+<h3 id="Gevent-爬虫-实战训练"><a href="#Gevent-爬虫-实战训练" class="headerlink" title="Gevent+爬虫 实战训练"></a>Gevent+爬虫 实战训练</h3><pre><code>爬虫流程： 找到资源链接-——获取资源————将资源数据写入到本地文件
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey</span><br><span class="line">monkey.patch_all()</span><br><span class="line">import time,gevent,urllib.request</span><br><span class="line">def drowload_img(img_url,img_name):</span><br><span class="line">    try:</span><br><span class="line">        print(img_url)</span><br><span class="line">        reponse=urllib.request.urlopen(img_url)</span><br><span class="line">        with open(img_name,&apos;wb&apos;) as img_file:</span><br><span class="line">            while True:</span><br><span class="line">                img_data=reponse.read(1024)</span><br><span class="line">                if img_data:</span><br><span class="line">                    img_file.write(img_data)</span><br><span class="line">                else:</span><br><span class="line">                    break</span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(&quot;图片下载异常：&quot;,e)</span><br><span class="line">    else:</span><br><span class="line">        print(&apos;图片下载成功&apos;,img_name)</span><br><span class="line">    pass</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    img_url1 = &apos;http://p0.so.qhmsg.com/bdr/576__/t013ee81b64eb53f6f5.jpg&apos;</span><br><span class="line">    img_url2 = &quot;http://p2.so.qhimgs1.com/bdr/594__/t017ec94ec006189032.jpg&quot;</span><br><span class="line">    img_url3 = &quot;http://p3.so.qhmsg.com/bdr/864__/t01f9daf42a666bb408.jpg&quot;</span><br><span class="line">    g1=gevent.spawn(drowload_img,img_url1,&quot;img_url1.jpg&quot;)</span><br><span class="line">    g2=gevent.spawn(drowload_img,img_url2,&quot;img_url2.jpg&quot;)</span><br><span class="line">    g3=gevent.spawn(drowload_img,img_url3,&quot;img_url3.jpg&quot;)</span><br><span class="line">    gevent.joinall([g1,g2,g3])</span><br><span class="line">结果：</span><br><span class="line">图片下载成功 img_url1.jpg</span><br><span class="line">图片下载成功 img_url3.jpg</span><br><span class="line">图片下载成功 img_url2.jpg</span><br></pre></td></tr></table></figure>
+<p>本次每次写入1024个字节，img_url2.jpg图片最大，根据协程转换，一般会最后下载成功。（每次运行的结果可能不同）</p>
+<h4 id="实战升级————爬取360网络图片"><a href="#实战升级————爬取360网络图片" class="headerlink" title="实战升级————爬取360网络图片"></a>实战升级————爬取360网络图片</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey</span><br><span class="line">#打补丁，识别网路延迟</span><br><span class="line">monkey.patch_all()</span><br><span class="line">import gevent,requests#pip install requests</span><br><span class="line">from urllib import request</span><br><span class="line">#下载图片</span><br><span class="line">def download_img(num):</span><br><span class="line">    #开启下载</span><br><span class="line">    print(&apos;start download&apos;)</span><br><span class="line">    #图片的url地址</span><br><span class="line">    url = &apos;http://image.so.com/zj?ch=beauty&amp;sn=150&amp;listtype=new&amp;temp=1&apos;</span><br><span class="line">    #模拟浏览器</span><br><span class="line">    headers=&#123;</span><br><span class="line">        &apos;Referer&apos;: &apos;http://image.so.com/z?ch=beauty&apos;,</span><br><span class="line">        &apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    #模拟浏览器访问服务器发送内容</span><br><span class="line">    str_data = &apos;&apos;&apos;h: beauty</span><br><span class="line">    sn: 30</span><br><span class="line">    listtype: new</span><br><span class="line">    temp: 1&apos;&apos;&apos;</span><br><span class="line">    #简单的数据清洗</span><br><span class="line">    send_data = &#123;&#125;</span><br><span class="line">    #进行一行分割</span><br><span class="line">    for data in str_data.splitlines():</span><br><span class="line">        line_data = data.split(&apos;: &apos;)#返回一个列表</span><br><span class="line">        if len(line_data) == 2:#如果这个列表当中有两个数据</span><br><span class="line">            key,value = line_data# a,b = [1,2] #进行序列解包赋值！</span><br><span class="line">            if key and value:#如果两者key和 value都有值 我就进行 搭建send_data</span><br><span class="line">                send_data[key] = value</span><br><span class="line">    #end_data = &#123;&apos;h&apos;:&apos;beauty&apos;,&apos;sn&apos;:&apos;30&apos;&#125;</span><br><span class="line">    send_data[&apos;sn&apos;] = eval(str(num)+&apos;*&apos;+&apos;30&apos;) #eval（&apos;3 * 4&apos;）#z字典的修改</span><br><span class="line">    #requests 这个方法进行网略请求，模拟刘燃气访问服务器返回结果</span><br><span class="line">    response = requests.get(url,headers=headers,params=send_data)</span><br><span class="line">    #json()方法 转换为python可操作对象&#123;‘a&quot; ;1&#125;</span><br><span class="line">    json_data = response.json()[&apos;list&apos;]</span><br><span class="line">    #利用么酷的方法，序列解包赋值</span><br><span class="line">    for index,src in enumerate(json_data):</span><br><span class="line">        #获取图片url地址</span><br><span class="line">        image_url = src[&apos;qhimg_url&apos;]</span><br><span class="line">        try:</span><br><span class="line">            #给定本地图片地址</span><br><span class="line">            image_name = &apos;./360_image/&apos;+image_url[-8:]</span><br><span class="line">            #吧网路上的图片下载到本地</span><br><span class="line">            request.urlretrieve(url=image_url,filename=image_name)</span><br><span class="line">        except Exception as e:</span><br><span class="line">            print(e)</span><br><span class="line">        else:</span><br><span class="line">            #format格式化</span><br><span class="line">            print(&apos;&#123;&#125; is download&apos;.format(image_name))</span><br><span class="line">        print(&apos;image is download&apos;)</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    num = int(input(&apos;你想要爬取的图片的组:&apos;))</span><br><span class="line">    #列表推导式完成协程任务分发</span><br><span class="line">    gevent.joinall([gevent.spawn(download_img,i)for i in range(1,num+1)])</span><br></pre></td></tr></table></figure>
+<h5 id="本部分主要偏于爬虫方面，需要使用到一定的html和网络通信协议这方面的知识"><a href="#本部分主要偏于爬虫方面，需要使用到一定的html和网络通信协议这方面的知识" class="headerlink" title="本部分主要偏于爬虫方面，需要使用到一定的html和网络通信协议这方面的知识"></a>本部分主要偏于爬虫方面，需要使用到一定的html和网络通信协议这方面的知识</h5>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年08月04日 10:02</p>
+        <p>原始链接： <a class="post-url" href="/2019/04/20/python——Gevent协程/" title="Gevent协程">https://LiYuanSh.github.io/2019/04/20/python——Gevent协程/</a></p>
+        <footer>
+            <a href="https://LiYuanSh.github.io">
+                <img src="/images/logo1.jpg" alt="LiYuanShu">
+                LiYuanShu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat1.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat1.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay1.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/04/20/python——Gevent协程/&title=《Gevent协程》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/04/20/python——Gevent协程/&title=《Gevent协程》 — 小树窝&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/04/20/python——Gevent协程/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Gevent协程》 — 小树窝&url=https://LiYuanSh.github.io/2019/04/20/python——Gevent协程/&via=https://LiYuanSh.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/04/20/python——Gevent协程/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/04/20/python——Gevent协程/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#协程定义"><span class="post-toc-text">协程定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#协程使用"><span class="post-toc-text">协程使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Gevent"><span class="post-toc-text">Gevent</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Gevent-爬虫-实战训练"><span class="post-toc-text">Gevent+爬虫 实战训练</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实战升级————爬取360网络图片"><span class="post-toc-text">实战升级————爬取360网络图片</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#本部分主要偏于爬虫方面，需要使用到一定的html和网络通信协议这方面的知识"><span class="post-toc-text">本部分主要偏于爬虫方面，需要使用到一定的html和网络通信协议这方面的知识</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/13/Django数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Django数据库</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 LiYuanShu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://LiYuanSh.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
