@@ -8,17 +8,17 @@
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="ls命令ls主要为查看一个文件夹目录下存放的内容（普通文件、目录、软链接、设备…） 命令选项  |  作用  -a        | 列出所有文件  -l      | 按照文件名称默认排序  -S      | 按照文件的大小排序，从大到小  -t      | 显示mtime并mtime排序，新的在前面  -ct     | 显示ctime并且排序，新的排前面   补充：atime—–文件被修">
+  <meta name="description" content="ls命令ls主要为查看一个文件夹目录下存放的内容（普通文件、目录、软链接、设备…） 命令选项  |  作用  -a       | 列出所有文件  -l      | 按照文件名称默认排序  -S      | 按照文件的大小排序，从大到小  -t      | 显示mtime并mtime排序，新的在前面  -ct     | 显示ctime并且排序，新的排前面   补充：atime—–文件被修改">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维笔记一:常用命令的常用选项">
 <meta property="og:url" content="https://LiYuanSh.github.io/2019/08/05/运维笔记一-常用命令的常用选项/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="ls命令ls主要为查看一个文件夹目录下存放的内容（普通文件、目录、软链接、设备…） 命令选项  |  作用  -a        | 列出所有文件  -l      | 按照文件名称默认排序  -S      | 按照文件的大小排序，从大到小  -t      | 显示mtime并mtime排序，新的在前面  -ct     | 显示ctime并且排序，新的排前面   补充：atime—–文件被修">
+<meta property="og:description" content="ls命令ls主要为查看一个文件夹目录下存放的内容（普通文件、目录、软链接、设备…） 命令选项  |  作用  -a       | 列出所有文件  -l      | 按照文件名称默认排序  -S      | 按照文件的大小排序，从大到小  -t      | 显示mtime并mtime排序，新的在前面  -ct     | 显示ctime并且排序，新的排前面   补充：atime—–文件被修改">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-07T06:23:32.319Z">
+<meta property="og:updated_time" content="2019-08-07T06:26:56.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维笔记一:常用命令的常用选项">
-<meta name="twitter:description" content="ls命令ls主要为查看一个文件夹目录下存放的内容（普通文件、目录、软链接、设备…） 命令选项  |  作用  -a        | 列出所有文件  -l      | 按照文件名称默认排序  -S      | 按照文件的大小排序，从大到小  -t      | 显示mtime并mtime排序，新的在前面  -ct     | 显示ctime并且排序，新的排前面   补充：atime—–文件被修">
+<meta name="twitter:description" content="ls命令ls主要为查看一个文件夹目录下存放的内容（普通文件、目录、软链接、设备…） 命令选项  |  作用  -a       | 列出所有文件  -l      | 按照文件名称默认排序  -S      | 按照文件的大小排序，从大到小  -t      | 显示mtime并mtime排序，新的在前面  -ct     | 显示ctime并且排序，新的排前面   补充：atime—–文件被修改">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -140,7 +140,7 @@
             
             <h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h3><p>ls主要为查看一个文件夹目录下存放的内容（普通文件、目录、软链接、设备…）</p>
 <pre><code>命令选项  |  作用
- -a        | 列出所有文件
+ -a       | 列出所有文件
  -l      | 按照文件名称默认排序
  -S      | 按照文件的大小排序，从大到小
  -t      | 显示mtime并mtime排序，新的在前面
@@ -148,17 +148,28 @@
 </code></pre><p>  补充：atime—–文件被修改后（元数据、内容）第一次被访问的时间<br>          mtime—–文件内容最后被修改时间<br>          ctime—–文件元数据发生变化。比如权限，所有者</p>
 <h3 id="cat、head、tail命令"><a href="#cat、head、tail命令" class="headerlink" title="cat、head、tail命令"></a>cat、head、tail命令</h3><p>cat主要用于查看文件内容</p>
 <pre><code>命令选项  |  作用  
- -A        | 展示文件所有内容，常用于查看文件的特殊编码字符
+ -A       | 展示文件所有内容，常用于查看文件的特殊编码字符
  -n      | 给文件每一行前加一个编号
  -v      | 查看所有隐藏字符
-</code></pre><p>head主要用于去文件的头几行内容<br>    命令选项  |  作用<br>    -n   1     | 指定查看文件第一行<br>     -n -1   | 不显示文件最后一行</p>
-<p>tail用法与head用法相似（tail -n +1）</p>
-<h3 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a>wc命令</h3><p>wc主要用于统计文件信息<br>    命令选项  |  作用<br>     -l       | 统计一个文件行数<br>     -w      | 统计一个文件的字数，由空白、跳格、换行分割<br>     -v      | 查看所有隐藏字符</p>
-<h3 id="sort、uniq"><a href="#sort、uniq" class="headerlink" title="sort、uniq"></a>sort、uniq</h3><p>sort主要用于排序作用<br>    命令选项  |  作用<br>     -f       | 忽略字符大小写<br>     -n      | 以数值大小排序<br>     -r      | 查看所有隐藏字符</p>
-
+</code></pre><p>head主要用于去文件的头几行内容</p>
+<pre><code>命令选项  |  作用
+-n   1     | 指定查看文件第一行
+ -n -1   | 不显示文件最后一行
+</code></pre><p>tail用法与head用法相似（tail -n +1）</p>
+<h3 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a>wc命令</h3><p>wc主要用于统计文件信息</p>
+<pre><code>命令选项  |  作用
+ -l       | 统计一个文件行数
+ -w      | 统计一个文件的字数，由空白、跳格、换行分割
+ -v      | 查看所有隐藏字符
+</code></pre><h3 id="sort、uniq"><a href="#sort、uniq" class="headerlink" title="sort、uniq"></a>sort、uniq</h3><p>sort主要用于排序作用</p>
+<pre><code>命令选项  |  作用
+ -f       | 忽略字符大小写
+ -n      | 以数值大小排序
+ -r      | 查看所有隐藏字符
+</code></pre>
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年08月07日 14:23</p>
+        <p>最后更新： 2019年08月07日 14:26</p>
         <p>原始链接： <a class="post-url" href="/2019/08/05/运维笔记一-常用命令的常用选项/" title="运维笔记一:常用命令的常用选项">https://LiYuanSh.github.io/2019/08/05/运维笔记一-常用命令的常用选项/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
