@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>运维实战一-网关：路由功能 | 小树窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。 本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。 接入虚拟交换机根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。  初步设置ip将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类IP地址，使用默认子网掩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运维实战一-网关：路由功能">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/index.html">
+<meta property="og:site_name" content="小树窝">
+<meta property="og:description" content="路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。 本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。 接入虚拟交换机根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。  初步设置ip将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类IP地址，使用默认子网掩">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://liyuansh.github.io/images/路由转发1.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/路由转发2.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/路由转发3.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/路由转发4.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/路由转发5.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/路由转发6.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/路由转发7.jpg">
+<meta property="og:updated_time" content="2019-08-14T02:57:41.930Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="运维实战一-网关：路由功能">
+<meta name="twitter:description" content="路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。 本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。 接入虚拟交换机根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。  初步设置ip将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类IP地址，使用默认子网掩">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/路由转发1.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">小树窝</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo1.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        小树窝
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个软件工程的迷途小书童
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-运维实战一-网关：路由功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      运维实战一-网关：路由功能
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-08-13
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <pre><code>路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。
+</code></pre><p>本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。<br><img src="/images/路由转发1.jpg" alt="架构图"></p>
+<h4 id="接入虚拟交换机"><a href="#接入虚拟交换机" class="headerlink" title="接入虚拟交换机"></a>接入虚拟交换机</h4><pre><code>根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。
+</code></pre><p><img src="/images/路由转发2.jpg" alt="交换机"></p>
+<h4 id="初步设置ip"><a href="#初步设置ip" class="headerlink" title="初步设置ip"></a>初步设置ip</h4><pre><code>将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类IP地址，使用默认子网掩码)。例如server1虚拟机的配置文件和路由表信息如下：
+</code></pre><p><img src="/images/路由转发3.jpg" alt="server1"><br>由server1第一次ping主机server3：<br><img src="/images/路由转发4.jpg" alt="server1"><br>原因：server1主机的route表中无此网段的记录，提示目标不可达，由自己提示</p>
+<p>在server1主机添加一条路由信息：route add -net 192.168.60.0 netmask 255.255.255.0 gw 192.168.1.5<br><img src="/images/路由转发5.jpg" alt="server1"><br>数据包已经发出，但是一直无返回信息，原因是数据包一直往server2主机的192.168.1.5这个网卡发送信息，但是对方接收到数据包后发送目标地址并不是自己，因此一直把数据包丢掉。</p>
+<p>打开server2主机的核心路由转发功能<br>vim   /etc/sysctl.conf   在最后一行添加：net.ipv4.ip_forward = 1<br><img src="/images/路由转发6.jpg" alt="vim信息"><br>验证是否成功：在bash中执行： sysctl -p   会出现 net.ipv4.ip_forward = 1 这个信息。</p>
+<p>在server1中再次ping和主机server3统一网段的地址，但是该主机不存在：<br><img src="/images/路由转发7.jpg" alt="vim信息"><br>会由主机server2提示目标主机不可达</p>
+<p>在server3主机添加一条路由信息：route add -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.60.4<br>可以发现两台主机ping通了！！！！！！</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年08月14日 10:57</p>
+        <p>原始链接： <a class="post-url" href="/2019/08/13/运维实战一-网关：路由功能/" title="运维实战一-网关：路由功能">https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/</a></p>
+        <footer>
+            <a href="https://LiYuanSh.github.io">
+                <img src="/images/logo1.jpg" alt="LiYuanShu">
+                LiYuanShu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat1.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat1.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay1.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/&title=《运维实战一-网关：路由功能》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/&title=《运维实战一-网关：路由功能》 — 小树窝&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《运维实战一-网关：路由功能》 — 小树窝&url=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/&via=https://LiYuanSh.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接入虚拟交换机"><span class="post-toc-text">接入虚拟交换机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#初步设置ip"><span class="post-toc-text">初步设置ip</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/12/运维笔记五-IP地址那点事/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">运维笔记五-IP地址那点事</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 LiYuanShu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://LiYuanSh.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
