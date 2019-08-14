@@ -8,18 +8,20 @@
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="IP地址用来表示互联网上主机的编号，互联网上主机之间都需要利用IP地址进行通信。IP地址由网络号和主机号组成(网络号决定网络数量，主机号决定主机数量)。 **网络号和主机号不能全部为0** **最高的网络号&amp;quot;位&amp;quot;必须为0** A类地址网络数量：126-1+1=126主机数量：255255264A类私有网络段地址：10.0.0.0—10.255.255.254 B类地址">
+  <meta name="description" content="IP地址用来表示互联网上主机的编号，互联网上主机之间都需要利用IP地址进行通信。IP地址由网络号和主机号组成(网络号决定网络数量，主机号决定主机数量)。 **网络号和主机号不能全部为0** **最高的网络号&amp;quot;位&amp;quot;必须为0** A类地址网络数量：126-1+1=126主机数量：256256254A类私有网络段地址：10.0.0.0—10.255.255.254 B类地址网络数量：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维笔记五-IP地址那点事">
 <meta property="og:url" content="https://LiYuanSh.github.io/2019/08/12/运维笔记五-IP地址那点事/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="IP地址用来表示互联网上主机的编号，互联网上主机之间都需要利用IP地址进行通信。IP地址由网络号和主机号组成(网络号决定网络数量，主机号决定主机数量)。 **网络号和主机号不能全部为0** **最高的网络号&amp;quot;位&amp;quot;必须为0** A类地址网络数量：126-1+1=126主机数量：255255264A类私有网络段地址：10.0.0.0—10.255.255.254 B类地址">
+<meta property="og:description" content="IP地址用来表示互联网上主机的编号，互联网上主机之间都需要利用IP地址进行通信。IP地址由网络号和主机号组成(网络号决定网络数量，主机号决定主机数量)。 **网络号和主机号不能全部为0** **最高的网络号&amp;quot;位&amp;quot;必须为0** A类地址网络数量：126-1+1=126主机数量：256256254A类私有网络段地址：10.0.0.0—10.255.255.254 B类地址网络数量：">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://liyuansh.github.io/images/ip1.jpg">
-<meta property="og:updated_time" content="2019-08-14T02:57:48.211Z">
+<meta property="og:image" content="https://liyuansh.github.io/images/ip2.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/ip3.jpg">
+<meta property="og:updated_time" content="2019-08-14T11:15:50.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维笔记五-IP地址那点事">
-<meta name="twitter:description" content="IP地址用来表示互联网上主机的编号，互联网上主机之间都需要利用IP地址进行通信。IP地址由网络号和主机号组成(网络号决定网络数量，主机号决定主机数量)。 **网络号和主机号不能全部为0** **最高的网络号&amp;quot;位&amp;quot;必须为0** A类地址网络数量：126-1+1=126主机数量：255255264A类私有网络段地址：10.0.0.0—10.255.255.254 B类地址">
+<meta name="twitter:description" content="IP地址用来表示互联网上主机的编号，互联网上主机之间都需要利用IP地址进行通信。IP地址由网络号和主机号组成(网络号决定网络数量，主机号决定主机数量)。 **网络号和主机号不能全部为0** **最高的网络号&amp;quot;位&amp;quot;必须为0** A类地址网络数量：126-1+1=126主机数量：256256254A类私有网络段地址：10.0.0.0—10.255.255.254 B类地址网络数量：">
 <meta name="twitter:image" content="https://liyuansh.github.io/images/ip1.jpg">
   
   
@@ -143,11 +145,44 @@
             <pre><code>IP地址用来表示互联网上主机的编号，互联网上主机之间都需要利用IP地址进行通信。IP地址由网络号和主机号组成(网络号决定网络数量，主机号决定主机数量)。
 **网络号和主机号不能全部为0**
 **最高的网络号&quot;位&quot;必须为0**
-</code></pre><h4 id="A类地址"><a href="#A类地址" class="headerlink" title="A类地址"></a>A类地址</h4><p><img src="/images/ip1.jpg" alt="A类IP"><br>网络数量：126-1+1=126<br>主机数量：255<em>255</em>264<br>A类私有网络段地址：<strong>10.0.0.0—10.255.255.254</strong></p>
-<h4 id="B类地址"><a href="#B类地址" class="headerlink" title="B类地址"></a>B类地址</h4>
+</code></pre><h4 id="A类地址"><a href="#A类地址" class="headerlink" title="A类地址"></a>A类地址</h4><p><img src="/images/ip1.jpg" alt="A类IP"><br>网络数量：126-1+1=126<br>主机数量：256<em>256</em>254<br>A类私有网络段地址：<strong>10.0.0.0—10.255.255.254</strong></p>
+<h4 id="B类地址"><a href="#B类地址" class="headerlink" title="B类地址"></a>B类地址</h4><p><img src="/images/ip2.jpg" alt="B类IP"><br>网络数量：(191-128+1)<em>(254-1+1)=16256<br>主机数量：256</em>254<br>A类私有网络段地址：<strong>172.16.0.0—172.31.255.254</strong></p>
+<h4 id="C类地址"><a href="#C类地址" class="headerlink" title="C类地址"></a>C类地址</h4><p><img src="/images/ip3.jpg" alt="C类IP"><br>网络数量：(223-192+1)<em>(255-0+1)</em>(254-1+1)<br>主机数量：255<br>A类私有网络段地址：<strong>172.16.0.0—172.31.255.254</strong></p>
+<p>总结：A—-B——C类的IP地址：网络段数量逐步递增，每个网络段的主机数逐步减少<br>注：127.0.0.1为回环网卡地址。访问本机服务时使用</p>
+<h4 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h4><p>主要用于划分网络段，形成更多的局域网，有利于避免ARP广播风暴<br> 标准子网掩码：划分A、B、C类网络IP地址时使用<br> 非标准子网掩码：一个标准的网络段可能包含的IP地址很多，现实情况中一般需要划分为更多、更小的局域网，因此一般需要重新划分子网掩码。</p>
+<p>分辨两个IP地址是否处于同一个网段，需要两个已知条件：IP地址、子网掩码。</p>
+<ol>
+<li>把IP地址和子网掩码转化为二进制表示</li>
+<li><p>分别对IP地址和子网掩码的二进制位进行与运算（只有1与1组合，结果才为1，其余为零）</p>
+<p>练习例子：<br>1、 172.16.0.0   使用  255.255.248.0  子网掩码， 划分成了多少个子网，每个子网中有多少个可用 IP地址<br>  写出  其中  三个以上的 网段。<br>  B类地址：  172.16.0.0</p>
+<pre><code>1010 1100。0001 0000。0000 0000。0000 0000
+1111 1111。1111 1111。0000 0000。0000 0000
+1111 1111。1111 1111。1111 1000。0000 0000
+1010 1100。0001 0000。0000 0000。0000 0000----------------1010 1100。0001 0000。0000 1000。0000 0000
+1010 1100。0001 0000。0000 1000。0000 0000----------------1010 1100。0001 0000。0000 0111。1111 1111
+  2的五次方====32个子网
+  2的十一次方====2048个可用IP（减去网络号和广播地址  2046个）
+ 172.16.0.0----------172.16.7.255  /21
+ 172.16.8.0----------172.16.15.255 /21
+  172.16.8.0----------172.16.23.255 /21
+</code></pre></li>
+</ol>
+<p>2、  172.16.0.99   /  255.255.248.0<br>    172.16.1.99   /  255.255.248.0       </p>
+<pre><code>## 这两个 IP 地址是否属于同一网段？
+172.16.0.99          1010 1100。0001 0000。0000 0000。0110 0011
+255.255.248.0        1111 1111。1111 1111。1111 1000。0000 0000
+---------------------------------------------------------------------------------------------------------------
+                                                    0000 0000
+
+172.16.1.99          1010 1100。0001 0000。0000 0001。0110 0011
+255.255.248.0        1111 1111。1111 1111。1111 1000。0000 0000
+-----------------------------------------------------------------------------------------------------------------
+                                                    0000 0000                                                                     
+**运算结果相同，处于同一网段**
+</code></pre>
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年08月14日 10:57</p>
+        <p>最后更新： 2019年08月14日 19:15</p>
         <p>原始链接： <a class="post-url" href="/2019/08/12/运维笔记五-IP地址那点事/" title="运维笔记五-IP地址那点事">https://LiYuanSh.github.io/2019/08/12/运维笔记五-IP地址那点事/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
@@ -258,7 +293,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#A类地址"><span class="post-toc-text">A类地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#B类地址"><span class="post-toc-text">B类地址</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#A类地址"><span class="post-toc-text">A类地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#B类地址"><span class="post-toc-text">B类地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#C类地址"><span class="post-toc-text">C类地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#子网掩码"><span class="post-toc-text">子网掩码</span></a></li></ol>
         </nav>
     </aside>
     

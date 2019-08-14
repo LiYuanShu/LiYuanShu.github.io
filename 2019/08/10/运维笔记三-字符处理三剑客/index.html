@@ -8,20 +8,21 @@
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="grep全称 Global search Regular Expression and Printing，提取文本内容的整行，执行速度快，适合大篇幅文本信息处理。 grep家族123grep   默认的基础正则表达式egrep  扩展正则表达式（相当于 grep -E）fgrep 不支持正则表达式或者元字符，搜索字符串速度快 使用方法语法： grep [options] &amp;quot;搜索条件(正则">
+  <meta name="description" content="grep全称 Global search Regular Expression and Printing，提取文本内容的整行，执行速度快，适合大篇幅文本信息处理。grep家族123grep   默认的基础正则表达式egrep  扩展正则表达式（相当于 grep -E）fgrep 不支持正则表达式或者元字符，搜索字符串速度快 使用方法语法： grep [options] &amp;quot;搜索条件(正则表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维笔记三-字符处理三剑客">
 <meta property="og:url" content="https://LiYuanSh.github.io/2019/08/10/运维笔记三-字符处理三剑客/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="grep全称 Global search Regular Expression and Printing，提取文本内容的整行，执行速度快，适合大篇幅文本信息处理。 grep家族123grep   默认的基础正则表达式egrep  扩展正则表达式（相当于 grep -E）fgrep 不支持正则表达式或者元字符，搜索字符串速度快 使用方法语法： grep [options] &amp;quot;搜索条件(正则">
+<meta property="og:description" content="grep全称 Global search Regular Expression and Printing，提取文本内容的整行，执行速度快，适合大篇幅文本信息处理。grep家族123grep   默认的基础正则表达式egrep  扩展正则表达式（相当于 grep -E）fgrep 不支持正则表达式或者元字符，搜索字符串速度快 使用方法语法： grep [options] &amp;quot;搜索条件(正则表">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://liyuansh.github.io/images/sed.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/sed1.jpg">
 <meta property="og:image" content="https://liyuansh.github.io/images/awk.jpg">
 <meta property="og:image" content="https://liyuansh.github.io/images/awk1.jpg">
-<meta property="og:updated_time" content="2019-08-12T10:57:19.574Z">
+<meta property="og:updated_time" content="2019-08-14T10:41:36.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维笔记三-字符处理三剑客">
-<meta name="twitter:description" content="grep全称 Global search Regular Expression and Printing，提取文本内容的整行，执行速度快，适合大篇幅文本信息处理。 grep家族123grep   默认的基础正则表达式egrep  扩展正则表达式（相当于 grep -E）fgrep 不支持正则表达式或者元字符，搜索字符串速度快 使用方法语法： grep [options] &amp;quot;搜索条件(正则">
+<meta name="twitter:description" content="grep全称 Global search Regular Expression and Printing，提取文本内容的整行，执行速度快，适合大篇幅文本信息处理。grep家族123grep   默认的基础正则表达式egrep  扩展正则表达式（相当于 grep -E）fgrep 不支持正则表达式或者元字符，搜索字符串速度快 使用方法语法： grep [options] &amp;quot;搜索条件(正则表">
 <meta name="twitter:image" content="https://liyuansh.github.io/images/sed.jpg">
   
   
@@ -142,8 +143,7 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><pre><code>全称 Global search Regular Expression and Printing，提取文本内容的整行，执行速度快，适合大篇幅文本信息处理。
-</code></pre><p>grep家族<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep   默认的基础正则表达式</span><br><span class="line">egrep  扩展正则表达式（相当于 grep -E）</span><br><span class="line">fgrep 不支持正则表达式或者元字符，搜索字符串速度快</span><br></pre></td></tr></table></figure></p>
+            <h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p>全称 Global search Regular Expression and Printing，提取文本内容的整行，执行速度快，适合大篇幅文本信息处理。<br>grep家族<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep   默认的基础正则表达式</span><br><span class="line">egrep  扩展正则表达式（相当于 grep -E）</span><br><span class="line">fgrep 不支持正则表达式或者元字符，搜索字符串速度快</span><br></pre></td></tr></table></figure></p>
 <h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><pre><code>语法： grep [options] &quot;搜索条件(正则表达式)&quot; file
                 -n       显示搜索结果处于原文件的行号
                 -v       取反，只显示不符合条件的行内容
@@ -153,8 +153,25 @@
                 -B  num 显示匹配到的行，同时附加多显示该行前的num行    
                 -E      使用扩展正则表达式
 </code></pre><h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><p>  sed主要用于文本替换、删除。其工作模式一般为逐行处理，处理过程会产生处理空间、结果空间。处理过程如下：<br>  <img src="/images/sed.jpg" alt="sed处理过程"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">默认情况下，不会文件本身进行操作（-i  表示改变文件，慎用）</span><br><span class="line">默认情况下，sed会先读取文件所有行（可使用定界来确定文件读取的范围行）</span><br><span class="line">若在模式空间中数据不符合匹配规则，则不作处理，直接原样输出</span><br></pre></td></tr></table></figure></p>
-<h4 id="sed用法"><a href="#sed用法" class="headerlink" title="sed用法"></a>sed用法</h4><p>语法： sed [options] ‘[定界/条件]{[动作]/[模式匹配空间]/[动作补充]}’ file<br>    [options]<br>       -n  静默模式，不输出模式空间的内容，一般拥有 p 操作<br>       -e  指定一个sed命令中执行多个动作。格式：sed -e ‘1{p}’ -e ‘2{p}’ file<br>       ;   指定一个sed命令中执行多个动作,与-e效果一样。格式：sed ‘1{p};2{p}’ file<br>       -i  直接修改原文件<br>       -r  支持使用正则表达式<br>       -f  从文件中读取处理脚本，并执行<br>    定界/条件<br>        1,7—-第一到第七行<br>        1,$ (1,)—–第一到最后一行<br>        1,/正则/—–1,/^d/第一行到开头是d的那一行<br>        /正则/,/正则/<br>        /正则/——-/^d/匹配开头是d的所有行<br>    动作<br>        p             打印—–sed -n ‘1{p}’ file<br>        d             删除<br>        a\text       在符合条件的行添加指定内容（可使用 \n  实现换行—多行添加）<br>        i\text       在符合条件的行添加指定内容—–sed ‘1 i\22’ file<br>        c\text      符合条件的行替换为指定文本内容<br>        r /path     在符合条件的文章追加指定文件内容—sed ‘/^root/r /file’ /etc/passwd<br>        w /path     将符合条件的行，保存到指定文件中；覆盖式输出，能自动创建文件<br>        s/查找的内容/替换的内容/    &amp;可以表示查到到的内容—-sed  ‘{s/root/&amp;s/g}’  passwd<br>                  补充标志位： /i  忽略大小写<br>                                /g  全局替换</p>
-<h3 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h3><p>awk是一个非常强大文本处理工具，具有查找、切割、替换功能。程序执行分为三个部分：BEGIN段、主程序段、END段<br><img src="/images/awk.jpg" alt="awk处理过程"></p>
+<h4 id="sed用法"><a href="#sed用法" class="headerlink" title="sed用法"></a>sed用法</h4><p>语法： sed [options] ‘[定界/条件]{[动作]/[模式匹配空间]/[动作补充]}’ file<br>    [options]<br>       -n  静默模式，不输出模式空间的内容，一般拥有 p 操作<br>       -e  指定一个sed命令中执行多个动作。格式：sed -e ‘1{p}’ -e ‘2{p}’ file<br>       ;   指定一个sed命令中执行多个动作,与-e效果一样。格式：sed ‘1{p};2{p}’ file<br>       -i  直接修改原文件<br>       -r  支持使用正则表达式<br>       -f  从文件中读取处理脚本，并执行<br><img src="/images/sed1.jpg" alt="sed -f"></p>
+<pre><code>定界/条件
+    1,7----第一到第七行
+    1,$ (1,)-----第一到最后一行
+    1,/正则/-----1,/^d/第一行到开头是d的那一行
+    /正则/,/正则/
+    /正则/-------/^d/匹配开头是d的所有行
+动作
+    p             打印-----sed -n &apos;1{p}&apos; file 
+    d             删除
+    a\text       在符合条件的行添加指定内容（可使用 \n  实现换行---多行添加）
+    i\text       在符合条件的行添加指定内容-----sed &apos;1 i\22&apos; file 
+    c\text      符合条件的行替换为指定文本内容
+    r /path     在符合条件的文章追加指定文件内容---sed &apos;/^root/r /file&apos; /etc/passwd
+    w /path     将符合条件的行，保存到指定文件中；覆盖式输出，能自动创建文件
+    s/查找的内容/替换的内容/    &amp;可以表示查到到的内容----sed  &apos;{s/root/&amp;s/g}&apos;  passwd 
+              补充标志位： /i  忽略大小写
+                            /g  全局替换
+</code></pre><h3 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h3><p>awk是一个非常强大文本处理工具，具有查找、切割、替换功能。程序执行分为三个部分：BEGIN段、主程序段、END段<br><img src="/images/awk.jpg" alt="awk处理过程"></p>
 <p>语法： awk -F “列分隔符”  ‘BEGIN{} /模式空间–条件匹配|正则/{对每行的执行动作} END{}’</p>
 <p>模式空间–匹配条件常用方法：<br>    数值之间的比较： &gt;  &lt;  &gt;=  &lt;=  ==  !=    ($2&gt;=2)<br>    字符之间的比较：~   !~    例：awk -F “:” ‘$2 ~ “li”{print $2}’ file<br>    字符之间正则表达式：  ~   !~   /正则|正则/</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">支持数值运算：++、--、+=、-=、*=、/=、%=、^=、**=</span><br><span class="line">支持逻辑运算符： &amp;&amp;   ||</span><br></pre></td></tr></table></figure>
@@ -198,7 +215,7 @@ for循环：
 </code></pre>
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年08月12日 18:57</p>
+        <p>最后更新： 2019年08月14日 18:41</p>
         <p>原始链接： <a class="post-url" href="/2019/08/10/运维笔记三-字符处理三剑客/" title="运维笔记三-字符处理三剑客">https://LiYuanSh.github.io/2019/08/10/运维笔记三-字符处理三剑客/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
