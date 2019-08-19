@@ -3,30 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>运维实战一-网关：路由功能 | 小树窝</title>
+  <title>运维笔记六-TCP/UDP相关 | 小树窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。 本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。 接入虚拟交换机根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。 初步设置ip将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类IP地址，使用默认子网掩码">
+  <meta name="description" content="计算机数据传输的模型图（一般现在按四层模型划分）： 传输层主要存在两个协议：    TCP：面向连接–三次握手、四次挥手；保证高可靠性(数据无丢失—-重传机制、数据有序传输、数据无错误—-校验码、数据无重复到达)    UDP：无连接,不可靠传输，常用于视频播放之类 TCPTCP头部正常情况下包含20个字节，主要包含以下内容：    端口号—–源端口(客户端浏览器打开的端口)占两个字节—-8位">
 <meta property="og:type" content="article">
-<meta property="og:title" content="运维实战一-网关：路由功能">
-<meta property="og:url" content="https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/index.html">
+<meta property="og:title" content="运维笔记六-TCP&#x2F;UDP相关">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。 本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。 接入虚拟交换机根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。 初步设置ip将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类IP地址，使用默认子网掩码">
+<meta property="og:description" content="计算机数据传输的模型图（一般现在按四层模型划分）： 传输层主要存在两个协议：    TCP：面向连接–三次握手、四次挥手；保证高可靠性(数据无丢失—-重传机制、数据有序传输、数据无错误—-校验码、数据无重复到达)    UDP：无连接,不可靠传输，常用于视频播放之类 TCPTCP头部正常情况下包含20个字节，主要包含以下内容：    端口号—–源端口(客户端浏览器打开的端口)占两个字节—-8位">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://liyuansh.github.io/images/路由转发1.jpg">
-<meta property="og:image" content="https://liyuansh.github.io/images/路由转发2.jpg">
-<meta property="og:image" content="https://liyuansh.github.io/images/路由转发3.jpg">
-<meta property="og:image" content="https://liyuansh.github.io/images/路由转发4.jpg">
-<meta property="og:image" content="https://liyuansh.github.io/images/路由转发5.jpg">
-<meta property="og:image" content="https://liyuansh.github.io/images/路由转发6.jpg">
-<meta property="og:image" content="https://liyuansh.github.io/images/路由转发7.jpg">
-<meta property="og:updated_time" content="2019-08-14T12:32:58.565Z">
+<meta property="og:image" content="https://liyuansh.github.io/images/六tcp.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/六tcp1.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/六tcp2.jpg">
+<meta property="og:updated_time" content="2019-08-17T14:41:55.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="运维实战一-网关：路由功能">
-<meta name="twitter:description" content="路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。 本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。 接入虚拟交换机根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。 初步设置ip将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类IP地址，使用默认子网掩码">
-<meta name="twitter:image" content="https://liyuansh.github.io/images/路由转发1.jpg">
+<meta name="twitter:title" content="运维笔记六-TCP&#x2F;UDP相关">
+<meta name="twitter:description" content="计算机数据传输的模型图（一般现在按四层模型划分）： 传输层主要存在两个协议：    TCP：面向连接–三次握手、四次挥手；保证高可靠性(数据无丢失—-重传机制、数据有序传输、数据无错误—-校验码、数据无重复到达)    UDP：无连接,不可靠传输，常用于视频播放之类 TCPTCP头部正常情况下包含20个字节，主要包含以下内容：    端口号—–源端口(客户端浏览器打开的端口)占两个字节—-8位">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/六tcp.jpg">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -117,20 +113,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-运维实战一-网关：路由功能" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-运维笔记六-TCP模型相关" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      运维实战一-网关：路由功能
+      运维笔记六-TCP/UDP相关
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2019-08-13
+          <i class="fa fa-calendar"></i>  2019-08-15
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -146,20 +142,17 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <pre><code>路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。
-</code></pre><p>本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。<br><img src="/images/路由转发1.jpg" alt="架构图"></p>
-<h4 id="接入虚拟交换机"><a href="#接入虚拟交换机" class="headerlink" title="接入虚拟交换机"></a>接入虚拟交换机</h4><p>根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。<br><img src="/images/路由转发2.jpg" alt="交换机"></p>
-<h4 id="初步设置ip"><a href="#初步设置ip" class="headerlink" title="初步设置ip"></a>初步设置ip</h4><p>将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类IP地址，使用默认子网掩码)。例如server1虚拟机的配置文件和路由表信息如下：<br><img src="/images/路由转发3.jpg" alt="server1"><br>由server1第一次ping主机server3：<br><img src="/images/路由转发4.jpg" alt="server1"><br>原因：server1主机的route表中无此网段的记录，提示目标不可达，由自己提示</p>
-<p>在server1主机添加一条路由信息：route add -net 192.168.60.0 netmask 255.255.255.0 gw 192.168.1.5<br><img src="/images/路由转发5.jpg" alt="server1"><br>数据包已经发出，但是一直无返回信息，原因是数据包一直往server2主机的192.168.1.5这个网卡发送信息，但是对方接收到数据包后发送目标地址并不是自己，因此一直把数据包丢掉。</p>
-<p>打开server2主机的核心路由转发功能<br>vim   /etc/sysctl.conf   在最后一行添加：net.ipv4.ip_forward = 1<br><img src="/images/路由转发6.jpg" alt="vim信息"><br>验证是否成功：在bash中执行： sysctl -p   会出现 net.ipv4.ip_forward = 1 这个信息。</p>
-<p>在server1中再次ping和主机server3统一网段的地址，但是该主机不存在：<br><img src="/images/路由转发7.jpg" alt="vim信息"><br>会由主机server2提示目标主机不可达</p>
-<p>在server3主机添加一条路由信息：route add -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.60.4<br>可以发现两台主机ping通了！！！！！！</p>
-<h4 id="意外总结"><a href="#意外总结" class="headerlink" title="意外总结"></a>意外总结</h4><p>在server2添加一条默认网关(route add default gw 192.168.1.2)<br>|<br>server1通过把网关指向server2可以上网<br>server3、server4通过把网关指向server2不可以上网<br>|<br>原因：vmnet8号交换只会把192.168.1.0/24网段的IP通过NAT技术在出栈时把IP换为win10IP，数据包回来时再换回原IP地址<br>而server3、server4主机不属于这一网段</p>
+            <p>计算机数据传输的模型图（一般现在按四层模型划分）：<br><img src="/images/六tcp.jpg" alt="数据传输模型"></p>
+<p>传输层主要存在两个协议：<br>    TCP：面向连接–三次握手、四次挥手；保证高可靠性(数据无丢失—-重传机制、数据有序传输、数据无错误—-校验码、数据无重复到达)<br>    UDP：无连接,不可靠传输，常用于视频播放之类</p>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><p>TCP头部正常情况下包含20个字节，主要包含以下内容：<br>    端口号—–源端口(客户端浏览器打开的端口)占两个字节—-8位<br>               目标端口(服务回应端口)占两个字节—-8位<br>        注：常用服务及其端口端口（FTP：21  SSH：22  Telnet：23  SMTP：25 http：80  https：443  Mysql：3306）<br>    序号——-发送序号(seq)占四个字节<br>               确认序号(ack)占四个字节<br>         注：ack一般为seq的数字加一，但所传输的包数量超过(2^16)时，会重新归零<br>    偏移量—–标识TCP的实际使用长度占一个字节(4位)—-得出TCP最长字节数为60<br>    标志位—–占6位，值为1代表启用<br>        URG  紧急指针，不用吧这个报文放入缓冲区，直接交个上层处理<br>        ACK  确认序号有效<br>        PSH  立即把报文放入缓冲区，并且把缓冲区的内容一起交个上层处理<br>        SYN  同步序号用来发去一个连接<br>        FIN  发送端完成发送任务（断开连接）<br>        RST  表示断开一个连接（访问出错时使用）<br>    窗口大小—表示能够接受tcp报文的最大字节数(16位)，控制发送报文大小<br>    校验和—–验证报文的正确性(16位)</p>
+<h5 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h5><p><img src="/images/六tcp1.jpg" alt="数据传输模型"><br>注：三次握手只是建立连接的过程，期间无任何数据传输。</p>
+<h5 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h5><p><img src="/images/六tcp2.jpg" alt="数据传输模型"><br>注：四次挥手服务端和客户端皆可以先发起，如果客户端有一段时间再无任何请求，则一般由服务端发起(节约资源)。</p>
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><p>UDP头部非常简单，只占用8个字节。<br>    端口号—–源端口(客户端浏览器打开的端口)占两个字节—-8位<br>               目标端口(服务回应端口)占两个字节—-8位<br>    length—–占两个字节，标识UDP头部的长度<br>    Checksum—校验和，包含UDP头和数据部分。</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年08月14日 20:32</p>
-        <p>原始链接： <a class="post-url" href="/2019/08/13/运维实战一-网关：路由功能/" title="运维实战一-网关：路由功能">https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/</a></p>
+        <p>最后更新： 2019年08月17日 22:41</p>
+        <p>原始链接： <a class="post-url" href="/2019/08/15/运维笔记六-TCP模型相关/" title="运维笔记六-TCP/UDP相关">https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
                 <img src="/images/logo1.jpg" alt="LiYuanShu">
@@ -216,7 +209,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/&title=《运维实战一-网关：路由功能》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/&title=《运维笔记六-TCP/UDP相关》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -226,22 +219,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/&title=《运维实战一-网关：路由功能》 — 小树窝&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/&title=《运维笔记六-TCP/UDP相关》 — 小树窝&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《运维实战一-网关：路由功能》 — 小树窝&url=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/&via=https://LiYuanSh.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《运维笔记六-TCP/UDP相关》 — 小树窝&url=https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/&via=https://LiYuanSh.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -251,7 +244,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/08/13/运维实战一-网关：路由功能/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -269,26 +262,26 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接入虚拟交换机"><span class="post-toc-text">接入虚拟交换机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#初步设置ip"><span class="post-toc-text">初步设置ip</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#意外总结"><span class="post-toc-text">意外总结</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#TCP"><span class="post-toc-text">TCP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#三次握手"><span class="post-toc-text">三次握手</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#四次挥手"><span class="post-toc-text">四次挥手</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UDP"><span class="post-toc-text">UDP</span></a>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2019/08/15/运维笔记六-TCP模型相关/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/15/运维实战二-网关-防火墙功能/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          运维笔记六-TCP/UDP相关
+          运维实战二-网关:防火墙功能
         
       </span>
     </a>
   
   
-    <a href="/2019/08/12/运维笔记五-IP地址那点事/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">运维笔记五-IP地址那点事</span>
+    <a href="/2019/08/13/运维实战一-网关：路由功能/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">运维实战一-网关：路由功能</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   

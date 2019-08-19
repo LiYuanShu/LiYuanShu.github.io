@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>运维实战二-网关:防火墙功能 | 小树窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="本次实验使用的架构和上一个实验网关：路由功能的架构大致相同，也需要在上一个实验的基础上，才能完全实现这一个实验的全部功能。说明：外网为ens33对接，内网为ens38、ens39对接需要实现以下任务1、 从外网向内网主机主动发起的 请求，不能进入内部网络    防火墙主机，仅允许内网主机 ping ，不回应外部主机的 ping 包。2、 防火墙主机，开放 80 端口服务，仅提供给 内部主机访问3、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运维实战二-网关:防火墙功能">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/08/15/运维实战二-网关-防火墙功能/index.html">
+<meta property="og:site_name" content="小树窝">
+<meta property="og:description" content="本次实验使用的架构和上一个实验网关：路由功能的架构大致相同，也需要在上一个实验的基础上，才能完全实现这一个实验的全部功能。说明：外网为ens33对接，内网为ens38、ens39对接需要实现以下任务1、 从外网向内网主机主动发起的 请求，不能进入内部网络    防火墙主机，仅允许内网主机 ping ，不回应外部主机的 ping 包。2、 防火墙主机，开放 80 端口服务，仅提供给 内部主机访问3、">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://liyuansh.github.io/images/iptables1.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/iptables2.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/iptables3.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/iptables4.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/iptables5.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/iptables7.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/iptables6.jpg">
+<meta property="og:image" content="https://liyuansh.github.io/images/iptables8.jpg">
+<meta property="og:updated_time" content="2019-08-15T12:39:16.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="运维实战二-网关:防火墙功能">
+<meta name="twitter:description" content="本次实验使用的架构和上一个实验网关：路由功能的架构大致相同，也需要在上一个实验的基础上，才能完全实现这一个实验的全部功能。说明：外网为ens33对接，内网为ens38、ens39对接需要实现以下任务1、 从外网向内网主机主动发起的 请求，不能进入内部网络    防火墙主机，仅允许内网主机 ping ，不回应外部主机的 ping 包。2、 防火墙主机，开放 80 端口服务，仅提供给 内部主机访问3、">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/iptables1.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">小树窝</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo1.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        小树窝
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个软件工程的迷途小书童
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-运维实战二-网关-防火墙功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      运维实战二-网关:防火墙功能
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-08-15
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>本次实验使用的架构和上一个实验<a href="https://liyuanshu.github.io/2019/08/13/%E8%BF%90%E7%BB%B4%E5%AE%9E%E6%88%98%E4%B8%80-%E7%BD%91%E5%85%B3%EF%BC%9A%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/#more" target="_blank" rel="noopener">网关：路由功能</a>的架构大致相同，也需要在上一个实验的基础上，才能完全实现这一个实验的全部功能。<br>说明：外网为ens33对接，内网为ens38、ens39对接<br><img src="/images/iptables1.jpg" alt="架构图"><br><strong>需要实现以下任务</strong><br>1、 从外网向内网主机主动发起的 请求，不能进入内部网络<br>    防火墙主机，仅允许内网主机 ping ，不回应外部主机的 ping 包。<br>2、 防火墙主机，开放 80 端口服务，仅提供给 内部主机访问<br>3、 防火墙主机，开放 22 端口服务，仅允许 内网的  管理员IP 访问，绑定MAC地址<br>4、 所有内网主机 要求能够通过  防火墙主机 正常访问（百度）</p>
+<h4 id="任务一"><a href="#任务一" class="headerlink" title="任务一"></a>任务一</h4><p>从外网向内网主机主动发起的 请求，不能进入内部网络防火墙主机，仅允许内网主机 ping ，不回应外部主机的 ping 包。<br>核心规则—–反向思维实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -P INPUT DROP                               ##全局规则</span><br><span class="line">iptables -t filter -A INPUT ! -i ens33 -p ICMP -j ACCEPT        ##非ens33网卡放行</span><br></pre></td></tr></table></figure></p>
+<p>外网效果：<br><img src="/images/iptables2.jpg" alt="效果"><br>内网效果：<br><img src="/images/iptables3.jpg" alt="效果"></p>
+<h4 id="任务二"><a href="#任务二" class="headerlink" title="任务二"></a>任务二</h4><p>防火墙主机，开放80端口服务，仅提供给 内部主机访问<br>核心规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -P INPUT DROP</span><br><span class="line">   iptables -t filter -A INPUT -i ens38 -p tcp --dport 80 -j ACCEPT</span><br><span class="line">   iptables -t filter -A INPUT -i ens39 -p tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<p>外网效果：<br><img src="/images/iptables4.jpg" alt="效果"><br>内网效果（ elinks <a href="http://192.168.1.4" target="_blank" rel="noopener">http://192.168.1.4</a> ）：<br><img src="/images/iptables5.jpg" alt="效果"></p>
+<h4 id="任务三"><a href="#任务三" class="headerlink" title="任务三"></a>任务三</h4><p>防火墙主机，开放 22 端口服务，仅允许 内网的  管理员IP 访问，绑定MAC地址<br><strong>前提——-设定内网的管理者为server3———IP：192.168.60.5———MAC：00:0c:29:ba:7e:0e</strong><br>核心规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -P INPUT DROP</span><br><span class="line">iptables -t filter -A INPUT -s 192.168.60.5 -p TCP --dport 22 -m mac --mac-source 00:0c:29:ba:7e:0e -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<p>server3连接：<br><img src="/images/iptables7.jpg" alt="效果"><br>其他主机连接：<br><img src="/images/iptables6.jpg" alt="效果"></p>
+<h4 id="任务四"><a href="#任务四" class="headerlink" title="任务四"></a>任务四</h4><p>所有内网主机 要求能够通过  防火墙主机 正常访问（百度）</p>
+<p>允许建立连接并且完全有效的包通行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -A INPUT -m state --state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<p>server2可以正常访问外网：<br><img src="/images/iptables8.jpg" alt="效果"></p>
+<p>允许所有的数据包可以经过forward检查点<br>snat技术把原地址转换，只要转换为server2主机中三张网卡的任意一个IP地址即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -P FORWARD ACCEPT</span><br><span class="line">iptables -t nat -A POSTROUTING -s 192.168.60.0/24 -o ens33 -j SNAT --to 192.168.1.4</span><br><span class="line">iptables -t nat -A POSTROUTING -s 55.168.10.0/24 -o ens33 -j SNAT --to 55.168.10.4          </span><br><span class="line"> ```  </span><br><span class="line">![效果](/images/iptables9.jpg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">防火墙规则脚本</span><br></pre></td></tr></table></figure></p>
+<p>#!/bin/bash<br>iptables -t filter -F<br>iptables -t nat -F<br>iptables -t filter -Z<br>iptables -t nat -Z<br>iptables -t filter -X<br>iptables -t nat -X</p>
+<p>#########INPUT#############<br>iptables -t filter -P INPUT DROP<br>iptables -t filter -A INPUT -s 192.168.1.1 -p TCP –dport 22 -j ACCEPT<br>iptables -t filter -A INPUT -m state –state ESTABLISHED -j ACCEPT<br>iptables -t filter -A INPUT ! -i ens33 -p ICMP -j ACCEPT<br>iptables -t filter -A INPUT -i ens38 -p tcp –dport 80 -j ACCEPT<br>iptables -t filter -A INPUT -i ens39 -p tcp –dport 80 -j ACCEPT<br>iptables -t filter -A INPUT -s 192.168.60.5 -p TCP –dport 22 -m mac –mac-source 00:0c:29:ba:7e:0e -j ACCEPT</p>
+<p>#########FORWARD,POSTROUTING#########<br>iptables -t filter -P FORWARD ACCEPT<br>iptables -t nat -A POSTROUTING -s 192.168.60.0/24 -o ens33 -j SNAT –to 192.168.1.4<br>iptables -t nat -A POSTROUTING -s 55.168.10.0/24 -o ens33 -j SNAT –to 55.168.10.4</p>
+<p><code>`</code></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年08月15日 20:39</p>
+        <p>原始链接： <a class="post-url" href="/2019/08/15/运维实战二-网关-防火墙功能/" title="运维实战二-网关:防火墙功能">https://LiYuanSh.github.io/2019/08/15/运维实战二-网关-防火墙功能/</a></p>
+        <footer>
+            <a href="https://LiYuanSh.github.io">
+                <img src="/images/logo1.jpg" alt="LiYuanShu">
+                LiYuanShu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat1.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat1.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay1.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/08/15/运维实战二-网关-防火墙功能/&title=《运维实战二-网关:防火墙功能》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/08/15/运维实战二-网关-防火墙功能/&title=《运维实战二-网关:防火墙功能》 — 小树窝&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/08/15/运维实战二-网关-防火墙功能/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《运维实战二-网关:防火墙功能》 — 小树窝&url=https://LiYuanSh.github.io/2019/08/15/运维实战二-网关-防火墙功能/&via=https://LiYuanSh.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/08/15/运维实战二-网关-防火墙功能/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/08/15/运维实战二-网关-防火墙功能/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#任务一"><span class="post-toc-text">任务一</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#任务二"><span class="post-toc-text">任务二</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#任务三"><span class="post-toc-text">任务三</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#任务四"><span class="post-toc-text">任务四</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/15/运维笔记六-TCP模型相关/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">运维笔记六-TCP/UDP相关</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 LiYuanShu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://LiYuanSh.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
