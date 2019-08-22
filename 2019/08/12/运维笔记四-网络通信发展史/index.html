@@ -1,85 +1,14 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="">
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="utf-8">
   
+  <title>运维笔记四-网络通信发展史 | 小树窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="原始时期电脑之间通信需要使用网线两两连接起来，需要消耗的资源巨大 当连接的数量越多时，需要使用的资源越多，并且网线之间对应的主机、网线接口的需求都是一系列大问题问题源：两台主机之间通信，当一台主机发出信息的时候不能同时接受信息(半双工工作状态)1两台主机之间连接2根线缆(双绞线)，全双工模式工作 集线器时期定义：用于连接多条网线、让多个终端能够通信的一种信号转发设备优点：分隔开各个终端设备（一个终">
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="原始时期电脑之间通信需要使用网线两两连接起来，需要消耗的资源巨大 当连接的数量越多时，需要使用的资源越多，并且网线之间对应的主机、网线接口的需求都是一系列大问题问题源：两台主机之间通信，当一台主机发出信息的时候不能同时接受信息(半双工工作状态)1两台主机之间连接2根线缆(双绞线)，全双工模式工作 集线器时期定义：用于连接多条网线、让多个终端能够通信的一种信号转发设备优点：分隔开各个终端设备（一个终">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维笔记四-网络通信发展史">
 <meta property="og:url" content="https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/index.html">
@@ -95,575 +24,412 @@
 <meta name="twitter:title" content="运维笔记四-网络通信发展史">
 <meta name="twitter:description" content="原始时期电脑之间通信需要使用网线两两连接起来，需要消耗的资源巨大 当连接的数量越多时，需要使用的资源越多，并且网线之间对应的主机、网线接口的需求都是一系列大问题问题源：两台主机之间通信，当一台主机发出信息的时候不能同时接受信息(半双工工作状态)1两台主机之间连接2根线缆(双绞线)，全双工模式工作 集线器时期定义：用于连接多条网线、让多个终端能够通信的一种信号转发设备优点：分隔开各个终端设备（一个终">
 <meta name="twitter:image" content="https://liyuansh.github.io/images/网络1.jpg">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/"/>
-
-
-
-
-
-  <title>运维笔记四-网络通信发展史 | 小树窝</title>
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
   
 
-
-
-
-
-
-
+  
+  
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">小树窝</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiYuanShu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小树窝">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">运维笔记四-网络通信发展史</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-12T18:58:01+08:00">
-                2019-08-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">小树窝</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
         </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo1.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        小树窝
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个软件工程的迷途小书童
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-运维笔记四-网络通信发展史" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      运维笔记四-网络通信发展史
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-08-12
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
       </header>
     
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry post-content" itemprop="articleBody">
       
-      
-
-      
-        <h3 id="原始时期"><a href="#原始时期" class="headerlink" title="原始时期"></a>原始时期</h3><pre><code>电脑之间通信需要使用网线两两连接起来，需要消耗的资源巨大
+            
+            <h3 id="原始时期"><a href="#原始时期" class="headerlink" title="原始时期"></a>原始时期</h3><pre><code>电脑之间通信需要使用网线两两连接起来，需要消耗的资源巨大
 </code></pre><p><img src="/images/网络1.jpg" alt="网络通信1"><br>当连接的数量越多时，需要使用的资源越多，并且网线之间对应的主机、网线接口的需求都是一系列大问题<br>问题源：两台主机之间通信，当一台主机发出信息的时候不能同时接受信息(半双工工作状态)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">两台主机之间连接2根线缆(双绞线)，全双工模式工作</span><br></pre></td></tr></table></figure></p>
 <h3 id="集线器时期"><a href="#集线器时期" class="headerlink" title="集线器时期"></a>集线器时期</h3><p>定义：用于连接多条网线、让多个终端能够通信的一种信号转发设备<br>优点：分隔开各个终端设备（一个终端的线路出现故障，其他设备不收影响）<br>功能：对接受到的信号进行再生放大，扩大网络传输距离。<br><img src="/images/网络2.jpg" alt="网络通信2"><br>集线器的发明，大大减少了资源的浪费，但是也引出了一系列问题<br>问题源一：当一个主机发出信息时，如何知道由那个目标主机接收<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">地址广播：IP地址查询(人类易记)，映射得出MAC</span><br><span class="line">MAC出现，为每台主机的唯一识别标志</span><br></pre></td></tr></table></figure></p>
 <p>问题源二：冲突域的产生(争用同一底层信道的主机集合)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">一. CSMA/CD：载波侦听，多路访问控制/冲突检测</span><br><span class="line">	发送信号前，先进行检测，一旦有空闲，则立刻发送信号，边发送边监听，遇到冲突，立刻停止，并后退</span><br><span class="line">AB同时发送，刚好冲突，两者都后退，再挑选随机时间，再次侦听。(使用此机制，成为Ethernet,以太网，免费)</span><br><span class="line">二. 令牌环，拥有令牌环的主机优先发送数据（IBM专利，付费）</span><br><span class="line">三. 环形网络</span><br></pre></td></tr></table></figure></p>
 <h3 id="网桥-交换机时代"><a href="#网桥-交换机时代" class="headerlink" title="网桥/交换机时代"></a>网桥/交换机时代</h3><p>定义：能够让多台不同网段的主机实现同时通信的一种设备。<br>优点：为集线器的升级版，解决了冲突域问题<br><img src="/images/网络3.jpg" alt="网络通信3"><br>解决冲突域是因为使用了物理闭合电路，形成独立路径传输数据，同时也添加了MAC表，加快了传输速度<br><img src="/images/网络4.jpg" alt="网络通信4"></p>
 <h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>交换机也是网桥的升级版，可以认为交换机就是多个网桥的集合，当然两个之间还是存在着很多的不同点：<br>（1）交换机工作时，实际上允许许多组端口间的通道同时工作。所以，交换机的功能体现出不仅仅是一个网桥的功能，而是多个网桥功能的集合。即网桥一般分有两个端口，而交换机具有高密度的端口。<br>（2）分段能力的区别<br>　　由于交换机能够支持多个端口，因此可以把网络系统划分成为更多的物理网段，这样使得整个网络系统具有更高的带宽。而网桥仅仅支持两个端口，所以，网桥划分的物理网段是相当有限的。<br>（3）传输速率的区别<br>　　交换机与网桥数据信息的传输速率相比，交换机要快于网桥。<br>（4）数据帧转发方式的区别<br>　　网桥在发送数据帧前，通常要接收到完整的数据帧并执行帧检测序列FCS后，才开始转发该数据帧。交换机具有存储转发和直接转发两种帧转发方式。直接转发方式在发送数据以前，不需要在接收完整个数据帧和经过32bit循环冗余校验码CRC的计算检查后的等待时间。</p>
 
-      
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年08月12日 20:04</p>
+        <p>原始链接： <a class="post-url" href="/2019/08/12/运维笔记四-网络通信发展史/" title="运维笔记四-网络通信发展史">https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/</a></p>
+        <footer>
+            <a href="https://LiYuanSh.github.io">
+                <img src="/images/logo1.jpg" alt="LiYuanShu">
+                LiYuanShu
+            </a>
+        </footer>
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
+</div>
 
       
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/08/10/运维笔记三-字符处理三剑客/" rel="next" title="运维笔记三-字符处理三剑客">
-                <i class="fa fa-chevron-left"></i> 运维笔记三-字符处理三剑客
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/12/运维笔记五-IP地址那点事/" rel="prev" title="运维笔记五-IP地址那点事">
-                运维笔记五-IP地址那点事 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">LiYuanShu</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">29</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始时期"><span class="nav-number">1.</span> <span class="nav-text">原始时期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集线器时期"><span class="nav-number">2.</span> <span class="nav-text">集线器时期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网桥-交换机时代"><span class="nav-number">3.</span> <span class="nav-text">网桥/交换机时代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区别"><span class="nav-number">3.1.</span> <span class="nav-text">区别</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
         
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">LiYuanShu</span>
-
-  
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat1.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat1.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay1.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/&title=《运维笔记四-网络通信发展史》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/&title=《运维笔记四-网络通信发展史》 — 小树窝&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《运维笔记四-网络通信发展史》 — 小树窝&url=https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/&via=https://LiYuanSh.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/08/12/运维笔记四-网络通信发展史/" alt="微信分享二维码">
+</div>
 
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
+<div class="mask"></div>
 
         
-
-
-
-
-
-
-
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
         
-      </div>
     </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原始时期"><span class="post-toc-text">原始时期</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#集线器时期"><span class="post-toc-text">集线器时期</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网桥-交换机时代"><span class="post-toc-text">网桥/交换机时代</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#区别"><span class="post-toc-text">区别</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/08/12/运维笔记五-IP地址那点事/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          运维笔记五-IP地址那点事
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/08/10/运维笔记三-字符处理三剑客/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">运维笔记三-字符处理三剑客</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
+</section>
         
       </div>
-    
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
-    
 
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 LiYuanShu<br>
+      </p>
+    </div>
   </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://LiYuanSh.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
   }
 </script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
 
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
+  </div>
 </body>
 </html>
