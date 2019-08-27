@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://liyuansh.github.io/images/六iptables1.jpg">
 <meta property="og:image" content="https://liyuansh.github.io/images/六iptables2.jpg">
-<meta property="og:updated_time" content="2019-08-24T08:40:01.163Z">
+<meta property="og:updated_time" content="2019-08-24T08:44:07.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维笔记六:iptables">
 <meta name="twitter:description" content="防火墙：在数据包经过的位置设置某些规则，决定数据包的走向。       网关防火墙：主要作用于数据包转发、IP地址转换(DNAT、SNAT)、INPUT防御       单击防火墙：主要作用于INPUT链点，自我保护重要知识点：四表五链—-数据包的行走规则，防御规则五个链点即三种走法： 四个功能实现表：filter：用于实现数据包过滤功能。作用链点：INPUT、OUTPUT、FORWARDnat：">
@@ -154,13 +154,15 @@
 <p>字符配置模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-m string --algo kmp|bm --string &quot;STRING&quot; </span><br><span class="line">--algo kmp|bm : 有kmp/bm两种算法供选择，实现字符串匹配</span><br><span class="line">例子：在下午两点到四点不允许访问 taobao 的包经过forward检查点</span><br><span class="line"> iptables -t filter -A FORWARD -m time --timestart 8:00 --timestop 10:00  -m string --algo kmp --string &quot;taobao&quot; -j DROP</span><br></pre></td></tr></table></figure></p>
 <p>recent模块—限制连接次数，一般用于防范暴力破解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">例子：对连接到本机的SSH连接进行限制，每个IP每小时只限连接5次。</span><br><span class="line"> iptables -t filter -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --name SSHPOOL --rcheck --seconds 3600 --hitcount 5 -j DROP</span><br><span class="line"></span><br><span class="line"> iptables -t filter -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --name SSHPOOL --set -j ACCEPT</span><br><span class="line">注：第一条规则有检查作用；第二条规则是为新IP做一个记录</span><br></pre></td></tr></table></figure></p>
 <h4 id="选择策略-j-target-jump"><a href="#选择策略-j-target-jump" class="headerlink" title="选择策略(-j [target/jump])"></a>选择策略(-j [target/jump])</h4><p>-j ACCEPT：接受，放行<br>-j DROP：丢弃，不回应<br>-j REJECT：拒接。回复拒绝信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">可以设置提示信息:</span><br><span class="line">--reject-with  选项,当对方被拒绝时，会提示对方为什么被拒绝。</span><br><span class="line">                可用值如下</span><br><span class="line">                icmp-net-unreachable    icmp-host-unreachable   icmp-port-unreachable   icmp-proto-unreachable</span><br><span class="line">                icmp-net-prohibited     icmp-host-pro-hibited       icmp-admin-prohibited</span><br><span class="line">                当不设置任何值时，默认值为icmp-port-unreachable。</span><br></pre></td></tr></table></figure></p>
-<p>-j RETURN：返回<br>-j DNAT：目标地址转换—–一般用于内网访问<br>例子：iptables -t nat -A PREROUTING -p tcp –dport 430 -d -j DNAT –to 192.168.1.4:80(后面可附加端口，实现端口转换)<br>-j SNAT：目标地址转换<br>例子：iptables -t nat -A POSTROUTING -p tcp –dport 80 -d -j SNAT –to 10.1.1.1<br>-j MASQUERADE：地址伪装—–实现功能类型于SNAT，不过更加自动化，但是也更加消耗资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A POSTROUTING  -s 10.1.1.0/24  -o  ppp0    -j  SNAT  --to  202.96.111.14  ##网卡的外网IP </span><br><span class="line">等同于</span><br><span class="line">iptables -t nat -A POSTROUTING  -s 10.1.1.0/24  -o  ppp0    -j  MASQUERADE         ##ppp0 接公网。</span><br></pre></td></tr></table></figure></p>
-<p>-j REDIRECT：内部端口重定向—-一般可以直接用DNAT功能实现<br>例子：iptables -t nat -A PREROUTING -d 10.1.1.1 –dport 80 -j  REDIRECT –to 3128</p>
+<p>-j RETURN：返回<br>-j DNAT：目标地址转换—–一般用于内网访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：iptables -t nat -A PREROUTING -p tcp --dport 430 -d -j DNAT --to 192.168.1.4:80(后面可附加端口，实现端口转换)</span><br></pre></td></tr></table></figure></p>
+<p>-j SNAT：目标地址转换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：iptables -t nat -A POSTROUTING -p tcp --dport 80 -d -j SNAT --to 10.1.1.1</span><br></pre></td></tr></table></figure></p>
+<p>-j MASQUERADE：地址伪装—–实现功能类型于SNAT，不过更加自动化，但是也更加消耗资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A POSTROUTING  -s 10.1.1.0/24  -o  ppp0    -j  SNAT  --to  202.96.111.14  ##网卡的外网IP </span><br><span class="line">等同于</span><br><span class="line">iptables -t nat -A POSTROUTING  -s 10.1.1.0/24  -o  ppp0    -j  MASQUERADE         ##ppp0 接公网。</span><br></pre></td></tr></table></figure></p>
+<p>-j REDIRECT：内部端口重定向—-一般可以直接用DNAT功能实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：iptables -t nat -A PREROUTING -d 10.1.1.1 --dport 80 -j  REDIRECT --to 3128</span><br></pre></td></tr></table></figure></p>
 <p>-j LOG：把日志信息重定向输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">例子： 把从ens33网卡进入想连接sshd服务的信息重定向记录</span><br><span class="line">iptables -t filter -A INPUT -i ens33 -p tcp --dport 22 -m state --state NEW -j LOG</span><br><span class="line">此操作需要修改内核：</span><br><span class="line">#vim /etc/rsyslog.conf</span><br><span class="line">在最后添加： </span><br><span class="line">kern.warning    /var/log/iptables.log(重定向目标文件)</span><br><span class="line">重启服务：service rsyslog restart</span><br></pre></td></tr></table></figure></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年08月24日 16:40</p>
+        <p>最后更新： 2019年08月24日 16:44</p>
         <p>原始链接： <a class="post-url" href="/2019/08/22/运维笔记六-iptables/" title="运维笔记六:iptables">https://LiYuanSh.github.io/2019/08/22/运维笔记六-iptables/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
@@ -285,6 +287,16 @@
 
 <nav id="article-nav">
   
+    <a href="/2019/08/27/运维实战三-跳板机的建立与管理/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          运维实战三-跳板机的建立与管理
+        
+      </span>
+    </a>
+  
   
     <a href="/2019/08/15/运维实战二-网关-防火墙功能/" id="article-nav-older" class="article-nav-link-wrap">
       <span class="article-nav-title">运维实战二-网关:防火墙功能</span>
@@ -352,7 +364,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/Django/" style="font-size: 14px;">Django</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/知识点/" style="font-size: 16px;">知识点</a> <a href="/tags/网络/" style="font-size: 12px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 14px;">Django</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/知识点/" style="font-size: 16px;">知识点</a> <a href="/tags/网络/" style="font-size: 12px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -385,7 +397,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/Django/" style="font-size: 14px;">Django</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/知识点/" style="font-size: 16px;">知识点</a> <a href="/tags/网络/" style="font-size: 12px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 14px;">Django</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/知识点/" style="font-size: 16px;">知识点</a> <a href="/tags/网络/" style="font-size: 12px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
         </div>
     </div>
 </div>
