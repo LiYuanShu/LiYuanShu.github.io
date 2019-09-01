@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Apache:编译版安装与基本配置 | 小树窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="源码包准备：官网下载或者作者站点下载一共三个包：依赖包：apr-1.7.0.tar.gz  apr-util-1.6.1.tar.gz功能包：httpd-2.4.39.tar.gzyum安装相关的依赖包，防止后面进行编译源码包是出现致命错误：1[root@liyuanshu ~]# yum install -y gcc  pcre  pcre-devel  expat-devel   bzip2">
+<meta name="keywords" content="-运维 -Apache">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache:编译版安装与基本配置">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/08/30/Apache-编译版安装与基本配置/index.html">
+<meta property="og:site_name" content="小树窝">
+<meta property="og:description" content="源码包准备：官网下载或者作者站点下载一共三个包：依赖包：apr-1.7.0.tar.gz  apr-util-1.6.1.tar.gz功能包：httpd-2.4.39.tar.gzyum安装相关的依赖包，防止后面进行编译源码包是出现致命错误：1[root@liyuanshu ~]# yum install -y gcc  pcre  pcre-devel  expat-devel   bzip2">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://liyuansh.github.io/images/apache1.png">
+<meta property="og:updated_time" content="2019-08-31T07:38:56.016Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Apache:编译版安装与基本配置">
+<meta name="twitter:description" content="源码包准备：官网下载或者作者站点下载一共三个包：依赖包：apr-1.7.0.tar.gz  apr-util-1.6.1.tar.gz功能包：httpd-2.4.39.tar.gzyum安装相关的依赖包，防止后面进行编译源码包是出现致命错误：1[root@liyuanshu ~]# yum install -y gcc  pcre  pcre-devel  expat-devel   bzip2">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/apache1.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">小树窝</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo1.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        小树窝
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个软件工程的迷途小书童
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Apache-编译版安装与基本配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Apache:编译版安装与基本配置
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-08-30
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>源码包准备：<a href="http://httpd.apache.org/" target="_blank" rel="noopener">官网下载</a>或者<a href="http://118.31.1.145/software/" target="_blank" rel="noopener">作者站点下载</a><br>一共三个包：<br>依赖包：apr-1.7.0.tar.gz  apr-util-1.6.1.tar.gz<br>功能包：httpd-2.4.39.tar.gz<br>yum安装相关的依赖包，防止后面进行编译源码包是出现致命错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@liyuanshu ~]# yum install -y gcc  pcre  pcre-devel  expat-devel   bzip2  openssl-devel   zlib*  libtool</span><br></pre></td></tr></table></figure></p>
+<p>解压三个源码包到/usr/local/src目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@liyuanshu software]# tar xf apr-1.7.0.tar.gz -C /usr/local/src/</span><br><span class="line">[root@liyuanshu software]# tar xf apr-util-1.6.1.tar.gz -C /usr/local/src/</span><br><span class="line">[root@liyuanshu software]# tar xf httpd-2.4.39.tar.gz -C /usr/local/src/</span><br><span class="line">注： -C参数为指定解压位置的绝对路径，不然默认为当前路径下的相对路径</span><br></pre></td></tr></table></figure></p>
+<p>编译安装：<br>三大顺序：<br>./congfigure  功能选项——-根据所选择的功能，对当前操作系统进行检测。<br>               –prefix：指定软件存放的位置[root@liyuanshu apr-1.7.0]# make install<br>               –with-apr:选择依赖的相关软件所在的路径<br>               –enable-so:打开 so 模块，启用动态装载模块功能<br>               –enable-cgi:启用cgi功能，为非线程方式工作的mpm使用<br>               –enable-cgid:以线程工作（worker/event）的mpm使用<br>               –enable-rewrite:支持 URL 重写<br>               –enable-zlib:通用压缩机制<br>               –enable-module=[ all | most | ……]    指定启用哪些模块。可指定具体的模块名，也可使用all表示启用所有模块，most表示启用大多数常用模块。一般使用most即可<br>               –enable-mpms-shared=all:启用MPM支持的模式,启用哪种mpm(prefork，worker，event),使用worker或event时要另外一种方式编译php(编译时使用了–enable-maintainer-zts选项)<br>make—————预先生成安装文件，若有出错现象原因一般为源码错误或者内存不足，使用make clean清除缓存(防止第二次make的时候出错)<br>make install——-将编译生成的相关资源，输出到指定的系统目录中。<br><strong>因为httpd包的安装依赖于另外两个包，所有三个源码包之间安装有先后顺序</strong><br>apr-1.7.0.tar.gz安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@liyuanshu apr-1.7.0]# ./configure --prefix=/usr/local/apr</span><br><span class="line">[root@liyuanshu apr-1.7.0]# make</span><br><span class="line">[root@liyuanshu apr-1.7.0]# make install</span><br></pre></td></tr></table></figure></p>
+<p>apr-util-1.6.1.tar.gz安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@liyuanshu apr-util-1.6.1]# ./configure --prefix=/usr/loacal/apr-util --with-apr=/usr/local/apr</span><br><span class="line">[root@liyuanshu apr-util-1.6.1]# make</span><br><span class="line">[root@liyuanshu apr-util-1.6.1]# make install</span><br></pre></td></tr></table></figure></p>
+<p>httpd-2.4.39.tar.gz安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@liyuanshu httpd-2.4.39]# ./configure --prefix=/usr/local/apache24  --enable-so  --enable-ssl --enable-cgi --enable-rewrite --with-zlib --with-pcre --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util --enable-modules=most --enable-mods-shared=most --enable-mpms-shared=all  --with-mpm=event</span><br><span class="line">[root@liyuanshu httpd-2.4.39]# make -j 4   ##同时开启四个子进程进行编译</span><br><span class="line">[root@liyuanshu httpd-2.4.39]# make install</span><br></pre></td></tr></table></figure></p>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>Apache使用模块化管理功能，若想使用某些功能，必须开启相关的模块<br>有一个主配置文件以及若个相关配置文件组成：<br><img src="/images/apache1.png" alt="配置文件"><br>配置文件的内容很多很杂，以下只记录一些常用到的基本选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">##默认工作目录，后续的配置如果使用相对路径，则将以这个 项目 为相对路径的  查找起始点。</span><br><span class="line">ServerRoot &quot;/usr/local/apache24&quot;</span><br><span class="line">##监听端口</span><br><span class="line">Listen 80</span><br><span class="line">Timeout 60    ##服务器断开请求失败的等待时间（一.get请求的等待时间    二.post和put请求,两个TCP包之间的等待时间    三. 应答时传输两个ACK包之间的等待时间）</span><br><span class="line">KeepAlive On    ##是否开启维持HTTP回话连接功能</span><br><span class="line">MaxKeepAliveRequests 0   ##一个连接允许的请求数量，0为无限制</span><br><span class="line">KeepAliveTimeout 20        ##维持HTTP回话连接功能的时间</span><br><span class="line">UseCanonicalName Off      ##是否运行服务器设置自己的域名（若拥有虚拟主机则不能开启）</span><br><span class="line">AccessFileName .htaccess     ##设置分布式配置文件的名字</span><br><span class="line">ServerTokens Prod      ##展示http服务的名称形式，prod只显示服务名称</span><br><span class="line">ServerSignature Off    ##页面产生错误时显示服务器版本信息</span><br><span class="line">HostnameLookups Off   ##设置是否启动对客户端IP进行域名解析（Off | On |  Double），浪费资源与时间，一般不开启</span><br></pre></td></tr></table></figure></p>
+<p>虚拟主机端配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;Directory &quot;/data/web-data/class.com&quot;&gt;</span><br><span class="line">        Options None</span><br><span class="line">        AllowOverride None</span><br><span class="line">        Require all granted</span><br><span class="line">        &lt;/Directory&gt;</span><br><span class="line">        ServerAdmin 123123@qq.com</span><br><span class="line">        DocumentRoot &quot;/data/web-data/class.com&quot;</span><br><span class="line">        ServerName www.class.com</span><br><span class="line">        ErrorLog &quot;logs/class.com-error_log&quot;</span><br><span class="line">        CustomLog &quot;logs/class.com-access_log&quot; common</span><br><span class="line">        &lt;IfModule dir_module&gt;</span><br><span class="line">                DirectoryIndex index.html</span><br><span class="line">        &lt;/IfModule&gt;</span><br><span class="line"></span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line">###根目录的三个参数设置</span><br><span class="line">Options：配置特定目录下可以使用那些属性</span><br><span class="line">    All---准许除MultiViews以外的所有功能</span><br><span class="line">    MultiViews---允许多重内容被浏览，如果你的目录下有一个叫做  foo.txt  的文件，那么你可以通过 /foo 来访问到它，类似模糊寻找</span><br><span class="line">    Indexes----若该目录下无 index 主页索引文件 ， 则准许显示该目录下的文件以供选择</span><br><span class="line">    ExecCGI---在该目录下准许使用 CGI </span><br><span class="line">    None  </span><br><span class="line">AllowOverride：指明Apache服务器是否去找  .htacess  文件作为配置文件，如果设置为none,那么服务器将忽略 .htacess文件，</span><br><span class="line">               如果设置为All , 那么所有在  .htaccess  文件里有的指令都将被重写。</span><br><span class="line">Require：设置客户端的访问</span><br><span class="line"> Require all granted---允许所有IP访问</span><br><span class="line"> Require all denied---不允许任何IP访问</span><br><span class="line"> Require ip  192.168.1.0/24---允许某个网段的IP访问</span><br><span class="line"> Require not ip  192.168.80.0/24---不允许某个网段的IP访问</span><br><span class="line"> Require  host  test.com---不允许主机名是test.com的主机访问</span><br></pre></td></tr></table></figure></p>
+<p>注：想在一个apache服务中设置多个站点的方法(1.每个目录监听不一样的端口；2.开启多张物理网卡，每个目录使用不同IP；3.每个目录使用不同主机名)</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年08月31日 15:38</p>
+        <p>原始链接： <a class="post-url" href="/2019/08/30/Apache-编译版安装与基本配置/" title="Apache:编译版安装与基本配置">https://LiYuanSh.github.io/2019/08/30/Apache-编译版安装与基本配置/</a></p>
+        <footer>
+            <a href="https://LiYuanSh.github.io">
+                <img src="/images/logo1.jpg" alt="LiYuanShu">
+                LiYuanShu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat1.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat1.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay1.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/08/30/Apache-编译版安装与基本配置/&title=《Apache:编译版安装与基本配置》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/08/30/Apache-编译版安装与基本配置/&title=《Apache:编译版安装与基本配置》 — 小树窝&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/08/30/Apache-编译版安装与基本配置/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Apache:编译版安装与基本配置》 — 小树窝&url=https://LiYuanSh.github.io/2019/08/30/Apache-编译版安装与基本配置/&via=https://LiYuanSh.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/08/30/Apache-编译版安装与基本配置/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/08/30/Apache-编译版安装与基本配置/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维-Apache/" class="color2">-运维 -Apache</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件"><span class="post-toc-text">配置文件</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/08/30/Django博客：Hello-word页面/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Django博客：Hello word页面
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/08/28/运维笔记七-web相关/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">运维笔记七-web相关</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 LiYuanShu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://LiYuanSh.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

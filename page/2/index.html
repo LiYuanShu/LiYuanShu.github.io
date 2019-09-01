@@ -107,6 +107,420 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
+    <article id="post-运维笔记六-TCP模型相关" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/15/运维笔记六-TCP模型相关/"  >运维笔记六-TCP/UDP相关</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/08/15/运维笔记六-TCP模型相关/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维笔记六-TCP/UDP相关" title="运维笔记六-TCP/UDP相关">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                计算机数据传输的模型图（一般现在按四层模型划分）：
+传输层主要存在两个协议：    TCP：面向连接–三次握手、四次挥手；保证高可靠性(数据无丢失—-重传机制、数据有序传输、数据无错误—-校验码、数据无重复到达)    UDP：无连接,不可靠传输，常用于视频播放之类
+TCPTCP头部正常情况下包含20个字节，主要包含以下内容：    端口号—–源端口(客户端浏览器打开的端...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-08-15</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/运维/" class="color3">运维</a>
+      
+    <a href="/tags/知识点/" class="color4">知识点</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/08/15/运维笔记六-TCP模型相关/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维实战一-网关：路由功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/13/运维实战一-网关：路由功能/"  >运维实战一-网关：路由功能</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/08/13/运维实战一-网关：路由功能/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战一-网关：路由功能" title="运维实战一-网关：路由功能">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。
+本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。
+接入虚拟交换机根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。
+初步设置ip将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-08-13</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/运维/" class="color3">运维</a>
+      
+    <a href="/tags/网络/" class="color3">网络</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/08/13/运维实战一-网关：路由功能/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维笔记五-IP地址那点事" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/12/运维笔记五-IP地址那点事/"  >运维笔记五-IP地址那点事</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/08/12/运维笔记五-IP地址那点事/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维笔记五-IP地址那点事" title="运维笔记五-IP地址那点事">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                IP地址用来表示互联网上主机的编号，互联网上主机之间都需要利用IP地址进行通信。IP地址由网络号和主机号组成(网络号决定网络数量，主机号决定主机数量)。
+**网络号和主机号不能全部为0**
+**最高的网络号&quot;位&quot;必须为0**
+A类地址网络数量：126-1+1=126主机数量：256256254A类私有网络段地址：10.0.0.0—10.255.255....
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-08-12</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/运维/" class="color3">运维</a>
+      
+    <a href="/tags/知识点/" class="color4">知识点</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/08/12/运维笔记五-IP地址那点事/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维笔记四-网络通信发展史" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/12/运维笔记四-网络通信发展史/"  >运维笔记四-网络通信发展史</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/08/12/运维笔记四-网络通信发展史/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维笔记四-网络通信发展史" title="运维笔记四-网络通信发展史">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                原始时期电脑之间通信需要使用网线两两连接起来，需要消耗的资源巨大
+当连接的数量越多时，需要使用的资源越多，并且网线之间对应的主机、网线接口的需求都是一系列大问题问题源：两台主机之间通信，当一台主机发出信息的时候不能同时接受信息(半双工工作状态)1两台主机之间连接2根线缆(双绞线)，全双工模式工作
+集线器时期定义：用于连接多条网线、让多个终端能够通信的一种信号转发设备优点：...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-08-12</li>
+            
+            
+        </ul>
+        
+            <a href="/2019/08/12/运维笔记四-网络通信发展史/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维笔记三-字符处理三剑客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/10/运维笔记三-字符处理三剑客/"  >运维笔记三-字符处理三剑客</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/08/10/运维笔记三-字符处理三剑客/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维笔记三-字符处理三剑客" title="运维笔记三-字符处理三剑客">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                grep全称 Global search Regular Expression and Printing，提取文本内容的整行，执行速度快，适合大篇幅文本信息处理。grep家族123grep   默认的基础正则表达式egrep  扩展正则表达式（相当于 grep -E）fgrep 不支持正则表达式或者元字符，搜索字符串速度快
+使用方法语法： grep [options] &...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-08-10</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/运维/" class="color3">运维</a>
+      
+    <a href="/tags/知识点/" class="color4">知识点</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/08/10/运维笔记三-字符处理三剑客/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维笔记二-正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/运维笔记二-正则表达式/"  >运维笔记二-正则表达式</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/08/07/运维笔记二-正则表达式/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维笔记二-正则表达式" title="运维笔记二-正则表达式">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                正则表达式(字符)是一种字符模式，用于查找过程中匹配指定字符。
+常用正则元字符   元字符指在正则表达式中拥有特殊含义，不再是表明含义。
+元字符/其他  |  含义
+  ^ [^]      | 第一个表示开头  第二个表示对[]里的字符取反
+  $          | 表示字符结尾
+  *          | 表示0次或者多次
+   .         | 任意字符...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-08-07</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/运维/" class="color3">运维</a>
+      
+    <a href="/tags/知识点/" class="color4">知识点</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/08/07/运维笔记二-正则表达式/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维笔记一-常用命令的常用选项" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/05/运维笔记一-常用命令的常用选项/"  >运维笔记一:常用命令的常用选项</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/08/05/运维笔记一-常用命令的常用选项/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维笔记一:常用命令的常用选项" title="运维笔记一:常用命令的常用选项">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                ls命令ls主要为查看一个文件夹目录下存放的内容（普通文件、目录、软链接、设备…）
+命令选项  |  作用
+ -a       | 列出所有文件
+ -l      | 按照文件名称默认排序
+ -S      | 按照文件的大小排序，从大到小
+ -t      | 显示mtime并mtime排序，新的在前面
+ -ct     | 显示ctime并且排序，新的排前面
+  补充...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-08-05</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/运维/" class="color3">运维</a>
+      
+    <a href="/tags/知识点/" class="color4">知识点</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/08/05/运维笔记一-常用命令的常用选项/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
     <article id="post-python——Gevent协程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -221,63 +635,6 @@
 
 
   
-    <article id="post-Django项目详解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/Django项目详解/"  >Django项目详解</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/04/13/Django项目详解/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="Django项目详解" title="Django项目详解">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                Django项目文件作用manage.py:和项目交互都基于这个文件。可以在终端输入python manage.py [命令]。用python manage.py help查看可以进行哪些操作settings.py: 项目的设置项，和项目相关的配都在里面urls.py: 配置URL路由，url与视图函数做映射。例如访问http://127.0.0.1/news/ 是访问新...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-04-13</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/python/" class="color2">python</a>
-      
-    <a href="/tags/Django/" class="color2">Django</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/04/13/Django项目详解/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
     <article id="post-Django" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -328,324 +685,6 @@
         </ul>
         
             <a href="/2019/04/13/Django/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-git与github的结合使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/24/git与github的结合使用/"  >git与github的结合使用</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/03/24/git与github的结合使用/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="git与github的结合使用" title="git与github的结合使用">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                   git为版本控制工具，github为代码托管平台。可以使用git把自己的一些项目上传到github上，或者创建一个项目发布到github，进行协同开发。
-git命令创建一个文件夹，并且在git进入到文件中，初始化成为本地创库1git init
-把所需要上传的项目复制到工作区中，然后添加到缓存区，提交到本地仓库12git add fileNamegit commit ...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-03-24</li>
-            
-            
-        </ul>
-        
-            <a href="/2019/03/24/git与github的结合使用/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-Django的第一个项目实现" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/24/Django的第一个项目实现/"  >Django的第一个项目实现</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/03/24/Django的第一个项目实现/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="Django的第一个项目实现" title="Django的第一个项目实现">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                  Django是一个开放源代码的Web应用框架。学习目的：搭建一个属于自己的网站
-前期准备   虚拟环境的安装使用，可以把各个python项目分隔开来，利于管理，更合理的分配存储空间，其中选择virtualenvwrapper   vitualenvwrapper安装与使用：           ①pip install virtualenvwrapper-win   ...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-03-24</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/python/" class="color2">python</a>
-      
-    <a href="/tags/Django/" class="color2">Django</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/03/24/Django的第一个项目实现/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-DNS服务的搭建与配置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/10/DNS服务的搭建与配置/"  >DNS服务的搭建与配置</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/03/10/DNS服务的搭建与配置/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="DNS服务的搭建与配置" title="DNS服务的搭建与配置">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                以前的错误知识体系   DNS服务器主要提供域名解析功能，例如把www.baidu.com这个域名解析为相对应的IP地址，然后才能对百度进行访问。   两种解析方式：        递归查询：客户机向根服务器进行查询，后面的查询操作由各级DNS服务器相互进行，最后由根服务返回结果给客户机            特点：客户机只需要发出一次请求，便可以得到域名对应的IP地址 ...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-03-10</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/运维/" class="color3">运维</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/03/10/DNS服务的搭建与配置/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-git版本切换" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/05/git版本切换/"  >git版本切换</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/03/05/git版本切换/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="git版本切换" title="git版本切换">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                  git本地库经过修改本地内容后，可以无数次提交到本地仓库，通过秘钥记录的方式，可以自由切换到自己想要的版本。
-查看日志   git reflog：查看版本号，可显示所有版本记录   git log –oneline：只显示当前版本的历史记录
-基于索引值：  ①git reflog：查看版本号（第一列）
-  ②git reset –hard 版本号使用^符号：   gi...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-03-05</li>
-            
-            
-        </ul>
-        
-            <a href="/2019/03/05/git版本切换/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="w-dhcp服务的搭建和配置" class="article article-type-w" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/03/dhcp服务的搭建和配置/"  >dhcp服务的搭建和配置</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/03/03/dhcp服务的搭建和配置/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="dhcp服务的搭建和配置" title="dhcp服务的搭建和配置">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                简介DHCP：动态主机配置协议（dynamic host configuration protocol）dhcp服务作用：管理动态的ip地址分配以及其他相关的环境配置工作实现过程：①客户端————dhcp discover————&gt;服务端         ②客户端&lt;————dhcp offer————服务端         ③客户端————dhcp reque...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-03-03</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/运维/" class="color3">运维</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/03/03/dhcp服务的搭建和配置/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-git创建本地创库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/26/git创建本地创库/"  >git————本地创库</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/02/26/git创建本地创库/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="git————本地创库" title="git————本地创库">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                
-   git作为一个开源的、分布式版本管理系统，同时也是linux社区下的产品。学习git，既能更深入理解linux系统，也能通过git来更好地使用github，达到以码会友的效果。创建本地创库   1.首先在自己的电脑合适的磁盘位置创建一个空的文件夹本(test)，用来存放项目的内容   2.以test文件夹作为家目录，打开git bash here，然后初始化本地创...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-02-26</li>
-            
-            
-        </ul>
-        
-            <a href="/2019/02/26/git创建本地创库/#more" class="article-more-link" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -714,7 +753,7 @@ git命令创建一个文件夹，并且在git进入到文件中，初始化成�
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 14px;">Django</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/知识点/" style="font-size: 16px;">知识点</a> <a href="/tags/网络/" style="font-size: 12px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -747,7 +786,7 @@ git命令创建一个文件夹，并且在git进入到文件中，初始化成�
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 14px;">Django</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/知识点/" style="font-size: 16px;">知识点</a> <a href="/tags/网络/" style="font-size: 12px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
         </div>
     </div>
 </div>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Apache:站点重定向，防盗链、伪静态 | 小树窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="为了本篇章的内容更容易看出效果，会联合两台虚拟机一起做实验。为了更快速能够使用上apache服务。直接对另一台虚拟机实现apache绿色移植。linux编译安装一个软件包后全部内容都会存在一个文件夹中，因此只需直接拷贝相应服务的文件夹过去即可：[root@DMZ-httpd /usr/local]# scp -r apr apr-util/ apache24/ 192.168.1.20:/usr/">
+<meta name="keywords" content="-运维 -Apache">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache:站点重定向，防盗链、伪静态">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/08/31/Apache-站点重定向，防盗链、伪静态/index.html">
+<meta property="og:site_name" content="小树窝">
+<meta property="og:description" content="为了本篇章的内容更容易看出效果，会联合两台虚拟机一起做实验。为了更快速能够使用上apache服务。直接对另一台虚拟机实现apache绿色移植。linux编译安装一个软件包后全部内容都会存在一个文件夹中，因此只需直接拷贝相应服务的文件夹过去即可：[root@DMZ-httpd /usr/local]# scp -r apr apr-util/ apache24/ 192.168.1.20:/usr/">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://liyuansh.github.io/images/apache6.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/apache7.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/apache8.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/apache9.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/apache10.png">
+<meta property="og:updated_time" content="2019-09-01T11:00:15.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Apache:站点重定向，防盗链、伪静态">
+<meta name="twitter:description" content="为了本篇章的内容更容易看出效果，会联合两台虚拟机一起做实验。为了更快速能够使用上apache服务。直接对另一台虚拟机实现apache绿色移植。linux编译安装一个软件包后全部内容都会存在一个文件夹中，因此只需直接拷贝相应服务的文件夹过去即可：[root@DMZ-httpd /usr/local]# scp -r apr apr-util/ apache24/ 192.168.1.20:/usr/">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/apache6.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">小树窝</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo1.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        小树窝
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个软件工程的迷途小书童
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Apache-站点重定向，防盗链、伪静态" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Apache:站点重定向，防盗链、伪静态
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-08-31
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>为了本篇章的内容更容易看出效果，会联合两台虚拟机一起做实验。为了更快速能够使用上apache服务。直接对另一台虚拟机实现apache绿色移植。<br>linux编译安装一个软件包后全部内容都会存在一个文件夹中，因此只需直接拷贝相应服务的文件夹过去即可：<br><img src="/images/apache6.png" alt="apache绿色移植"><br>[root@DMZ-httpd /usr/local]# scp -r apr apr-util/ apache24/ 192.168.1.20:/usr/local/</p>
+<h3 id="rewrite模块–重定向"><a href="#rewrite模块–重定向" class="headerlink" title="rewrite模块–重定向"></a>rewrite模块–重定向</h3><p>当一个站点的内容搬迁到另一个站点时，为了防止用户群体丢失，当访问原来站点的域名会自动跳转到新域名的站点中。<br>实现目标：访问server4的www.class.com/image时，自动跳转到server3的www.gz.com/blog.html。如果访问www.class.com其他目录，则不会跳转。<br>在server4的配置文件中的设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        DocumentRoot &quot;/data/web-data/class.com&quot;</span><br><span class="line">        &lt;Directory &quot;/data/web-data/class.com&quot;&gt;</span><br><span class="line">        Options None</span><br><span class="line">        AllowOverride None</span><br><span class="line">        Require all granted</span><br><span class="line">        &lt;/Directory&gt;</span><br><span class="line">        ServerName www.class.com</span><br><span class="line">        RewriteEngine On</span><br><span class="line">        ##匹配条件      内置环境变量     正则表达式</span><br><span class="line">        RewriteCond   %&#123;HTTP_HOST&#125;     !^$</span><br><span class="line">        RewriteCond   %&#123;HTTP_HOST&#125;     www\.class\.com/images [NC]</span><br><span class="line">        RewriteRule  ^.*$    http://www.gz.com/blog.html  [R=301,NC,L]</span><br><span class="line">        ServerAdmin 123123@qq.com</span><br><span class="line">        ErrorLog &quot;logs/class.com-error_log&quot;</span><br><span class="line">        CustomLog &quot;logs/class.com-access_log&quot; commona</span><br><span class="line">        &lt;IfModule dir_module&gt;</span><br><span class="line">                DirectoryIndex index.html</span><br><span class="line">        &lt;/IfModule&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line"> [ NC]  指的是不区分大小写</span><br><span class="line">  [R]  强制重定向 redirect</span><br><span class="line">  字母 L 表示如果能匹配本条规则，那么本条规则是最后一条(Last)，忽略之后的规则</span><br><span class="line"> RewriteCond可以有多个，每个RewriteCond直接为“与”关系，只有全部满足，才执行RewriteRule选项的内容</span><br></pre></td></tr></table></figure></p>
+<p>开启rewrite模块：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule rewrite_module   modules/mod_rewrite.so</span><br></pre></td></tr></table></figure></p>
+<h3 id="rewrite模块–防盗链"><a href="#rewrite模块–防盗链" class="headerlink" title="rewrite模块–防盗链"></a>rewrite模块–防盗链</h3><p>开启rewrite模块：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule rewrite_module   modules/mod_rewrite.so</span><br></pre></td></tr></table></figure></p>
+<p>在需要实现防盗链的虚拟主机下添加配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">##浏览器输入域名不为空</span><br><span class="line">RewriteCond  %&#123;HTTP_REFERER&#125;  !^$</span><br><span class="line">##浏览器不是直接访问gz.com，而是由其他站点链接过来</span><br><span class="line">RewriteCond  %&#123;HTTP_REFERER&#125;  !gz\.com</span><br><span class="line">##请求以图片格式结尾的内容</span><br><span class="line">RewriteCond  %&#123;REQUEST_URI&#125;  \.(jpg|jpeg|gif|png)$   [NC]</span><br><span class="line">##请求的不是foo.jpg。如果没有这条，当执行RewriteRule的时候会请求一个foo.jpg图片，然后陷入死循环</span><br><span class="line">RewriteCond  %&#123;REQUEST_URI&#125;  !images/foo\.jpg</span><br><span class="line">RewriteRule  ^.*$    http://www.gz.com/images/foo.jpg  [R=301,NC,L]</span><br></pre></td></tr></table></figure></p>
+<p>HTTP Referer：是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器该网页是从哪个页面链接过来的，服务器因此可以获得一些信息用于处理。<br>例如：在<a href="http://www\.new\.com/的首页中链接了一张www\.gz\.com站点的图片，这在开发者模式下查看回有以下结果：" target="_blank" rel="noopener">http://www\.new\.com/的首页中链接了一张www\.gz\.com站点的图片，这在开发者模式下查看回有以下结果：</a><br><img src="/images/apache7.png" alt="浏览器status验证"></p>
+<h3 id="站点伪静态化"><a href="#站点伪静态化" class="headerlink" title="站点伪静态化"></a>站点伪静态化</h3><p>动态页面：每次访问根据客户的不同操作可以得到不同结果。(类似与函数中的参数传值，返回结果)<br>         优点：节省资源空间，方便管理人员管理。如简单的学生信息管理系统只需要创建一个数据库，再创建一个静态页面模板，根据客户输入一个的学生信息在页面中实时输出学生信息。<br>静态页面：页面内容已经固定，每次访问结果都是一样。<br>         优点:用户访问方便，无需进行传参操作。<br>动态页面——-&gt;静态页面：把数据库的每一条学生数据都提前为一个个静态页面。<br><img src="/images/apache8.png" alt="页面"><br>伪静态页面是无需客户输入，也能实现类似访问静态页面，但其实是在访问动态页面。<strong>静态页面让百度爬取的到几率大，方便网站推广</strong><br>开启rewrite模块：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule rewrite_module   modules/mod_rewrite.so</span><br></pre></td></tr></table></figure></p>
+<p>在需要实现防盗链的虚拟主机下添加配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">##\d表示数字</span><br><span class="line">RewriteRule  /news/(\d+)\.html$       http://www.gz.com/news/a.php\?id=$1</span><br></pre></td></tr></table></figure></p>
+<p>浏览器输入：<br><img src="/images/apache9.png" alt="页面"><br>敲击回车键：<br><img src="/images/apache10.png" alt="页面"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本篇章主要是学习apache的rewrite模块，只要使用的功能选项<br>RewriteCond—–匹配条件<br>RewriteRule—–实现功能(重定向、防盗链、伪静态….)<br>只要能够熟练使用正则表达式匹配、apaache内置环境变量作用、逻辑清晰地整理出需求的实现条件，定能完成业务需求。<br><a href="http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html" target="_blank" rel="noopener">Apache的rewrite模块官方文档</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月01日 19:00</p>
+        <p>原始链接： <a class="post-url" href="/2019/08/31/Apache-站点重定向，防盗链、伪静态/" title="Apache:站点重定向，防盗链、伪静态">https://LiYuanSh.github.io/2019/08/31/Apache-站点重定向，防盗链、伪静态/</a></p>
+        <footer>
+            <a href="https://LiYuanSh.github.io">
+                <img src="/images/logo1.jpg" alt="LiYuanShu">
+                LiYuanShu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat1.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat1.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay1.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/08/31/Apache-站点重定向，防盗链、伪静态/&title=《Apache:站点重定向，防盗链、伪静态》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/08/31/Apache-站点重定向，防盗链、伪静态/&title=《Apache:站点重定向，防盗链、伪静态》 — 小树窝&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/08/31/Apache-站点重定向，防盗链、伪静态/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Apache:站点重定向，防盗链、伪静态》 — 小树窝&url=https://LiYuanSh.github.io/2019/08/31/Apache-站点重定向，防盗链、伪静态/&via=https://LiYuanSh.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/08/31/Apache-站点重定向，防盗链、伪静态/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/08/31/Apache-站点重定向，防盗链、伪静态/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维-Apache/" class="color2">-运维 -Apache</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rewrite模块–重定向"><span class="post-toc-text">rewrite模块–重定向</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rewrite模块–防盗链"><span class="post-toc-text">rewrite模块–防盗链</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#站点伪静态化"><span class="post-toc-text">站点伪静态化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/31/Apache-status状态查询模块/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Apache:status状态查询模块</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 LiYuanShu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://LiYuanSh.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
