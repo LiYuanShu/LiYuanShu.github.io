@@ -107,6 +107,119 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
+    <article id="post-运维实战10-NFS共享存储实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/04/运维实战10-NFS共享存储实现/"  >运维实战10-NFS共享存储实现</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/09/04/运维实战10-NFS共享存储实现/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战10-NFS共享存储实现" title="运维实战10-NFS共享存储实现">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                主要操作：NFS搭建，Apache数据迁移方案，Apache配置文件解决。
+NFS-40主机磁盘操作添加一块新的磁盘，用于专门存储数据。为磁盘分区，建立文件系统：12[root@NFS-40 ~]# fdisk /dev/sdb[root@NFS-40 ~]# mkfs -t ext4 /dev/sdb1
+将磁盘挂载到需求的目录下：1234567[root@NFS-40 ...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-09-04</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维-NFS/" class="color4">-运维 -NFS</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/09/04/运维实战10-NFS共享存储实现/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维实战9-FTP服务搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/03/运维实战9-FTP服务搭建/"  >运维实战9-FTP服务搭建</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/09/03/运维实战9-FTP服务搭建/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战9-FTP服务搭建" title="运维实战9-FTP服务搭建">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                在阿里云服务端搭建一个FTP服务，实现远程管理web服务的站点，无需再进行远程拷贝，只需在本机win10进入目录修改文件就可以马上同步了。主要管理Apache服务的站点：安装FTP服务：  [root@liyuanshu html]# yum install vsftpd
+修改配置文件：[root@liyuanshu ~]# vim /etc/vsftpd/vsftpd....
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-09-03</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维-FTP/" class="color4">-运维 -FTP</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/09/03/运维实战9-FTP服务搭建/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
     <article id="post-Apache-站点重定向，防盗链、伪静态" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -542,119 +655,6 @@
 
 
   
-    <article id="post-运维笔记六-iptables" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/22/运维笔记六-iptables/"  >运维笔记六:iptables</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/08/22/运维笔记六-iptables/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维笔记六:iptables" title="运维笔记六:iptables">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                防火墙：在数据包经过的位置设置某些规则，决定数据包的走向。       网关防火墙：主要作用于数据包转发、IP地址转换(DNAT、SNAT)、INPUT防御       单击防火墙：主要作用于INPUT链点，自我保护重要知识点：四表五链—-数据包的行走规则，防御规则五个链点即三种走法：
-四个功能实现表：filter：用于实现数据包过滤功能。作用链点：INPUT、OUTPU...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-22</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/-运维-iptables/" class="color4">-运维 -iptables</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/08/22/运维笔记六-iptables/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-运维实战二-网关-防火墙功能" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/15/运维实战二-网关-防火墙功能/"  >运维实战二-网关:防火墙功能</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/08/15/运维实战二-网关-防火墙功能/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战二-网关:防火墙功能" title="运维实战二-网关:防火墙功能">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                本次实验使用的架构和上一个实验网关：路由功能的架构大致相同，也需要在上一个实验的基础上，才能完全实现这一个实验的全部功能。说明：外网为ens33对接，内网为ens38、ens39对接需要实现以下任务1、 从外网向内网主机主动发起的 请求，不能进入内部网络    防火墙主机，仅允许内网主机 ping ，不回应外部主机的 ping 包。2、 防火墙主机，开放 80 端口服务，...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-15</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/运维/" class="color3">运维</a>
-      
-    <a href="/tags/网络/" class="color3">网络</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/08/15/运维实战二-网关-防火墙功能/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -716,7 +716,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -749,7 +749,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
         </div>
     </div>
 </div>
