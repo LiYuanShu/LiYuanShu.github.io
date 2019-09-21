@@ -107,6 +107,62 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
+    <article id="post-运维实战-XtraBackup备份" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/21/运维实战-XtraBackup备份/"  >运维实战:XtraBackup备份</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/09/21/运维实战-XtraBackup备份/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战:XtraBackup备份" title="运维实战:XtraBackup备份">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                XtraBackup介绍是percona提供的一款开源能够对innodb和xtradb数据库进行热备份的工具。优点：12345备份过程快速、可靠备份过程不会打断正在执行的事务能够支持压缩等功能，解压磁盘空间和流量自动失效备份检验还原速度快
+限制：12xtrabackup的高级功能使用，对innodb引擎要求开启独立表空间功能。xtrabackup对于myisam引擎只能温...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-09-21</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维/" class="color4">-运维</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/09/21/运维实战-XtraBackup备份/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
     <article id="post-运维实战-mysql备份-LVM" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -132,7 +188,7 @@
         </div>
         <div class="article-feed">
             <p>
-                本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：创建一个LV：[root@Mysql-31 ~]# lvcreate -n mytmp -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mytmp在数据库中创建...
+                本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv实现挂载:[roo...
             </p>
         </div>
       
@@ -607,63 +663,6 @@ NFS-40主机磁盘操作添加一块新的磁盘，用于专门存储数据。�
 
 
   
-    <article id="post-Django博客：Hello-word页面" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/30/Django博客：Hello-word页面/"  >Django博客：Hello word页面</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/08/30/Django博客：Hello-word页面/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="Django博客：Hello word页面" title="Django博客：Hello word页面">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                Django视图：产生内容，利用逻辑、相应函数创建出一个个html页面
-使用pycharm打开django后，为django创建APP：
-
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-30</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/-Django博客/" class="color5">-Django博客</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/08/30/Django博客：Hello-word页面/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -725,7 +724,7 @@ NFS-40主机磁盘操作添加一块新的磁盘，用于专门存储数据。�
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -758,7 +757,7 @@ NFS-40主机磁盘操作添加一块新的磁盘，用于专门存储数据。�
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
         </div>
     </div>
 </div>
