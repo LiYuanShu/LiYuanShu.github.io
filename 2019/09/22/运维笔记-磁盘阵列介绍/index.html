@@ -3,23 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>‘“linux兄弟连视频一 | 小树窝</title>
+  <title>运维笔记:磁盘阵列介绍 | 小树窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="权限管理命令修改文件拥有者名称：chown（change file ownership）语法：chown user file(directory)  修改文件所属组名称：chgrp（change file group ownership）语法：chgrp group file(directory)  设置文件缺省权限名称：umask（the user file-creation mask）语法：u">
-<meta name="keywords" content="运维">
+  <meta name="keywords" content="-运维 -磁盘管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="‘“linux兄弟连视频一">
-<meta property="og:url" content="https://LiYuanSh.github.io/2018/11/27/‘“linux兄弟连视频一/index.html">
+<meta property="og:title" content="运维笔记:磁盘阵列介绍">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/09/22/运维笔记-磁盘阵列介绍/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="权限管理命令修改文件拥有者名称：chown（change file ownership）语法：chown user file(directory)  修改文件所属组名称：chgrp（change file group ownership）语法：chgrp group file(directory)  设置文件缺省权限名称：umask（the user file-creation mask）语法：u">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-22T07:25:29.570Z">
+<meta property="og:updated_time" content="2019-09-22T09:02:06.786Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="‘“linux兄弟连视频一">
-<meta name="twitter:description" content="权限管理命令修改文件拥有者名称：chown（change file ownership）语法：chown user file(directory)  修改文件所属组名称：chgrp（change file group ownership）语法：chgrp group file(directory)  设置文件缺省权限名称：umask（the user file-creation mask）语法：u">
+<meta name="twitter:title" content="运维笔记:磁盘阵列介绍">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -110,20 +107,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-‘“linux兄弟连视频一" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-运维笔记-磁盘阵列介绍" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      ‘“linux兄弟连视频一
+      运维笔记:磁盘阵列介绍
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-11-27
+          <i class="fa fa-calendar"></i>  2019-09-22
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -139,32 +136,11 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h3 id="权限管理命令"><a href="#权限管理命令" class="headerlink" title="权限管理命令"></a>权限管理命令</h3><h4 id="修改文件拥有者"><a href="#修改文件拥有者" class="headerlink" title="修改文件拥有者"></a>修改文件拥有者</h4><p>名称：chown（change file ownership）<br>语法：chown user file(directory)</p>
-<hr>
-<h4 id="修改文件所属组"><a href="#修改文件所属组" class="headerlink" title="修改文件所属组"></a>修改文件所属组</h4><p>名称：chgrp（change file group ownership）<br>语法：chgrp group file(directory)</p>
-<hr>
-<h4 id="设置文件缺省权限"><a href="#设置文件缺省权限" class="headerlink" title="设置文件缺省权限"></a>设置文件缺省权限</h4><p>名称：umask（the user file-creation mask）<br>语法：umask 缺省值    （需要与或运算）<br>            -S  显示新建文件缺省权限</p>
-<h3 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h3><p>名称：find<br>语法：find [搜索范围] fileName   *任意字符    ？某个字符<br>          -size n       n表示大小，linux以数据块为单位，512k    +n表示大于   -表示小于（查找大小范围内文件   -a与   -o或）<br>          -sure sureName   根据用户查找<br>      根据属性查找<br>          -amin 访问时间 access<br>          -cmin 文件属性 change<br>          -mmin 文件内容 modify<br>          -type 根据文件类型查找    f文件   d目录   l软链接文件</p>
-<hr>
-<p>名称：locate  fileName    有一个文件资料库，查找速度快（不收录temp文件夹的文件）</p>
-<pre><code>updatedb  更新文件资料库
-</code></pre><hr>
-<h2 id="语法：which-commandName-查找某个命令的绝对路径"><a href="#语法：which-commandName-查找某个命令的绝对路径" class="headerlink" title="语法：which commandName    查找某个命令的绝对路径"></a>语法：which commandName    查找某个命令的绝对路径</h2><p>语法：grep content fileName  查找某个文件的某个内容的那一行<br>           -i  不区分大小写<br>           -v  排除查找</p>
-<h4 id="目录文件查看"><a href="#目录文件查看" class="headerlink" title="目录文件查看"></a>目录文件查看</h4><p>用法：ls -l   显示详细信息<br>         |grep “^name”    name为d时，只显示目录，name为_时，只读文件</p>
-<h3 id="压缩解压命令-gz-tar-tar-gz-zip-bz2-tar-bz2"><a href="#压缩解压命令-gz-tar-tar-gz-zip-bz2-tar-bz2" class="headerlink" title="压缩解压命令(.gz,  .tar, .tar.gz, .zip, .bz2, .tar.bz2)"></a>压缩解压命令(.gz,  .tar, .tar.gz, .zip, .bz2, .tar.bz2)</h3><p>一.不要目录，不保留原文件<br>压缩文件：gzip fileName</p>
-<h2 id="解压缩文件：-gunzip-fileName"><a href="#解压缩文件：-gunzip-fileName" class="headerlink" title="解压缩文件： gunzip fileName"></a>解压缩文件： gunzip fileName</h2><p>二.可压缩目录、文件   保留原文件，压缩比不大<br>     zip newName.zip fileName<br>         -r   压缩目录</p>
-<pre><code>unzip newName.zip
-</code></pre><hr>
-<p>三.文件很大时使用，压缩比大<br>    bzip2<br>    bunip2</p>
-<h4 id="打包或解包文件"><a href="#打包或解包文件" class="headerlink" title="打包或解包文件"></a>打包或解包文件</h4><pre><code>（.tar.gz） 
-</code></pre><p>语法：tar -zcf NewName fileName<br>          -c 打包<br>          -v 显示详细信息<br>          -f 指定文件名<br>          -z 打包同时压缩<br>     (.tar.bz2)<br>      tar -cjf NewName fileName<br>语法：tar -xzf fileName<br>         -x  解包<br>      tar -xjf  fileName</p>
-<h3 id="网络命令"><a href="#网络命令" class="headerlink" title="网络命令"></a>网络命令</h3><p>发送信息：write userName<br>         Ctrl+D:输入完毕并发送<br>广播信息：wall  content<br>查看登录信息：last<br>             lastlog  查看用户最后一次登录时间<br>                    -u 查看某个用户<br>显示数据包到主机间的路径：tracerroute  ip地址<br>显示网络相关信息：netstat  -l 监听<br>                          -r 路由<br>                          -n 显示ip地址和端口号<br>                          -t  TCP    -u  UDC</p>
-<p>配置网络：setup</p>
-
+            
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年08月22日 15:25</p>
-        <p>原始链接： <a class="post-url" href="/2018/11/27/‘“linux兄弟连视频一/" title="‘“linux兄弟连视频一">https://LiYuanSh.github.io/2018/11/27/‘“linux兄弟连视频一/</a></p>
+        <p>最后更新： 2019年09月22日 17:02</p>
+        <p>原始链接： <a class="post-url" href="/2019/09/22/运维笔记-磁盘阵列介绍/" title="运维笔记:磁盘阵列介绍">https://LiYuanSh.github.io/2019/09/22/运维笔记-磁盘阵列介绍/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
                 <img src="/images/logo1.jpg" alt="LiYuanShu">
@@ -221,7 +197,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2018/11/27/‘“linux兄弟连视频一/&title=《‘“linux兄弟连视频一》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/09/22/运维笔记-磁盘阵列介绍/&title=《运维笔记:磁盘阵列介绍》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -231,22 +207,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2018/11/27/‘“linux兄弟连视频一/&title=《‘“linux兄弟连视频一》 — 小树窝&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/09/22/运维笔记-磁盘阵列介绍/&title=《运维笔记:磁盘阵列介绍》 — 小树窝&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2018/11/27/‘“linux兄弟连视频一/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/09/22/运维笔记-磁盘阵列介绍/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《‘“linux兄弟连视频一》 — 小树窝&url=https://LiYuanSh.github.io/2018/11/27/‘“linux兄弟连视频一/&via=https://LiYuanSh.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《运维笔记:磁盘阵列介绍》 — 小树窝&url=https://LiYuanSh.github.io/2019/09/22/运维笔记-磁盘阵列介绍/&via=https://LiYuanSh.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2018/11/27/‘“linux兄弟连视频一/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/09/22/运维笔记-磁盘阵列介绍/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -256,7 +232,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2018/11/27/‘“linux兄弟连视频一/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/09/22/运维笔记-磁盘阵列介绍/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -268,7 +244,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/运维/" class="color3">运维</a>
+    <a href="/tags/-运维-磁盘管理/" class="color5">-运维 -磁盘管理</a>
       
   </li>
 
@@ -279,28 +255,12 @@
 </article>
 
 
-    <aside class="post-toc-pos post-toc-top" id="post-toc">
-        <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#权限管理命令"><span class="post-toc-text">权限管理命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改文件拥有者"><span class="post-toc-text">修改文件拥有者</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改文件所属组"><span class="post-toc-text">修改文件所属组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置文件缺省权限"><span class="post-toc-text">设置文件缺省权限</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件搜索命令"><span class="post-toc-text">文件搜索命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#语法：which-commandName-查找某个命令的绝对路径"><span class="post-toc-text">语法：which commandName    查找某个命令的绝对路径</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#目录文件查看"><span class="post-toc-text">目录文件查看</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#压缩解压命令-gz-tar-tar-gz-zip-bz2-tar-bz2"><span class="post-toc-text">压缩解压命令(.gz,  .tar, .tar.gz, .zip, .bz2, .tar.bz2)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解压缩文件：-gunzip-fileName"><span class="post-toc-text">解压缩文件： gunzip fileName</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打包或解包文件"><span class="post-toc-text">打包或解包文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网络命令"><span class="post-toc-text">网络命令</span></a></li></ol>
-        </nav>
-    </aside>
-    
 
 <nav id="article-nav">
   
-    <a href="/2018/11/29/leetcode1/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          leetcode1
-        
-      </span>
-    </a>
   
-  
-    <a href="/2018/11/18/matlab学习笔记二/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">matlab学习笔记二</span>
+    <a href="/2019/09/21/运维实战-XtraBackup备份/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">运维实战:XtraBackup备份</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
