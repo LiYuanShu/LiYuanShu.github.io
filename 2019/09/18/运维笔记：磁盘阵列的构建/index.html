@@ -8,23 +8,23 @@
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="madam软件构建磁盘阵列–RAID5在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘1[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 --level=5 --ra">
-<meta name="keywords" content="-运维 -磁盘阵列">
+  <meta name="description" content="madam软件构建磁盘阵列–RAID5在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘1[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 --level=5 --r">
+<meta name="keywords" content="-运维笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维笔记：磁盘阵列的构建">
 <meta property="og:url" content="https://LiYuanSh.github.io/2019/09/18/运维笔记：磁盘阵列的构建/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="madam软件构建磁盘阵列–RAID5在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘1[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 --level=5 --ra">
+<meta property="og:description" content="madam软件构建磁盘阵列–RAID5在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘1[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 --level=5 --r">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://liyuansh.github.io/images/raid1.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/raid2.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/raid3.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/raid4.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/raid5.png">
-<meta property="og:updated_time" content="2019-09-22T09:01:28.920Z">
+<meta property="og:updated_time" content="2019-10-05T02:06:55.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维笔记：磁盘阵列的构建">
-<meta name="twitter:description" content="madam软件构建磁盘阵列–RAID5在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘1[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 --level=5 --ra">
+<meta name="twitter:description" content="madam软件构建磁盘阵列–RAID5在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘1[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 --level=5 --r">
 <meta name="twitter:image" content="https://liyuansh.github.io/images/raid1.png">
   
   
@@ -145,14 +145,15 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h3 id="madam软件构建磁盘阵列–RAID5"><a href="#madam软件构建磁盘阵列–RAID5" class="headerlink" title="madam软件构建磁盘阵列–RAID5"></a>madam软件构建磁盘阵列–RAID5</h3><p>在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)<br><img src="/images/raid1.png" alt="硬盘"><br><img src="/images/raid2.png" alt="硬盘"><br>安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm<br>需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 --level=5 --raid-device=3 --spare-device=1 /dev/sd&#123;b,c,d,e&#125;</span><br></pre></td></tr></table></figure></p>
+            <hr>
+<h3 id="madam软件构建磁盘阵列–RAID5"><a href="#madam软件构建磁盘阵列–RAID5" class="headerlink" title="madam软件构建磁盘阵列–RAID5"></a>madam软件构建磁盘阵列–RAID5</h3><p>在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)<br><img src="/images/raid1.png" alt="硬盘"><br><img src="/images/raid2.png" alt="硬盘"><br>安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm<br>需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 --level=5 --raid-device=3 --spare-device=1 /dev/sd&#123;b,c,d,e&#125;</span><br></pre></td></tr></table></figure></p>
 <p>查看磁盘阵列信息：<br>[root@Mysql-31 ~]# mdadm -D /dev/md0<br><img src="/images/raid3.png" alt="硬盘"><br>为磁盘阵列创建文件系统并且实现挂载：<br>[root@Mysql-31 ~]# mkfs -t ext4 /dev/md0<br>[root@Mysql-31 ~]# mkdir /d1<br>[root@Mysql-31 ~]# mount /dev/md0 /d1<br>模拟/dev/sdc磁盘损坏：<br>[root@Mysql-31 ~]# mdadm –manage /dev/md0 –fail /dev/sdc<br>查看磁盘阵列的信息：<br>[root@Mysql-31 ~]# mdadm –detail /dev/md0<br><img src="/images/raid4.png" alt="硬盘"><br>磁盘阵列移除和添加硬盘操作：<br>[root@Mysql-31 ~]# mdadm –manage /dev/md0 –remove /dev/sdc<br>mdadm: hot removed /dev/sdc from /dev/md0<br>[root@Mysql-31 ~]# mdadm –manage /dev/md0 –add /dev/sdc<br>mdadm: added /dev/sdc</p>
 <p>用于化设置磁盘阵列：<br>必须向系统注册新的阵列设备号，否则下次重启，raid将消失，修改配置文件 mdadm.conf  （默认不存在）<br>[root@Mysql-31 ~]# mdadm -Ds /dev/md0 &gt;&gt;/etc/mdadm.conf<br>查看文件：<br>[root@Mysql-31 ~]# cat /etc/mdadm.conf<br>ARRAY /dev/md0 metadata=1.2 spares=1 name=Mysql-31:0 UUID=f93c94fa:62360b3d:79f521e1:305692af<br>设置开机自启动服务：<br>[root@Mysql-31 ~]# systemctl enable mdmonitor.service</p>
 <h4 id="全局热备盘配置"><a href="#全局热备盘配置" class="headerlink" title="全局热备盘配置"></a>全局热备盘配置</h4><p>功能：把两个磁盘阵列做成一个组，当其中一个组的硬盘坏掉一些，剩余硬盘无法构建Raid5阵列时，另一个Raid5阵列有剩余空闲硬盘时，会自动迁移到该Raid5中。<br><strong>实现</strong><br>两个磁盘阵列都注册设备号后，在后面加入组名即可：<br><img src="/images/raid5.png" alt="硬盘"></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年09月22日 17:01</p>
+        <p>最后更新： 2019年10月05日 10:06</p>
         <p>原始链接： <a class="post-url" href="/2019/09/18/运维笔记：磁盘阵列的构建/" title="运维笔记：磁盘阵列的构建">https://LiYuanSh.github.io/2019/09/18/运维笔记：磁盘阵列的构建/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
@@ -257,7 +258,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-磁盘阵列/" class="color5">-运维 -磁盘阵列</a>
+    <a href="/tags/-运维笔记/" class="color1">-运维笔记</a>
       
   </li>
 
@@ -354,7 +355,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -387,7 +388,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
 </div>

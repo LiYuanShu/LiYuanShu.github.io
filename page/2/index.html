@@ -107,6 +107,229 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
+    <article id="post-运维实战10-NFS共享存储实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/04/运维实战10-NFS共享存储实现/"  >运维实战10-NFS共享存储实现</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/09/04/运维实战10-NFS共享存储实现/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战10-NFS共享存储实现" title="运维实战10-NFS共享存储实现">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                主要操作：NFS搭建，Apache数据迁移方案，Apache配置文件解决。
+NFS-40主机磁盘操作添加一块新的磁盘，用于专门存储数据。为磁盘分区，建立文件系统：12[root@NFS-40 ~]# fdisk /dev/sdb[root@NFS-40 ~]# mkfs -t ext4 /dev/sdb1
+将磁盘挂载到需求的目录下：1234567[root@NFS-40 ...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-09-04</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/09/04/运维实战10-NFS共享存储实现/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维实战9-FTP服务搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/03/运维实战9-FTP服务搭建/"  >运维实战9-FTP服务搭建</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/09/03/运维实战9-FTP服务搭建/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战9-FTP服务搭建" title="运维实战9-FTP服务搭建">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                在阿里云服务端搭建一个FTP服务，实现远程管理web服务的站点，无需再进行远程拷贝，只需在本机win10进入目录修改文件就可以马上同步了。主要管理Apache服务的站点：安装FTP服务：  [root@liyuanshu html]# yum install vsftpd
+修改配置文件：[root@liyuanshu ~]# vim /etc/vsftpd/vsftpd....
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-09-03</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/09/03/运维实战9-FTP服务搭建/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Apache-站点重定向，防盗链、伪静态" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/31/Apache-站点重定向，防盗链、伪静态/"  >Apache:站点重定向，防盗链、伪静态</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/08/31/Apache-站点重定向，防盗链、伪静态/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="Apache:站点重定向，防盗链、伪静态" title="Apache:站点重定向，防盗链、伪静态">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                为了本篇章的内容更容易看出效果，会联合两台虚拟机一起做实验。为了更快速能够使用上apache服务。直接对另一台虚拟机实现apache绿色移植。linux编译安装一个软件包后全部内容都会存在一个文件夹中，因此只需直接拷贝相应服务的文件夹过去即可：[root@DMZ-httpd /usr/local]# scp -r apr apr-util/ apache24/ 192.1...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-08-31</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维-Apache/" class="color2">-运维 -Apache</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/08/31/Apache-站点重定向，防盗链、伪静态/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Apache-status状态查询模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/31/Apache-status状态查询模块/"  >Apache:status状态查询模块</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/08/31/Apache-status状态查询模块/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="Apache:status状态查询模块" title="Apache:status状态查询模块">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                status模块可以查看apache的运行状态，因此一般不给普通用户查看，以下实验会设置一个账户，只有输入账号正确才能查看status模块。开启status模块：LoadModule status_module modules/mod_status.so在虚拟主机端添加以下内容123456789101112##/my-status为虚拟目录。可以随意指定&lt;Locat...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-08-31</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维-Apache/" class="color2">-运维 -Apache</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/08/31/Apache-status状态查询模块/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
     <article id="post-Apache-CGI功能模块的使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -299,7 +522,8 @@
         </div>
         <div class="article-feed">
             <p>
-                相关概念万维网：由众多站点构成的一个巨大资料空间。在站点之间，资料通过HTTP协议进行传输。站点： 某个远程主机共享处理的一个资源目录。资源：一个有用的事物，万维网资源一般包含文字、声音、图像、视频。URI(同一资源定位符)：协议://[用户名：密码@]完整主机名：端口/目录/文件名[?参数1=值#标志&amp;参数2&amp;参数3]                  ...
+                
+相关概念万维网：由众多站点构成的一个巨大资料空间。在站点之间，资料通过HTTP协议进行传输。站点： 某个远程主机共享处理的一个资源目录。资源：一个有用的事物，万维网资源一般包含文字、声音、图像、视频。URI(同一资源定位符)：协议://[用户名：密码@]完整主机名：端口/目录/文件名[?参数1=值#标志&amp;参数2&amp;参数3]                 ...
             </p>
         </div>
       
@@ -315,7 +539,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-web/" class="color4">-运维 -web</a>
+    <a href="/tags/-运维笔记/" class="color1">-运维笔记</a>
       
   </li>
 
@@ -419,245 +643,13 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-跳板机/" class="color4">-运维 -跳板机</a>
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
       
   </li>
 
         </ul>
         
             <a href="/2019/08/27/运维实战三-跳板机的建立与管理/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-运维笔记六-iptables" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/22/运维笔记六-iptables/"  >运维笔记六:iptables</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/08/22/运维笔记六-iptables/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维笔记六:iptables" title="运维笔记六:iptables">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                防火墙：在数据包经过的位置设置某些规则，决定数据包的走向。       网关防火墙：主要作用于数据包转发、IP地址转换(DNAT、SNAT)、INPUT防御       单击防火墙：主要作用于INPUT链点，自我保护重要知识点：四表五链—-数据包的行走规则，防御规则五个链点即三种走法：
-四个功能实现表：filter：用于实现数据包过滤功能。作用链点：INPUT、OUTPU...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-22</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/-运维-iptables/" class="color4">-运维 -iptables</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/08/22/运维笔记六-iptables/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-运维实战二-网关-防火墙功能" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/15/运维实战二-网关-防火墙功能/"  >运维实战二-网关:防火墙功能</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/08/15/运维实战二-网关-防火墙功能/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战二-网关:防火墙功能" title="运维实战二-网关:防火墙功能">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                本次实验使用的架构和上一个实验网关：路由功能的架构大致相同，也需要在上一个实验的基础上，才能完全实现这一个实验的全部功能。说明：外网为ens33对接，内网为ens38、ens39对接需要实现以下任务1、 从外网向内网主机主动发起的 请求，不能进入内部网络    防火墙主机，仅允许内网主机 ping ，不回应外部主机的 ping 包。2、 防火墙主机，开放 80 端口服务，...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-15</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/运维/" class="color3">运维</a>
-      
-    <a href="/tags/网络/" class="color3">网络</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/08/15/运维实战二-网关-防火墙功能/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-运维笔记六-TCP模型相关" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/15/运维笔记六-TCP模型相关/"  >运维笔记六-TCP/UDP相关</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/08/15/运维笔记六-TCP模型相关/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维笔记六-TCP/UDP相关" title="运维笔记六-TCP/UDP相关">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                计算机数据传输的模型图（一般现在按四层模型划分）：
-传输层主要存在两个协议：    TCP：面向连接–三次握手、四次挥手；保证高可靠性(数据无丢失—-重传机制、数据有序传输、数据无错误—-校验码、数据无重复到达)    UDP：无连接,不可靠传输，常用于视频播放之类
-TCPTCP头部正常情况下包含20个字节，主要包含以下内容：    端口号—–源端口(客户端浏览器打开的端...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-15</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/运维/" class="color3">运维</a>
-      
-    <a href="/tags/知识点/" class="color4">知识点</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/08/15/运维笔记六-TCP模型相关/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-运维实战一-网关：路由功能" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/运维实战一-网关：路由功能/"  >运维实战一-网关：路由功能</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/08/13/运维实战一-网关：路由功能/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战一-网关：路由功能" title="运维实战一-网关：路由功能">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                路由：一个设备从接口(网卡)上接收到数据包，依据设备所使用的某些规则，将数据包转发到其他接口的过程。
-本项目有四台虚拟机构成，三台处于不太的网段，一台设置为路由器，实现数据转发功能。
-接入虚拟交换机根据架构图，创建出四台虚拟机，并且分别接入到对应的虚拟交换机中。
-初步设置ip将三台虚拟机设置成相对应的IP，同时注销掉网关设置。还需要注意子网掩码方面的设置(本次实验皆为C类...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-13</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/运维/" class="color3">运维</a>
-      
-    <a href="/tags/网络/" class="color3">网络</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/08/13/运维实战一-网关：路由功能/#more" class="article-more-link" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -726,7 +718,7 @@ TCPTCP头部正常情况下包含20个字节，主要包含以下内容：    �
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -759,7 +751,7 @@ TCPTCP头部正常情况下包含20个字节，主要包含以下内容：    �
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
 </div>

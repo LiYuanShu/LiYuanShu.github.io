@@ -8,22 +8,22 @@
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="SQL：结构化查询语言 三大类型DDL：数据库定义语言     操作对象：数据库、表、视图、索引、存储过程     例子：mysql&amp;gt; show databases;—展示所有数据库          mysql&amp;gt; create database class;—创建数据库          mysql&amp;gt; drop class;          mysql&amp;gt; use cla">
-<meta name="keywords" content="-运维 -sql">
+  <meta name="description" content="SQL：结构化查询语言 三大类型DDL：数据库定义语言     操作对象：数据库、表、视图、索引、存储过程     例子：mysql&amp;gt; show databases;—展示所有数据库          mysql&amp;gt; create database class;—创建数据库          mysql&amp;gt; drop class;          mysql&amp;gt; use cl">
+<meta name="keywords" content="-运维笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维笔记9-sql">
 <meta property="og:url" content="https://LiYuanSh.github.io/2019/09/08/运维笔记9-sql/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="SQL：结构化查询语言 三大类型DDL：数据库定义语言     操作对象：数据库、表、视图、索引、存储过程     例子：mysql&amp;gt; show databases;—展示所有数据库          mysql&amp;gt; create database class;—创建数据库          mysql&amp;gt; drop class;          mysql&amp;gt; use cla">
+<meta property="og:description" content="SQL：结构化查询语言 三大类型DDL：数据库定义语言     操作对象：数据库、表、视图、索引、存储过程     例子：mysql&amp;gt; show databases;—展示所有数据库          mysql&amp;gt; create database class;—创建数据库          mysql&amp;gt; drop class;          mysql&amp;gt; use cl">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://liyuansh.github.io/images/sql1.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/sql2.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/sql3.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/sql4.png">
-<meta property="og:updated_time" content="2019-09-21T07:27:19.911Z">
+<meta property="og:updated_time" content="2019-10-05T02:08:00.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维笔记9-sql">
-<meta name="twitter:description" content="SQL：结构化查询语言 三大类型DDL：数据库定义语言     操作对象：数据库、表、视图、索引、存储过程     例子：mysql&amp;gt; show databases;—展示所有数据库          mysql&amp;gt; create database class;—创建数据库          mysql&amp;gt; drop class;          mysql&amp;gt; use cla">
+<meta name="twitter:description" content="SQL：结构化查询语言 三大类型DDL：数据库定义语言     操作对象：数据库、表、视图、索引、存储过程     例子：mysql&amp;gt; show databases;—展示所有数据库          mysql&amp;gt; create database class;—创建数据库          mysql&amp;gt; drop class;          mysql&amp;gt; use cl">
 <meta name="twitter:image" content="https://liyuansh.github.io/images/sql1.png">
   
   
@@ -144,7 +144,8 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>SQL：结构化查询语言</p>
+            <hr>
+<p>SQL：结构化查询语言</p>
 <h4 id="三大类型"><a href="#三大类型" class="headerlink" title="三大类型"></a>三大类型</h4><p>DDL：数据库定义语言<br>     操作对象：数据库、表、视图、索引、存储过程<br>     例子：mysql&gt; show databases;—展示所有数据库<br>          mysql&gt; create database class;—创建数据库<br>          mysql&gt; drop class;<br>          mysql&gt; use class;<br>          mysql&gt; create table t1(id tinyint,name char(6));<br>          mysql&gt; show create table t1\G;   或者   mysql&gt; desc t1;—–查看表<br>          mysql&gt; show tables;<br>          mysql&gt; alter table t2 rename to t3;<br>          mysql&gt; drop table t1;  或者  mysql&gt; drop table class.t3;—-绝对路径与相对路径</p>
 <p>DML：数据管理语句<br>     操作对象：数据表的内容(增删改查)<br>     例子：mysql&gt;insert into t1 valuse(111,111);–为所有字段插入数据<br>          mysql&gt; insert into t1 (tinyint_test) values(127);–为某一字段插入数据(其他字段运行为null)<br>DCL：数据库访问控制语言<br>     作用：控制用户访问权限(grant语句使用)<br>     对用户授权：grant [all/delete/update/select] on [ <em>.</em>/dk.<em> ] to “用户”@”IP / %” identified by “密码”;
      </em>.<em>—–所有库的所有表  dk.</em>—–dk库的所有表    %—-所有IP地址都允许登录<br>     例子： grant  all  on <em>.</em>  to “root”@”192.168.10.1” identified by “123123”;——–用户不存在，会自动创建。<br>     <strong>授权完成记得—-flush privileges—–</strong></p>
@@ -159,7 +160,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年09月21日 15:27</p>
+        <p>最后更新： 2019年10月05日 10:08</p>
         <p>原始链接： <a class="post-url" href="/2019/09/08/运维笔记9-sql/" title="运维笔记9-sql">https://LiYuanSh.github.io/2019/09/08/运维笔记9-sql/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
@@ -264,7 +265,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-sql/" class="color4">-运维 -sql</a>
+    <a href="/tags/-运维笔记/" class="color1">-运维笔记</a>
       
   </li>
 
@@ -361,7 +362,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -394,7 +395,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
 </div>

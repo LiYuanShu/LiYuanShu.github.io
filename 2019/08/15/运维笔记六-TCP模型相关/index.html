@@ -9,7 +9,7 @@
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
   <meta name="description" content="计算机数据传输的模型图（一般现在按四层模型划分）： 传输层主要存在两个协议：    TCP：面向连接–三次握手、四次挥手；保证高可靠性(数据无丢失—-重传机制、数据有序传输、数据无错误—-校验码、数据无重复到达)    UDP：无连接,不可靠传输，常用于视频播放之类 TCPTCP头部正常情况下包含20个字节，主要包含以下内容：    端口号—–源端口(客户端浏览器打开的端口)占两个字节—-8位">
-<meta name="keywords" content="运维,知识点">
+<meta name="keywords" content="-运维笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维笔记六-TCP&#x2F;UDP相关">
 <meta property="og:url" content="https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/index.html">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://liyuansh.github.io/images/六tcp.jpg">
 <meta property="og:image" content="https://liyuansh.github.io/images/六tcp1.jpg">
 <meta property="og:image" content="https://liyuansh.github.io/images/六tcp2.jpg">
-<meta property="og:updated_time" content="2019-09-10T12:53:54.447Z">
+<meta property="og:updated_time" content="2019-10-05T02:06:37.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维笔记六-TCP&#x2F;UDP相关">
 <meta name="twitter:description" content="计算机数据传输的模型图（一般现在按四层模型划分）： 传输层主要存在两个协议：    TCP：面向连接–三次握手、四次挥手；保证高可靠性(数据无丢失—-重传机制、数据有序传输、数据无错误—-校验码、数据无重复到达)    UDP：无连接,不可靠传输，常用于视频播放之类 TCPTCP头部正常情况下包含20个字节，主要包含以下内容：    端口号—–源端口(客户端浏览器打开的端口)占两个字节—-8位">
@@ -143,7 +143,8 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>计算机数据传输的模型图（一般现在按四层模型划分）：<br><img src="/images/六tcp.jpg" alt="数据传输模型"></p>
+            <hr>
+<p>计算机数据传输的模型图（一般现在按四层模型划分）：<br><img src="/images/六tcp.jpg" alt="数据传输模型"></p>
 <p>传输层主要存在两个协议：<br>    TCP：面向连接–三次握手、四次挥手；保证高可靠性(数据无丢失—-重传机制、数据有序传输、数据无错误—-校验码、数据无重复到达)<br>    UDP：无连接,不可靠传输，常用于视频播放之类</p>
 <h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><p>TCP头部正常情况下包含20个字节，主要包含以下内容：<br>    端口号—–源端口(客户端浏览器打开的端口)占两个字节—-8位<br>               目标端口(服务回应端口)占两个字节—-8位<br>        注：常用服务及其端口端口（FTP：21  SSH：22  Telnet：23  SMTP：25 http：80  https：443  Mysql：3306）<br>    序号——-发送序号(seq)占四个字节<br>               确认序号(ack)占四个字节<br>         注：ack一般为seq的数字加一，但所传输的包数量超过(2^16)时，会重新归零<br>    偏移量—–标识TCP的实际使用长度占一个字节(4位)—-得出TCP最长字节数为60<br>    标志位—–占6位，值为1代表启用<br>        URG  紧急指针，不用吧这个报文放入缓冲区，直接交个上层处理<br>        ACK  确认序号有效<br>        PSH  立即把报文放入缓冲区，并且把缓冲区的内容一起交个上层处理<br>        SYN  同步序号用来发去一个连接<br>        FIN  发送端完成发送任务（断开连接）<br>        RST  表示断开一个连接（访问出错时使用）<br>    窗口大小—表示能够接受tcp报文的最大字节数(16位)，控制发送报文大小<br>    校验和—–验证报文的正确性(16位)</p>
 <h5 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h5><p><img src="/images/六tcp1.jpg" alt="数据传输模型"><br>注：三次握手只是建立连接的过程，期间无任何数据传输。</p>
@@ -152,7 +153,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年09月10日 20:53</p>
+        <p>最后更新： 2019年10月05日 10:06</p>
         <p>原始链接： <a class="post-url" href="/2019/08/15/运维笔记六-TCP模型相关/" title="运维笔记六-TCP/UDP相关">https://LiYuanSh.github.io/2019/08/15/运维笔记六-TCP模型相关/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
@@ -257,9 +258,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/运维/" class="color3">运维</a>
-      
-    <a href="/tags/知识点/" class="color4">知识点</a>
+    <a href="/tags/-运维笔记/" class="color1">-运维笔记</a>
       
   </li>
 
@@ -356,7 +355,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -389,7 +388,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
 </div>

@@ -8,22 +8,22 @@
   
     <meta name="keywords" content="MinHow,MinHow's Blog" />
   
-  <meta name="description" content="本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv实现挂载:[root@Mysql-31 /d">
-<meta name="keywords" content="-运维 -LVM">
+  <meta name="description" content="本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：LVM快照只能作用于存储在LVM的数据创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv实现挂">
+<meta name="keywords" content="-运维实战">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维实战:mysql备份(LVM)">
 <meta property="og:url" content="https://LiYuanSh.github.io/2019/09/20/运维实战-mysql备份-LVM/index.html">
 <meta property="og:site_name" content="小树窝">
-<meta property="og:description" content="本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv实现挂载:[root@Mysql-31 /d">
+<meta property="og:description" content="本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：LVM快照只能作用于存储在LVM的数据创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv实现挂">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://liyuansh.github.io/images/lvm1.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/lvm2.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/lvm3.png">
 <meta property="og:image" content="https://liyuansh.github.io/images/lvm4.png">
-<meta property="og:updated_time" content="2019-09-21T11:52:31.178Z">
+<meta property="og:updated_time" content="2019-10-05T02:07:10.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维实战:mysql备份(LVM)">
-<meta name="twitter:description" content="本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv实现挂载:[root@Mysql-31 /d">
+<meta name="twitter:description" content="本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：LVM快照只能作用于存储在LVM的数据创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv实现挂">
 <meta name="twitter:image" content="https://liyuansh.github.io/images/lvm1.png">
   
   
@@ -144,7 +144,7 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。<br>数据库的存放架构基本如下：<br><img src="/images/lvm1.png" alt="架构"><br>创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg<br>为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv<br>实现挂载:[root@Mysql-31 /data/mysql]# mount /dev/myvg/mylv  /d1<br>把mysql数据库的数据文件拷贝到d1目录下(同时在/data下创建一个软链接mysql,指向/d1目录)<br><img src="/images/lvm2.png" alt="创建lv"><br>在数据库中创建一个共享锁，防止在拍摄快照期间有其他用户修改数据：mysql&gt; flush table with read lock;<br>为mylv逻辑卷拍摄LVM快照：[root@Mysql-31 /d2]# lvcreate -L 500M -s -n lv-snap /dev/myvg/mylv<br><img src="/images/lvm3.png" alt="创建lv"><br>回滚二进制日志，方便下一次增量备份：mysql&gt; flush logs;<br>释放共享锁：mysql&gt; unlock table;<br>挂载并且查看信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@Mysql-31 /data/mysql]# mount -o ro  /dev/myvg/lv-snap  /d2</span><br><span class="line">[root@Mysql-31 ~]# df -h</span><br><span class="line">文件系统                   容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/sda1                   10G  4.0G  6.1G   40% /</span><br><span class="line">devtmpfs                   479M     0  479M    0% /dev</span><br><span class="line">tmpfs                      489M     0  489M    0% /dev/shm</span><br><span class="line">tmpfs                      489M  6.9M  482M    2% /run</span><br><span class="line">tmpfs                      489M     0  489M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda2                   10G   33M   10G    1% /data</span><br><span class="line">/dev/sr0                   4.3G  4.3G     0  100% /iso</span><br><span class="line">tmpfs                       98M     0   98M    0% /run/user/0</span><br><span class="line">/dev/mapper/myvg-mylv      3.9G  439M  3.2G   12% /d1</span><br><span class="line">/dev/mapper/myvg-lv--snap  3.9G  439M  3.2G   12% /d2</span><br></pre></td></tr></table></figure></p>
+            <p>本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。<br>数据库的存放架构基本如下：<br><img src="/images/lvm1.png" alt="架构"><br><strong>LVM快照只能作用于存储在LVM的数据</strong><br>创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg<br>为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv<br>实现挂载:[root@Mysql-31 /data/mysql]# mount /dev/myvg/mylv  /d1<br>把mysql数据库的数据文件拷贝到d1目录下(同时在/data下创建一个软链接mysql,指向/d1目录)<br><img src="/images/lvm2.png" alt="创建lv"><br>在数据库中创建一个共享锁，防止在拍摄快照期间有其他用户修改数据：mysql&gt; flush table with read lock;<br>为mylv逻辑卷拍摄LVM快照：[root@Mysql-31 /d2]# lvcreate -L 500M -s -n lv-snap /dev/myvg/mylv<br><img src="/images/lvm3.png" alt="创建lv"><br>回滚二进制日志，方便下一次增量备份：mysql&gt; flush logs;<br>释放共享锁：mysql&gt; unlock table;<br>挂载并且查看信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@Mysql-31 /data/mysql]# mount -o ro  /dev/myvg/lv-snap  /d2</span><br><span class="line">[root@Mysql-31 ~]# df -h</span><br><span class="line">文件系统                   容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/sda1                   10G  4.0G  6.1G   40% /</span><br><span class="line">devtmpfs                   479M     0  479M    0% /dev</span><br><span class="line">tmpfs                      489M     0  489M    0% /dev/shm</span><br><span class="line">tmpfs                      489M  6.9M  482M    2% /run</span><br><span class="line">tmpfs                      489M     0  489M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda2                   10G   33M   10G    1% /data</span><br><span class="line">/dev/sr0                   4.3G  4.3G     0  100% /iso</span><br><span class="line">tmpfs                       98M     0   98M    0% /run/user/0</span><br><span class="line">/dev/mapper/myvg-mylv      3.9G  439M  3.2G   12% /d1</span><br><span class="line">/dev/mapper/myvg-lv--snap  3.9G  439M  3.2G   12% /d2</span><br></pre></td></tr></table></figure></p>
 <p>在进入目录后查看内容，可以发现/d2目录下存在着与/d1目录一模一样的内容，证明拍摄快照成功(只复制/d1目录下的inode等信息，并不记录具体数据)<br>打包/d2目录的内容到别的地方，完成备份：[root@Mysql-31 /]# tar -czf mysql-2019-9-20.tar.gz d2/<br>移除快照：<br>[root@Mysql-31 /]# umount /d2<br>[root@Mysql-31 /]# lvremove /dev/myvg/lv-snap </p>
 <h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>停止数据库服务，删除数据库的所有数据(模仿灾难)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@Mysql-31 /data/mysql]# rm -rf *</span><br><span class="line">[root@Mysql-31 /data/mysql]# ls</span><br><span class="line">[root@Mysql-31 /data/mysql]#</span><br></pre></td></tr></table></figure></p>
 <p>对备份数据进行解压：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@Mysql-31 /data/mysql]# tar -xf /mysql-2019-9-20.tar.gz </span><br><span class="line">[root@Mysql-31 /data/mysql]# ls</span><br><span class="line">d2</span><br><span class="line">[root@Mysql-31 /data/mysql]# mv d2/* .</span><br><span class="line">[root@Mysql-31 /data/mysql]# ls</span><br><span class="line">auto.cnf   general.log     ib_logfile1                Mysql-31-relay-bin.000002  Mysql-31-relay-bin.index  slow.log</span><br><span class="line">BBS        hello           ibtmp1                     Mysql-31-relay-bin.000003  mysqld.log                sys</span><br><span class="line">class      ib_buffer_pool  master.info                Mysql-31-relay-bin.000004  mysql.pid</span><br><span class="line">d2         ibdata1         mysql                      Mysql-31-relay-bin.000005  performance_schema</span><br><span class="line">error.log  ib_logfile0     Mysql-31-relay-bin.000001  Mysql-31-relay-bin.000006  relay-log.info</span><br><span class="line">[root@Mysql-31 /data/mysql]# rm -rf d2/</span><br></pre></td></tr></table></figure></p>
@@ -156,7 +156,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年09月21日 19:52</p>
+        <p>最后更新： 2019年10月05日 10:07</p>
         <p>原始链接： <a class="post-url" href="/2019/09/20/运维实战-mysql备份-LVM/" title="运维实战:mysql备份(LVM)">https://LiYuanSh.github.io/2019/09/20/运维实战-mysql备份-LVM/</a></p>
         <footer>
             <a href="https://LiYuanSh.github.io">
@@ -261,7 +261,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-LVM/" class="color4">-运维 -LVM</a>
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
       
   </li>
 
@@ -358,7 +358,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -391,7 +391,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
 </div>

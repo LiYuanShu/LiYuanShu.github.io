@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>运维实战:Lvs+Galera集群 | 小树窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="架构图目前Galera部分已经能实现数据库同步功能，本文主要构建LVS部分。 两种负载均衡方式本次使用nat模式和DR模式分别实现负载均衡。 NAT模式(网络地址转换模式)：在LVS服务器中修改请求报文的IP地址，实现对内部服务器的访问。LVS相当于一个工作到四层模型的一个反向代理。优点：无需设备。节约成本，内部服务器可以无需公网地址和接入公网的设备缺点：需要消耗一定的计算机资源。响应时间较长。">
+<meta name="keywords" content="-运维实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运维实战:Lvs+Galera集群">
+<meta property="og:url" content="https://LiYuanSh.github.io/2019/10/20/运维实战-Lvs-Galera集群/index.html">
+<meta property="og:site_name" content="小树窝">
+<meta property="og:description" content="架构图目前Galera部分已经能实现数据库同步功能，本文主要构建LVS部分。 两种负载均衡方式本次使用nat模式和DR模式分别实现负载均衡。 NAT模式(网络地址转换模式)：在LVS服务器中修改请求报文的IP地址，实现对内部服务器的访问。LVS相当于一个工作到四层模型的一个反向代理。优点：无需设备。节约成本，内部服务器可以无需公网地址和接入公网的设备缺点：需要消耗一定的计算机资源。响应时间较长。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://liyuansh.github.io/images/lvs1.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/lvs2.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/lvs3.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/lvs4.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/lvs5.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/lvs6.png">
+<meta property="og:image" content="https://liyuansh.github.io/images/lvs7.png">
+<meta property="og:updated_time" content="2019-10-20T10:29:36.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="运维实战:Lvs+Galera集群">
+<meta name="twitter:description" content="架构图目前Galera部分已经能实现数据库同步功能，本文主要构建LVS部分。 两种负载均衡方式本次使用nat模式和DR模式分别实现负载均衡。 NAT模式(网络地址转换模式)：在LVS服务器中修改请求报文的IP地址，实现对内部服务器的访问。LVS相当于一个工作到四层模型的一个反向代理。优点：无需设备。节约成本，内部服务器可以无需公网地址和接入公网的设备缺点：需要消耗一定的计算机资源。响应时间较长。">
+<meta name="twitter:image" content="https://liyuansh.github.io/images/lvs1.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">小树窝</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo1.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        小树窝
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个软件工程的迷途小书童
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-运维实战-Lvs-Galera集群" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      运维实战:Lvs+Galera集群
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-10-20
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h3><p>目前Galera部分已经能实现数据库同步功能，本文主要构建LVS部分。<br><img src="/images/lvs1.png" alt="LVS+Galera"></p>
+<h3 id="两种负载均衡方式"><a href="#两种负载均衡方式" class="headerlink" title="两种负载均衡方式"></a>两种负载均衡方式</h3><pre><code>本次使用nat模式和DR模式分别实现负载均衡。
+</code></pre><p>NAT模式(网络地址转换模式)：在LVS服务器中修改请求报文的IP地址，实现对内部服务器的访问。LVS相当于一个工作到四层模型的一个反向代理。<br>优点：无需设备。节约成本，内部服务器可以无需公网地址和接入公网的设备<br>缺点：需要消耗一定的计算机资源。响应时间较长。<br><img src="/images/lvs2.png" alt="LVS+Galera"></p>
+<p>DR模式(直接路由模式)：<br>前提：LVS服务器和后端服务器必须在同一个局域网中，且这个局域网中每台主机必须要拥有一个公网VIP地址—–服务器的 VIP 地址 必须配置在Non-ARP的网络设备上，确保后端服务器能够接入公网。<br>DR模式的工作模式中，LVS服务器仅仅负责对客户端请求的转发—–通过修改目标MAC地址，回复客户端直接由后端服务器完成。<br>优点：速度更快，性能更高<br>缺点：造价成本较高<br><img src="/images/lvs3.png" alt="LVS+Galera"></p>
+<h4 id="NAT模式"><a href="#NAT模式" class="headerlink" title="NAT模式"></a>NAT模式</h4><p>[root@lvs-12 ~]# yum install ipvsadm<br>设置LVS规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@lvs-12 ~]# ipvsadm -C</span><br><span class="line">[root@lvs-12 ~]# ipvsadm -A -t 192.168.1.12:3306 -s rr</span><br><span class="line">## -g表示使用DR模式，-m表示使用NAT模式，-i表示使用TUN模式</span><br><span class="line">[root@lvs-12 ~]# ipvsadm -a -t 192.168.1.12:3306 -r 192.168.1.31:3306 -m </span><br><span class="line">[root@lvs-12 ~]# ipvsadm -a -t 192.168.1.12:3306 -r 192.168.1.32:3306 -m </span><br><span class="line">[root@lvs-12 ~]# ipvsadm -a -t 192.168.1.12:3306 -r 192.168.1.33:3306 -m</span><br></pre></td></tr></table></figure></p>
+<p>查看规则：<br>[root@lvs-12 ~]# ipvsadm -L<br><img src="/images/lvs4.png" alt="LVS+Galera"></p>
+<p>使用任意客户端查看：<br>[root@mysql-31 ~]# mysql -uli -h192.168.1.12  -e “select * from class.m_class;”</p>
+<h4 id="DR模式"><a href="#DR模式" class="headerlink" title="DR模式"></a>DR模式</h4><p>本模式使用LVS+keepalive结合实现，实现LVS的高可用性<br>[root@lvs-12 ~]# yum install keepalived<br>配置keepalive：<br>[root@lvs-12 ~]# vim /etc/keepalived/keepalived.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line">notification_email &#123;</span><br><span class="line">test@sina.com</span><br><span class="line">&#125;</span><br><span class="line">router_id LVS12</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_2 &#123;</span><br><span class="line">    state BACKUP</span><br><span class="line">    interface ens33</span><br><span class="line">    virtual_router_id 90   ##不能和同局域网的其它 VRRP组重复</span><br><span class="line">    priority 100</span><br><span class="line">    advert_int 1</span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    &#125;</span><br><span class="line">notify_backup &quot;/etc/keepalived/vrrp.sh BACKUP   VI_1&quot;</span><br><span class="line">notify_master &quot;/etc/keepalived/vrrp.sh MASTER  VI_1&quot;</span><br><span class="line">notify_fault  &quot;/etc/keepalived/vrrp.sh FAULT  VI_1&quot; </span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        192.168.1.80</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">## --------------------------LVS 相关配置 </span><br><span class="line">virtual_server 192.168.1.80 3306 &#123;</span><br><span class="line">    delay_loop 6</span><br><span class="line">    lb_algo rr</span><br><span class="line">   ## lb_algo  &#123;rr|wrr|lc|wlc|lblc|lblcr&#125;</span><br><span class="line">    lb_kind  DR</span><br><span class="line">    persistence_timeout 0</span><br><span class="line">    protocol TCP</span><br><span class="line">   # sorry_server 127.0.0.1 80</span><br><span class="line"></span><br><span class="line">    real_server 192.168.1.31 3306 &#123;</span><br><span class="line">        weight 1</span><br><span class="line">	notify_up /etc/keepalived/up.sh</span><br><span class="line">	notify_down /etc/keepalived/down.sh</span><br><span class="line">        TCP_CHECK &#123;</span><br><span class="line">	    connect_ip 192.168.1.31</span><br><span class="line">            connect_port 3306</span><br><span class="line">            connect_timeout 3</span><br><span class="line">            nb_get_retry 1</span><br><span class="line">            delay_before_retry 3</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    real_server 192.168.1.32 3306 &#123;</span><br><span class="line">        weight 1</span><br><span class="line">  	notify_up /etc/keepalived/up.sh</span><br><span class="line">  	notify_down /etc/keepalived/down.sh</span><br><span class="line">	TCP_CHECK &#123;</span><br><span class="line">        connect_ip 192.168.1.32</span><br><span class="line">        connect_port 3306</span><br><span class="line">        connect_timeout 3</span><br><span class="line">        nb_get_retry 1</span><br><span class="line">        delay_before_retry 3</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   real_server 192.168.1.33 3306 &#123;</span><br><span class="line">        weight 1</span><br><span class="line">        notify_up /etc/keepalived/up.sh</span><br><span class="line">        notify_down /etc/keepalived/down.sh</span><br><span class="line">        TCP_CHECK &#123; </span><br><span class="line">        connect_ip 192.168.1.33</span><br><span class="line">        connect_port 3306</span><br><span class="line">        connect_timeout 3</span><br><span class="line">        nb_get_retry 1</span><br><span class="line">        delay_before_retry 3</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>启动keepalive服务：<br>[root@lvs-12 /etc/keepalived]# systemctl restart keepalived.service<br><img src="/images/lvs5.png" alt="LVS+Galera"><br>在后端的三台真实服务器执行以下脚本，目的为获得一个VIP，回应客户端的请求：<br>[root@mysql-31 ~]# cat RS.sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br><span class="line">vip=192.168.1.80</span><br><span class="line"></span><br><span class="line">start()</span><br><span class="line">&#123;</span><br><span class="line">ifconfig  lo:0  $vip  broadcast  $vip  netmask 255.255.255.255  up</span><br><span class="line">route add -host   $vip  dev   lo:0</span><br><span class="line"></span><br><span class="line">echo &quot;1&quot; &gt; /proc/sys/net/ipv4/conf/lo/arp_ignore</span><br><span class="line">echo &quot;2&quot; &gt; /proc/sys/net/ipv4/conf/lo/arp_announce</span><br><span class="line">echo &quot;1&quot; &gt; /proc/sys/net/ipv4/conf/all/arp_ignore</span><br><span class="line">echo &quot;2&quot; &gt; /proc/sys/net/ipv4/conf/all/arp_announce</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">stop()</span><br><span class="line">&#123;</span><br><span class="line">ifconfig lo:0 $vip down</span><br><span class="line">echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/lo/arp_ignore</span><br><span class="line">echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/lo/arp_announce</span><br><span class="line">echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/all/arp_ignore</span><br><span class="line">echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/all/arp_announce</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case $1 in </span><br><span class="line">	start)</span><br><span class="line">	start</span><br><span class="line">	;;</span><br><span class="line">	stop)</span><br><span class="line">	stop</span><br><span class="line">	;;</span><br><span class="line">	*)</span><br><span class="line">	echo &quot;$0 in [ start | stop ]&quot;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/lvs6.png" alt="LVS+Galera"><br><img src="/images/lvs7.png" alt="LVS+Galera"></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月20日 18:29</p>
+        <p>原始链接： <a class="post-url" href="/2019/10/20/运维实战-Lvs-Galera集群/" title="运维实战:Lvs+Galera集群">https://LiYuanSh.github.io/2019/10/20/运维实战-Lvs-Galera集群/</a></p>
+        <footer>
+            <a href="https://LiYuanSh.github.io">
+                <img src="/images/logo1.jpg" alt="LiYuanShu">
+                LiYuanShu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat1.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat1.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay1.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://LiYuanSh.github.io/2019/10/20/运维实战-Lvs-Galera集群/&title=《运维实战:Lvs+Galera集群》 — 小树窝&pic=https://LiYuanSh.github.ioimages/logo1.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://LiYuanSh.github.io/2019/10/20/运维实战-Lvs-Galera集群/&title=《运维实战:Lvs+Galera集群》 — 小树窝&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://LiYuanSh.github.io/2019/10/20/运维实战-Lvs-Galera集群/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《运维实战:Lvs+Galera集群》 — 小树窝&url=https://LiYuanSh.github.io/2019/10/20/运维实战-Lvs-Galera集群/&via=https://LiYuanSh.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://LiYuanSh.github.io/2019/10/20/运维实战-Lvs-Galera集群/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://LiYuanSh.github.io/2019/10/20/运维实战-Lvs-Galera集群/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#架构图"><span class="post-toc-text">架构图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两种负载均衡方式"><span class="post-toc-text">两种负载均衡方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#NAT模式"><span class="post-toc-text">NAT模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DR模式"><span class="post-toc-text">DR模式</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/05/运维实战-Galare集群/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">运维实战:Galare集群</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 LiYuanShu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://LiYuanSh.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

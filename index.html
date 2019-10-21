@@ -107,6 +107,231 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
+    <article id="post-运维实战-Lvs-Galera集群" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/20/运维实战-Lvs-Galera集群/"  >运维实战:Lvs+Galera集群</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/10/20/运维实战-Lvs-Galera集群/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战:Lvs+Galera集群" title="运维实战:Lvs+Galera集群">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                架构图目前Galera部分已经能实现数据库同步功能，本文主要构建LVS部分。
+两种负载均衡方式本次使用nat模式和DR模式分别实现负载均衡。
+NAT模式(网络地址转换模式)：在LVS服务器中修改请求报文的IP地址，实现对内部服务器的访问。LVS相当于一个工作到四层模型的一个反向代理。优点：无需设备。节约成本，内部服务器可以无需公网地址和接入公网的设备缺点：需要消耗一定的计...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-10-20</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/10/20/运维实战-Lvs-Galera集群/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维实战-Galare集群" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/05/运维实战-Galare集群/"  >运维实战:Galare集群</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/10/05/运维实战-Galare集群/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战:Galare集群" title="运维实战:Galare集群">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                简介  MariaDB Galera Cluster 是MariaDB多主机同步集群，仅支持XtraDB、InnoDB存储引擎特点：123多主架构，任何节点都可以进行读写高可用性，在Galera集群中若有一个节点发生故障，该集群仍然可用可扩展性强，并且能自动拷贝数据
+注：一个新节点加入集群，有两种数据拷贝方式：全量数据传输SST(空库)；差量数据传输IST(先恢复最新备份...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-10-05</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/10/05/运维实战-Galare集群/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维实战-mysql逻辑备份-压力测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/24/运维实战-mysql逻辑备份-压力测试/"  >运维实战:mysql逻辑备份+压力测试</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/09/24/运维实战-mysql逻辑备份-压力测试/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战:mysql逻辑备份+压力测试" title="运维实战:mysql逻辑备份+压力测试">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                数据库逻辑备份：可以将一个或者多个数据库备份为一个文本文件(类似与把数据库的数据导出为sql语句)优点：对各种存储引擎都可以使用相同的方法进行备份(不分innodb和myisam引擎)缺点：使用逻辑备份恢复数据时容易出错。使用情景一：迁移mysql的某个数据库或者某张表。使用情景二：误删除在线某个数据库或者数据表后，在不停止服务的情况下恢复数据(把备份数据恢复到一个线下m...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-09-24</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/09/24/运维实战-mysql逻辑备份-压力测试/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-运维实战-从数据库实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/运维实战-从数据库实现/"  >运维实战:从数据库实现</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/09/23/运维实战-从数据库实现/" >
+                
+                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战:从数据库实现" title="运维实战:从数据库实现">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                目标：搭建mysql-32主机的数据库，实现两台主机的数据库主从复制。
+搭建从服务器：一、搭建好mysql-32主机的相关配置(网卡、yum源)。并且在mysql-31中做一份完全备份。
+二、从mysql-31中移植绿色版数据库到mysql-32主机中，并且补充相关的包：[root@Mysql-31 /usr/local]# scp -r mysql57/ 192.168...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-09-23</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/09/23/运维实战-从数据库实现/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
     <article id="post-运维笔记-磁盘阵列介绍" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -148,7 +373,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-磁盘管理/" class="color5">-运维 -磁盘管理</a>
+    <a href="/tags/-运维/" class="color4">-运维</a>
       
   </li>
 
@@ -204,7 +429,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维/" class="color4">-运维</a>
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
       
   </li>
 
@@ -243,7 +468,7 @@
         </div>
         <div class="article-feed">
             <p>
-                本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev/myvg/mylv实现挂载:[roo...
+                本次使用主要演示利用LVM实现数据快照拍摄(完全备份)，锁表并且日志回滚(增量备份)。数据库的存放架构基本如下：LVM快照只能作用于存储在LVM的数据创建一个LV：[root@Mysql-31 ~]# lvcreate -n mylv -L 500M myvg为该LV建立文件系统：[root@Mysql-31 /data/mysql]# mkfs -t ext4 /dev...
             </p>
         </div>
       
@@ -259,7 +484,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-LVM/" class="color4">-运维 -LVM</a>
+    <a href="/tags/-运维实战/" class="color1">-运维实战</a>
       
   </li>
 
@@ -298,7 +523,8 @@
         </div>
         <div class="article-feed">
             <p>
-                madam软件构建磁盘阵列–RAID5在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘1[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 -...
+                
+madam软件构建磁盘阵列–RAID5在虚拟机中新创建好一些硬盘(具体需要创建几块看业务需求)安装模拟软件：[root@Mysql-31 ~]# yum install -y mdadm需求：使用四块硬盘创建一个RAID5磁盘阵列，三块硬盘直接参与阵列，一块硬盘作为预备磁盘1[root@Mysql-31 ~]# mdadm -C --auto=yes /dev/md0 ...
             </p>
         </div>
       
@@ -314,7 +540,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-磁盘阵列/" class="color5">-运维 -磁盘阵列</a>
+    <a href="/tags/-运维笔记/" class="color1">-运维笔记</a>
       
   </li>
 
@@ -353,8 +579,9 @@
         </div>
         <div class="article-feed">
             <p>
-                SQL：结构化查询语言
-三大类型DDL：数据库定义语言     操作对象：数据库、表、视图、索引、存储过程     例子：mysql&gt; show databases;—展示所有数据库          mysql&gt; create database class;—创建数据库          mysql&gt; drop class;          mysq...
+                
+SQL：结构化查询语言
+三大类型DDL：数据库定义语言     操作对象：数据库、表、视图、索引、存储过程     例子：mysql&gt; show databases;—展示所有数据库          mysql&gt; create database class;—创建数据库          mysql&gt; drop class;          mys...
             </p>
         </div>
       
@@ -370,7 +597,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-sql/" class="color4">-运维 -sql</a>
+    <a href="/tags/-运维笔记/" class="color1">-运维笔记</a>
       
   </li>
 
@@ -426,236 +653,13 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/-运维-msql/" class="color5">-运维 -msql</a>
+    <a href="/tags/-运维笔记/" class="color1">-运维笔记</a>
       
   </li>
 
         </ul>
         
             <a href="/2019/09/06/运维笔记8-mysql基本入门操作/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-运维实战10-NFS共享存储实现" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/运维实战10-NFS共享存储实现/"  >运维实战10-NFS共享存储实现</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/09/04/运维实战10-NFS共享存储实现/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战10-NFS共享存储实现" title="运维实战10-NFS共享存储实现">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                主要操作：NFS搭建，Apache数据迁移方案，Apache配置文件解决。
-NFS-40主机磁盘操作添加一块新的磁盘，用于专门存储数据。为磁盘分区，建立文件系统：12[root@NFS-40 ~]# fdisk /dev/sdb[root@NFS-40 ~]# mkfs -t ext4 /dev/sdb1
-将磁盘挂载到需求的目录下：1234567[root@NFS-40 ...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-09-04</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/-运维-NFS/" class="color4">-运维 -NFS</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/09/04/运维实战10-NFS共享存储实现/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-运维实战9-FTP服务搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/03/运维实战9-FTP服务搭建/"  >运维实战9-FTP服务搭建</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/09/03/运维实战9-FTP服务搭建/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="运维实战9-FTP服务搭建" title="运维实战9-FTP服务搭建">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                在阿里云服务端搭建一个FTP服务，实现远程管理web服务的站点，无需再进行远程拷贝，只需在本机win10进入目录修改文件就可以马上同步了。主要管理Apache服务的站点：安装FTP服务：  [root@liyuanshu html]# yum install vsftpd
-修改配置文件：[root@liyuanshu ~]# vim /etc/vsftpd/vsftpd....
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-09-03</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/-运维-FTP/" class="color4">-运维 -FTP</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/09/03/运维实战9-FTP服务搭建/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-Apache-站点重定向，防盗链、伪静态" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/31/Apache-站点重定向，防盗链、伪静态/"  >Apache:站点重定向，防盗链、伪静态</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/08/31/Apache-站点重定向，防盗链、伪静态/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="Apache:站点重定向，防盗链、伪静态" title="Apache:站点重定向，防盗链、伪静态">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                为了本篇章的内容更容易看出效果，会联合两台虚拟机一起做实验。为了更快速能够使用上apache服务。直接对另一台虚拟机实现apache绿色移植。linux编译安装一个软件包后全部内容都会存在一个文件夹中，因此只需直接拷贝相应服务的文件夹过去即可：[root@DMZ-httpd /usr/local]# scp -r apr apr-util/ apache24/ 192.1...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-31</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/-运维-Apache/" class="color2">-运维 -Apache</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/08/31/Apache-站点重定向，防盗链、伪静态/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-Apache-status状态查询模块" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/31/Apache-status状态查询模块/"  >Apache:status状态查询模块</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/08/31/Apache-status状态查询模块/" >
-                
-                <img src="https://LiYuanSh.github.io/images/banner.jpg" alt="Apache:status状态查询模块" title="Apache:status状态查询模块">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                status模块可以查看apache的运行状态，因此一般不给普通用户查看，以下实验会设置一个账户，只有输入账号正确才能查看status模块。开启status模块：LoadModule status_module modules/mod_status.so在虚拟主机端添加以下内容123456789101112##/my-status为虚拟目录。可以随意指定&lt;Locat...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-31</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/-运维-Apache/" class="color2">-运维 -Apache</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/08/31/Apache-status状态查询模块/#more" class="article-more-link" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -724,7 +728,7 @@ NFS-40主机磁盘操作添加一块新的磁盘，用于专门存储数据。�
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -757,7 +761,7 @@ NFS-40主机磁盘操作添加一块新的磁盘，用于专门存储数据。�
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 15px;">-运维 -Apache</a> <a href="/tags/运维-FTP/" style="font-size: 10px;">-运维 -FTP</a> <a href="/tags/运维-LVM/" style="font-size: 10px;">-运维 -LVM</a> <a href="/tags/运维-NFS/" style="font-size: 10px;">-运维 -NFS</a> <a href="/tags/运维-iptables/" style="font-size: 10px;">-运维 -iptables</a> <a href="/tags/运维-msql/" style="font-size: 10px;">-运维 -msql</a> <a href="/tags/运维-sql/" style="font-size: 10px;">-运维 -sql</a> <a href="/tags/运维-web/" style="font-size: 10px;">-运维 -web</a> <a href="/tags/运维-磁盘管理/" style="font-size: 10px;">-运维 -磁盘管理</a> <a href="/tags/运维-磁盘阵列/" style="font-size: 10px;">-运维 -磁盘阵列</a> <a href="/tags/运维-跳板机/" style="font-size: 10px;">-运维 -跳板机</a> <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/其他/" style="font-size: 12.5px;">其他</a> <a href="/tags/知识点/" style="font-size: 17.5px;">知识点</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/运维/" style="font-size: 20px;">运维</a>
+            <a href="/tags/Django博客/" style="font-size: 10px;">-Django博客</a> <a href="/tags/运维/" style="font-size: 10px;">-运维</a> <a href="/tags/运维-Apache/" style="font-size: 14px;">-运维 -Apache</a> <a href="/tags/运维实战/" style="font-size: 20px;">-运维实战</a> <a href="/tags/运维笔记/" style="font-size: 20px;">-运维笔记</a> <a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/其他/" style="font-size: 12px;">其他</a> <a href="/tags/运维/" style="font-size: 18px;">运维</a>
         </div>
     </div>
 </div>
